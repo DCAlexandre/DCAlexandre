@@ -62,14 +62,16 @@ Passionné par l’informatique, je suis toujours à la recherche de nouveaux d�
 
 ## Mes contributions
 
-<div style="display: flex; justify-content: space-between; width: 100%;">
-  <div style="flex: 1; padding-right: 10px;">
-    <img src="https://github-readme-streak-stats.herokuapp.com/?user=DCAlexandre&theme=radical" alt="GitHub Streak" width="100%" />
-  </div>
-  <div style="flex: 1; padding-left: 10px;">
-    <img src="https://github-readme-stats-sigma-five.vercel.app/api?username=DCAlexandre&show_icons=true&theme=radical&count_private=true&include_all_commits=true" alt="Metrics" width="100%" />
-  </div>
-</div>
+<table style="width: 100%; border-collapse: collapse; border: none;">
+  <tr style="border: none;">
+    <td style="width: 50%; padding: 0 8px 0 0; margin: 0; border: none;">
+      <img src="https://github-readme-streak-stats.herokuapp.com/?user=DCAlexandre&theme=radical" alt="GitHub Streak" width="100%" />
+    </td>
+    <td style="width: 50%; padding: 0 0 0 8px; margin: 0; border: none;">
+      <img src="https://github-readme-stats-sigma-five.vercel.app/api?username=DCAlexandre&show_icons=true&theme=radical&count_private=true&include_all_commits=true" alt="Metrics" width="100%" />
+    </td>
+  </tr>
+</table>
 
 <div style="margin-top: 16px;">
   <img src="https://github-readme-activity-graph.vercel.app/graph?username=DCAlexandre&theme=redical" alt="Contribution Graph" width="100%" />
