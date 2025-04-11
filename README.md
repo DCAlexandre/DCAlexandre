@@ -62,34 +62,26 @@ Passionné par l’informatique, je suis toujours à la recherche de nouveaux d�
 
 ## Mes contributions
 
-<table style="border-collapse: collapse; width: 100%;">
-  <tr style="border: none;">
-    <td style="border: none; padding: 0 10px 0 0;">
-      <img src="https://github-readme-streak-stats.herokuapp.com/?user=DCAlexandre&theme=radical" alt="GitHub Streak" width="100%" />
-    </td>
-    <td style="border: none; padding: 0 0 0 10px;">
-      <img src="https://github-readme-stats-sigma-five.vercel.app/api?username=DCAlexandre&show_icons=true&theme=radical&count_private=true&include_all_commits=true" alt="Metrics" width="100%" />
-    </td>
-  </tr>
-</table>
+<div style="display: flex; justify-content: space-between; width: 100%;">
+  <div style="flex: 1; padding-right: 10px;">
+    <img src="https://github-readme-streak-stats.herokuapp.com/?user=DCAlexandre&theme=radical" alt="GitHub Streak" width="100%" />
+  </div>
+  <div style="flex: 1; padding-left: 10px;">
+    <img src="https://github-readme-stats-sigma-five.vercel.app/api?username=DCAlexandre&show_icons=true&theme=radical&count_private=true&include_all_commits=true" alt="Metrics" width="100%" />
+  </div>
+</div>
 
-<table style="border-collapse: collapse; width: 100%;">
-  <tr style="border: none;">
-    <td style="border: none; padding: 0; padding: 0 0 18px 0;">
-      <img src="https://github-readme-activity-graph.vercel.app/graph?username=DCAlexandre&theme=redical" alt="Contribution Graph" width="100%" />
-    </td>
-  </tr>
-  <tr style="border: none;">
-    <td style="border: none; padding: 0; padding: 0 0 18px 0;">
-      <img src="https://github-profile-trophy.vercel.app/?username=DCAlexandre&theme=radical&row=1" alt="Trophées" width="100%" />
-    </td>
-  </tr>
-  <tr style="border: none;">
-    <td style="border: none; padding: 0;">
-      <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=DCAlexandre&layout=compact&theme=radical&count_private=true" alt="Top Langages" width="50%" />
-    </td>
-  </tr>
-</table>
+<div style="margin-top: 16px;">
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=DCAlexandre&theme=redical" alt="Contribution Graph" width="100%" />
+</div>
+
+<div style="margin-top: 16px;">
+  <img src="https://github-profile-trophy.vercel.app/?username=DCAlexandre&theme=radical&row=1" alt="Trophées" width="100%" />
+</div>
+
+<div style="margin-top: 16px;">
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=DCAlexandre&layout=compact&theme=radical&count_private=true" alt="Top Langages" width="50%" />
+</div>
 
 _Note: Ces statistiques ne prennent pas tous en compte mes dépôts privés._
 
