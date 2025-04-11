@@ -62,17 +62,7 @@ Passionné par l’informatique, je suis toujours à la recherche de nouveaux d�
 
 ## Mes contributions
 
-<style>
-  @media (max-width: 600px) {
-    .responsive-table td {
-      display: block;
-      width: 100% !important;
-      padding: 0 !important;
-    }
-  }
-</style>
-
-<table class="responsive-table" style="width: 100%; border-collapse: collapse; border: none;">
+<table style="width: 100%; border-collapse: collapse; border: none;">
   <tr style="border: none;">
     <td style="width: 50%; padding: 0 8px 0 0; margin: 0; border: none;">
       <img src="https://github-readme-streak-stats.herokuapp.com/?user=DCAlexandre&theme=radical" alt="GitHub Streak" width="100%" />
