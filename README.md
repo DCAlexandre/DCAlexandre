@@ -67,95 +67,97 @@ Passionné par l’informatique, je suis toujours à la recherche de nouveaux d�
 
 ## Mes projets
 
-- **[Kared Fit](https://www.linkedin.com/company/kared-dev)** - Application de planification de routines sportives.
+### **[Kared Fit](https://www.linkedin.com/company/kared-dev)** - Application de planification de routines sportives.
 
-  Planifie tes séances, **défie tes amis**, évoluez ensemble en temps réel et gagnez des récompenses.
-  Transforme chaque entraînement en un défi motivant et ludique !
+Planifie tes séances, **défie tes amis**, évoluez ensemble en temps réel et gagnez des récompenses.
+Transforme chaque entraînement en un défi motivant et ludique !
 
-  Gagnez de l'expérience et des récompenses après chaque entraînement.
+Gagnez de l'expérience et des récompenses après chaque entraînement.
 
-  📱 Disponible sur [iOS](https://apps.apple.com/fr/app/kared-fit/id6739947899?platform=iphone) et [Android](https://play.google.com/store/apps/details?id=com.kared.karedfit)
+📱 Disponible sur [iOS](https://apps.apple.com/fr/app/kared-fit/id6739947899?platform=iphone) et [Android](https://play.google.com/store/apps/details?id=com.kared.karedfit)
 
-  <br>
+<br>
 
-  ![React](https://img.shields.io/badge/-React-61DAFB?style=flat-square&logo=react&logoColor=black)
-  ![Capacitor](https://img.shields.io/badge/-Capacitor-119EFF?style=flat-square&logo=capacitor&logoColor=white)
-  ![Firebase](https://img.shields.io/badge/-Firebase-FFCA28?style=flat-square&logo=firebase&logoColor=white)
-  ![AWS](https://img.shields.io/badge/-AWS-FF9900?style=flat-square&logo=amazon-aws&logoColor=white)
-  ![Linux](https://img.shields.io/badge/-Linux-FCC624?style=flat-square&logo=linux&logoColor=black)
-  ![iOS](https://img.shields.io/badge/-iOS-000000?style=flat-square&logo=apple&logoColor=white)
-  ![Android](https://img.shields.io/badge/-Android-3DDC84?style=flat-square&logo=android&logoColor=white)
+![React](https://img.shields.io/badge/-React-61DAFB?style=flat-square&logo=react&logoColor=black)
+![Capacitor](https://img.shields.io/badge/-Capacitor-119EFF?style=flat-square&logo=capacitor&logoColor=white)
+![Firebase](https://img.shields.io/badge/-Firebase-FFCA28?style=flat-square&logo=firebase&logoColor=white)
+![AWS](https://img.shields.io/badge/-AWS-FF9900?style=flat-square&logo=amazon-aws&logoColor=white)
+![Linux](https://img.shields.io/badge/-Linux-FCC624?style=flat-square&logo=linux&logoColor=black)
+![iOS](https://img.shields.io/badge/-iOS-000000?style=flat-square&logo=apple&logoColor=white)
+![Android](https://img.shields.io/badge/-Android-3DDC84?style=flat-square&logo=android&logoColor=white)
 
-  <br>
+<br>
 
-- **[Solutions Terrains](https://www.solutions-terrains.com)** - Valorisation d'assiettes foncières
+### **[Solutions Terrains](https://www.solutions-terrains.com)** - Valorisation d'assiettes foncières
 
-  Plateforme dédiée à la valorisation des terrains auprès de particuliers, aménageurs et promoteurs.
+Plateforme dédiée à la valorisation des terrains auprès de particuliers, aménageurs et promoteurs.
 
-  <br>
+📱 Disponible sur [iOS](https://apps.apple.com/fr/app/solutions-terrains/id6742559497?platform=iphone) et [Android](https://play.google.com/store/apps/details?id=com.solutionsterrains.app)
 
-  ![React](https://img.shields.io/badge/-React-61DAFB?style=flat-square&logo=react&logoColor=black)
-  ![Capacitor](https://img.shields.io/badge/-Capacitor-119EFF?style=flat-square&logo=capacitor&logoColor=white)
-  ![Firebase](https://img.shields.io/badge/-Firebase-FFCA28?style=flat-square&logo=firebase&logoColor=white)
-  ![iOS](https://img.shields.io/badge/-iOS-000000?style=flat-square&logo=apple&logoColor=white)
-  ![Android](https://img.shields.io/badge/-Android-3DDC84?style=flat-square&logo=android&logoColor=white)
-  ![Web](https://img.shields.io/badge/-Web-FF7139?style=flat-square&logo=firefox-browser&logoColor=white)
+<br>
 
-  <br>
+![React](https://img.shields.io/badge/-React-61DAFB?style=flat-square&logo=react&logoColor=black)
+![Capacitor](https://img.shields.io/badge/-Capacitor-119EFF?style=flat-square&logo=capacitor&logoColor=white)
+![Firebase](https://img.shields.io/badge/-Firebase-FFCA28?style=flat-square&logo=firebase&logoColor=white)
+![iOS](https://img.shields.io/badge/-iOS-000000?style=flat-square&logo=apple&logoColor=white)
+![Android](https://img.shields.io/badge/-Android-3DDC84?style=flat-square&logo=android&logoColor=white)
+![Web](https://img.shields.io/badge/-Web-FF7139?style=flat-square&logo=firefox-browser&logoColor=white)
 
-- **[Comète](https://logiciel-comete.fr)** - Automatisation de gestion administrative
+<br>
 
-  Solution complète pour simplifier et optimiser tous les processus administratifs pour les sociétés de sécurité.
+### **[Comète](https://logiciel-comete.fr)** - Automatisation de gestion administrative
 
-  <br>
+Solution complète pour simplifier et optimiser tous les processus administratifs pour les sociétés de sécurité.
 
-  ![SaaS](https://img.shields.io/badge/-SaaS-0080FF?style=flat-square&logo=sap&logoColor=white)
-  ![MySQL](https://img.shields.io/badge/-MySQL-4479A1?style=flat-square&logo=mysql&logoColor=white)
-  ![Omnis](https://img.shields.io/badge/-Omnis-0080FF?style=flat-square&logo=omnis&logoColor=white)
+<br>
 
-  <br>
+![SaaS](https://img.shields.io/badge/-SaaS-0080FF?style=flat-square&logo=sap&logoColor=white)
+![MySQL](https://img.shields.io/badge/-MySQL-4479A1?style=flat-square&logo=mysql&logoColor=white)
+![Omnis](https://img.shields.io/badge/-Omnis-0080FF?style=flat-square&logo=omnis&logoColor=white)
 
-- **[Comète Link](https://logiciel-comete.fr/comete-link)** - Extension modulaire pour Comète
+<br>
 
-  Plateforme composée de plusieurs espaces dédiés et de modules complémentaires à composer selon les besoins des clients.
+### **[Comète Link](https://logiciel-comete.fr/comete-link)** - Extension modulaire pour Comète
 
-  📱 Disponible sur [iOS](https://apps.apple.com/fr/app/com%C3%A8te-link/id1608699303) et [Android](https://play.google.com/store/apps/details?id=fr.aexae.comete)
+Plateforme composée de plusieurs espaces dédiés et de modules complémentaires à composer selon les besoins des clients.
 
-  <br>
+📱 Disponible sur [iOS](https://apps.apple.com/fr/app/com%C3%A8te-link/id1608699303) et [Android](https://play.google.com/store/apps/details?id=fr.aexae.comete)
 
-  ![WebApp](https://img.shields.io/badge/-WebApp-4285F4?style=flat-square&logo=google-chrome&logoColor=white)
-  ![NodeJS](https://img.shields.io/badge/-NodeJS-339933?style=flat-square&logo=node.js&logoColor=white)
-  ![React](https://img.shields.io/badge/-React-61DAFB?style=flat-square&logo=react&logoColor=black)
-  ![Capacitor](https://img.shields.io/badge/-Capacitor-119EFF?style=flat-square&logo=capacitor&logoColor=white)
-  ![Laravel](https://img.shields.io/badge/-Laravel-FF2D20?style=flat-square&logo=laravel&logoColor=white)
-  ![MySQL](https://img.shields.io/badge/-MySQL-4479A1?style=flat-square&logo=mysql&logoColor=white)
-  ![PostgreSQL](https://img.shields.io/badge/-PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white)
-  ![Electron](https://img.shields.io/badge/-Electron-47848F?style=flat-square&logo=electron&logoColor=white)
-  ![iOS](https://img.shields.io/badge/-iOS-000000?style=flat-square&logo=apple&logoColor=white)
-  ![Android](https://img.shields.io/badge/-Android-3DDC84?style=flat-square&logo=android&logoColor=white)
+<br>
 
-  <br>
+![WebApp](https://img.shields.io/badge/-WebApp-4285F4?style=flat-square&logo=google-chrome&logoColor=white)
+![NodeJS](https://img.shields.io/badge/-NodeJS-339933?style=flat-square&logo=node.js&logoColor=white)
+![React](https://img.shields.io/badge/-React-61DAFB?style=flat-square&logo=react&logoColor=black)
+![Capacitor](https://img.shields.io/badge/-Capacitor-119EFF?style=flat-square&logo=capacitor&logoColor=white)
+![Laravel](https://img.shields.io/badge/-Laravel-FF2D20?style=flat-square&logo=laravel&logoColor=white)
+![MySQL](https://img.shields.io/badge/-MySQL-4479A1?style=flat-square&logo=mysql&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/-PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white)
+![Electron](https://img.shields.io/badge/-Electron-47848F?style=flat-square&logo=electron&logoColor=white)
+![iOS](https://img.shields.io/badge/-iOS-000000?style=flat-square&logo=apple&logoColor=white)
+![Android](https://img.shields.io/badge/-Android-3DDC84?style=flat-square&logo=android&logoColor=white)
 
-- **[Comète On Time](https://logiciel-comete.fr/2023/12/20/comete-on-time-les-pointages-geolocalises-disponibles-dans-comete)** - Les pointages géolocalisés disponibles dans Comète
+<br>
 
-  Comète On Time est un module de pointage géolocalisé. Il permet aux agents de sécurité de réaliser leurs pointages sur site.
+### **[Comète On Time](https://logiciel-comete.fr/2023/12/20/comete-on-time-les-pointages-geolocalises-disponibles-dans-comete)** - Les pointages géolocalisés disponibles dans Comète
 
-  📱 Disponible sur [iOS](https://apps.apple.com/fr/app/com%C3%A8te-on-time/id6445984894) et [Android](https://play.google.com/store/apps/details?id=fr.aexae.comete_pointages)
+Comète On Time est un module de pointage géolocalisé. Il permet aux agents de sécurité de réaliser leurs pointages sur site.
 
-  <br>
+📱 Disponible sur [iOS](https://apps.apple.com/fr/app/com%C3%A8te-on-time/id6445984894) et [Android](https://play.google.com/store/apps/details?id=fr.aexae.comete_pointages)
 
-  ![WebApp](https://img.shields.io/badge/-WebApp-4285F4?style=flat-square&logo=google-chrome&logoColor=white)
-  ![NodeJS](https://img.shields.io/badge/-NodeJS-339933?style=flat-square&logo=node.js&logoColor=white)
-  ![React](https://img.shields.io/badge/-React-61DAFB?style=flat-square&logo=react&logoColor=black)
-  ![Capacitor](https://img.shields.io/badge/-Capacitor-119EFF?style=flat-square&logo=capacitor&logoColor=white)
-  ![Laravel](https://img.shields.io/badge/-Laravel-FF2D20?style=flat-square&logo=laravel&logoColor=white)
-  ![MySQL](https://img.shields.io/badge/-MySQL-4479A1?style=flat-square&logo=mysql&logoColor=white)
-  ![PostgreSQL](https://img.shields.io/badge/-PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white)
-  ![Electron](https://img.shields.io/badge/-Electron-47848F?style=flat-square&logo=electron&logoColor=white)
-  ![iOS](https://img.shields.io/badge/-iOS-000000?style=flat-square&logo=apple&logoColor=white)
-  ![Android](https://img.shields.io/badge/-Android-3DDC84?style=flat-square&logo=android&logoColor=white)
+<br>
 
-  <br>
+![WebApp](https://img.shields.io/badge/-WebApp-4285F4?style=flat-square&logo=google-chrome&logoColor=white)
+![NodeJS](https://img.shields.io/badge/-NodeJS-339933?style=flat-square&logo=node.js&logoColor=white)
+![React](https://img.shields.io/badge/-React-61DAFB?style=flat-square&logo=react&logoColor=black)
+![Capacitor](https://img.shields.io/badge/-Capacitor-119EFF?style=flat-square&logo=capacitor&logoColor=white)
+![Laravel](https://img.shields.io/badge/-Laravel-FF2D20?style=flat-square&logo=laravel&logoColor=white)
+![MySQL](https://img.shields.io/badge/-MySQL-4479A1?style=flat-square&logo=mysql&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/-PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white)
+![Electron](https://img.shields.io/badge/-Electron-47848F?style=flat-square&logo=electron&logoColor=white)
+![iOS](https://img.shields.io/badge/-iOS-000000?style=flat-square&logo=apple&logoColor=white)
+![Android](https://img.shields.io/badge/-Android-3DDC84?style=flat-square&logo=android&logoColor=white)
+
+<br>
 
 ## Mes contributions
 
