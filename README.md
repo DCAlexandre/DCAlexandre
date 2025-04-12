@@ -2,6 +2,8 @@
 
 Passionné par l’informatique, je suis toujours à la recherche de nouveaux défis.
 
+<br>
+
 ## À propos de moi
 
 👨‍💻 Je suis actuellement Lead Developer avec plus de 10 ans d'expérience dans le développement d'applications web et mobile
@@ -17,20 +19,55 @@ Passionné par l’informatique, je suis toujours à la recherche de nouveaux d�
 - [![LinkedIn](https://img.shields.io/badge/-LinkedIn-0077B5?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/alexandre-dacosta)
 - [![Email](https://img.shields.io/badge/-Email-D14836?style=flat-square&logo=gmail&logoColor=white)](mailto:dc.alexandre137@gmail.com)
 
+<br>
+
 ## Mes compétences
 
-![NodeJS](https://img.shields.io/badge/-NodeJS-339933?style=flat-square&logo=node.js&logoColor=white)
+### Frontend
+
+![HTML](https://img.shields.io/badge/-HTML-E34F26?style=flat-square&logo=html5&logoColor=white)
+![CSS](https://img.shields.io/badge/-CSS-1572B6?style=flat-square&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
+![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
 ![React](https://img.shields.io/badge/-React-61DAFB?style=flat-square&logo=react&logoColor=black)
 ![Capacitor](https://img.shields.io/badge/-Capacitor-119EFF?style=flat-square&logo=capacitor&logoColor=white)
 ![Electron](https://img.shields.io/badge/-Electron-47848F?style=flat-square&logo=electron&logoColor=white)
+
+### Backend
+
+![NodeJS](https://img.shields.io/badge/-NodeJS-339933?style=flat-square&logo=node.js&logoColor=white)
+![PHP](https://img.shields.io/badge/-PHP-777BB4?style=flat-square&logo=php&logoColor=white)
 ![Laravel](https://img.shields.io/badge/-Laravel-FF2D20?style=flat-square&logo=laravel&logoColor=white)
+![Express](https://img.shields.io/badge/-Express-000000?style=flat-square&logo=express&logoColor=white)
 ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white)
+
+### Gestion des données
+
+![SQL](https://img.shields.io/badge/-SQL-4479A1?style=flat-square&logo=postgresql&logoColor=white)
+![MySQL](https://img.shields.io/badge/-MySQL-4479A1?style=flat-square&logo=mysql&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/-PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white)
+![Firebase](https://img.shields.io/badge/-Firebase-FFCA28?style=flat-square&logo=firebase&logoColor=white)
+
+### Serveur et DevOps
+
+![AWS](https://img.shields.io/badge/-AWS-FF9900?style=flat-square&logo=amazon-aws&logoColor=white)
+![Linux](https://img.shields.io/badge/-Linux-FCC624?style=flat-square&logo=linux&logoColor=black)
 ![Docker](https://img.shields.io/badge/-Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
 ![Kubernetes](https://img.shields.io/badge/-Kubernetes-326CE5?style=flat-square&logo=kubernetes&logoColor=white)
+![Ansible](https://img.shields.io/badge/-Ansible-000000?style=flat-square&logo=ansible&logoColor=white)
+
+### Tests
+
+![Cypress](https://img.shields.io/badge/-Cypress-17202C?style=flat-square&logo=cypress&logoColor=white)
+![Jest](https://img.shields.io/badge/-Jest-C21325?style=flat-square&logo=jest&logoColor=white)
+![PHPUnit](https://img.shields.io/badge/-PHPUnit-8892BE?style=flat-square&logo=php&logoColor=white)
+![Firebase Test Lab](https://img.shields.io/badge/-Firebase_Test_Lab-FFCA28?style=flat-square&logo=firebase&logoColor=white)
+
+<br>
 
 ## Mes projets
 
-- **Kared Fit - Application de planification de routines sportives.**
+- **[Kared Fit](https://www.linkedin.com/company/kared-dev)** - Application de planification de routines sportives.
 
   Planifie tes séances, **défie tes amis**, évoluez ensemble en temps réel et gagnez des récompenses.
   Transforme chaque entraînement en un défi motivant et ludique !
@@ -39,26 +76,86 @@ Passionné par l’informatique, je suis toujours à la recherche de nouveaux d�
 
   📱 Disponible sur [iOS](https://apps.apple.com/fr/app/kared-fit/id6739947899?platform=iphone) et [Android](https://play.google.com/store/apps/details?id=com.kared.karedfit)
 
-  ![Badge iOS](https://img.shields.io/badge/-iOS-000000?style=flat-square&logo=apple&logoColor=white)
-  ![Badge Android](https://img.shields.io/badge/-Android-3DDC84?style=flat-square&logo=android&logoColor=white)
+  <br>
+
+  ![React](https://img.shields.io/badge/-React-61DAFB?style=flat-square&logo=react&logoColor=black)
+  ![Capacitor](https://img.shields.io/badge/-Capacitor-119EFF?style=flat-square&logo=capacitor&logoColor=white)
+  ![Firebase](https://img.shields.io/badge/-Firebase-FFCA28?style=flat-square&logo=firebase&logoColor=white)
+  ![AWS](https://img.shields.io/badge/-AWS-FF9900?style=flat-square&logo=amazon-aws&logoColor=white)
+  ![Linux](https://img.shields.io/badge/-Linux-FCC624?style=flat-square&logo=linux&logoColor=black)
+  ![iOS](https://img.shields.io/badge/-iOS-000000?style=flat-square&logo=apple&logoColor=white)
+  ![Android](https://img.shields.io/badge/-Android-3DDC84?style=flat-square&logo=android&logoColor=white)
+
+  <br>
 
 - **[Solutions Terrains](https://www.solutions-terrains.com)** - Valorisation d'assiettes foncières
 
   Plateforme dédiée à la valorisation des terrains auprès de particuliers, aménageurs et promoteurs.
 
-  ![Badge Web](https://img.shields.io/badge/-Web-FF7139?style=flat-square&logo=firefox-browser&logoColor=white)
+  <br>
+
+  ![React](https://img.shields.io/badge/-React-61DAFB?style=flat-square&logo=react&logoColor=black)
+  ![Capacitor](https://img.shields.io/badge/-Capacitor-119EFF?style=flat-square&logo=capacitor&logoColor=white)
+  ![Firebase](https://img.shields.io/badge/-Firebase-FFCA28?style=flat-square&logo=firebase&logoColor=white)
+  ![iOS](https://img.shields.io/badge/-iOS-000000?style=flat-square&logo=apple&logoColor=white)
+  ![Android](https://img.shields.io/badge/-Android-3DDC84?style=flat-square&logo=android&logoColor=white)
+  ![Web](https://img.shields.io/badge/-Web-FF7139?style=flat-square&logo=firefox-browser&logoColor=white)
+
+  <br>
 
 - **[Comète](https://logiciel-comete.fr)** - Automatisation de gestion administrative
 
-  Solution complète pour simplifier et optimiser tous vos processus administratifs pour votre société de sécurité.
+  Solution complète pour simplifier et optimiser tous les processus administratifs pour les sociétés de sécurité.
 
-  ![Badge SaaS](https://img.shields.io/badge/-SaaS-0080FF?style=flat-square&logo=sap&logoColor=white)
+  <br>
+
+  ![SaaS](https://img.shields.io/badge/-SaaS-0080FF?style=flat-square&logo=sap&logoColor=white)
+  ![MySQL](https://img.shields.io/badge/-MySQL-4479A1?style=flat-square&logo=mysql&logoColor=white)
+  ![Omnis](https://img.shields.io/badge/-Omnis-0080FF?style=flat-square&logo=omnis&logoColor=white)
+
+  <br>
 
 - **[Comète Link](https://logiciel-comete.fr/comete-link)** - Extension modulaire pour Comète
 
-  Plateforme composée de plusieurs espaces dédiés et de modules complémentaires à composer selon vos besoins.
+  Plateforme composée de plusieurs espaces dédiés et de modules complémentaires à composer selon les besoins des clients.
 
-  ![Badge WebApp](https://img.shields.io/badge/-WebApp-4285F4?style=flat-square&logo=google-chrome&logoColor=white)
+  📱 Disponible sur [iOS](https://apps.apple.com/fr/app/com%C3%A8te-link/id1608699303) et [Android](https://play.google.com/store/apps/details?id=fr.aexae.comete)
+
+  <br>
+
+  ![WebApp](https://img.shields.io/badge/-WebApp-4285F4?style=flat-square&logo=google-chrome&logoColor=white)
+  ![NodeJS](https://img.shields.io/badge/-NodeJS-339933?style=flat-square&logo=node.js&logoColor=white)
+  ![React](https://img.shields.io/badge/-React-61DAFB?style=flat-square&logo=react&logoColor=black)
+  ![Capacitor](https://img.shields.io/badge/-Capacitor-119EFF?style=flat-square&logo=capacitor&logoColor=white)
+  ![Laravel](https://img.shields.io/badge/-Laravel-FF2D20?style=flat-square&logo=laravel&logoColor=white)
+  ![MySQL](https://img.shields.io/badge/-MySQL-4479A1?style=flat-square&logo=mysql&logoColor=white)
+  ![PostgreSQL](https://img.shields.io/badge/-PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white)
+  ![Electron](https://img.shields.io/badge/-Electron-47848F?style=flat-square&logo=electron&logoColor=white)
+  ![iOS](https://img.shields.io/badge/-iOS-000000?style=flat-square&logo=apple&logoColor=white)
+  ![Android](https://img.shields.io/badge/-Android-3DDC84?style=flat-square&logo=android&logoColor=white)
+
+  <br>
+
+- **[Comète On Time](https://logiciel-comete.fr/2023/12/20/comete-on-time-les-pointages-geolocalises-disponibles-dans-comete)** - Les pointages géolocalisés disponibles dans Comète
+
+  Comète On Time est un module de pointage géolocalisé. Il permet aux agents de sécurité de réaliser leurs pointages sur site.
+
+  📱 Disponible sur [iOS](https://apps.apple.com/fr/app/com%C3%A8te-on-time/id6445984894) et [Android](https://play.google.com/store/apps/details?id=fr.aexae.comete_pointages)
+
+  <br>
+
+  ![WebApp](https://img.shields.io/badge/-WebApp-4285F4?style=flat-square&logo=google-chrome&logoColor=white)
+  ![NodeJS](https://img.shields.io/badge/-NodeJS-339933?style=flat-square&logo=node.js&logoColor=white)
+  ![React](https://img.shields.io/badge/-React-61DAFB?style=flat-square&logo=react&logoColor=black)
+  ![Capacitor](https://img.shields.io/badge/-Capacitor-119EFF?style=flat-square&logo=capacitor&logoColor=white)
+  ![Laravel](https://img.shields.io/badge/-Laravel-FF2D20?style=flat-square&logo=laravel&logoColor=white)
+  ![MySQL](https://img.shields.io/badge/-MySQL-4479A1?style=flat-square&logo=mysql&logoColor=white)
+  ![PostgreSQL](https://img.shields.io/badge/-PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white)
+  ![Electron](https://img.shields.io/badge/-Electron-47848F?style=flat-square&logo=electron&logoColor=white)
+  ![iOS](https://img.shields.io/badge/-iOS-000000?style=flat-square&logo=apple&logoColor=white)
+  ![Android](https://img.shields.io/badge/-Android-3DDC84?style=flat-square&logo=android&logoColor=white)
+
+  <br>
 
 ## Mes contributions
 
@@ -86,19 +183,3 @@ Passionné par l’informatique, je suis toujours à la recherche de nouveaux d�
 </div>
 
 _Note: Ces statistiques ne prennent pas tous en compte mes dépôts privés._
-
-<!-- ## Statistiques GitHub -->
-
-<!-- ![GitHub Streak](https://github-readme-streak-stats.herokuapp.com/?user=DCAlexandre&theme=radical) -->
-
-<!-- ![Trophées](https://github-profile-trophy.vercel.app/?username=DCAlexandre&theme=radical) -->
-
-<!-- ![Contribution Graph](https://github-readme-activity-graph.vercel.app/graph?username=DCAlexandre&theme=redical) -->
-
-<!-- ![Metrics](https://github-readme-stats-sigma-five.vercel.app/api?username=DCAlexandre&show_icons=true&theme=radical&count_private=true&include_all_commits=true) -->
-
-<!-- ![Mes statistiques GitHub](https://github-readme-stats.vercel.app/api?username=DCAlexandre&show_icons=true&theme=radical&count_private=true) -->
-
-<!-- ![Top Langages](https://github-readme-stats.vercel.app/api/top-langs/?username=DCAlexandre&layout=compact&theme=radical&count_private=true) -->
-
-<!-- _Note: Ces statistiques ne prennent pas tous en compte mes dépôts privés._ -->
