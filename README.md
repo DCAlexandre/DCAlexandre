@@ -55,6 +55,8 @@ Passionné par l’informatique, je suis toujours à la recherche de nouveaux d�
 ![Docker](https://img.shields.io/badge/-Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
 ![Kubernetes](https://img.shields.io/badge/-Kubernetes-326CE5?style=flat-square&logo=kubernetes&logoColor=white)
 ![Ansible](https://img.shields.io/badge/-Ansible-000000?style=flat-square&logo=ansible&logoColor=white)
+![Sentry](https://img.shields.io/badge/-Sentry-362D59?style=flat-square&logo=sentry&logoColor=white)
+![Grafana](https://img.shields.io/badge/-Grafana-F46800?style=flat-square&logo=grafana&logoColor=white)
 
 ### Tests
 
