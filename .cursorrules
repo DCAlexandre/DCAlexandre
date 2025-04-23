@@ -1,0 +1,168 @@
+rules:
+  - description: "Préférer les importations directes pour les composants MUI"
+    action: "Refactor"
+    target: "*.{tsx,jsx}"
+    transformType: "imports"
+    instructions: |
+      {
+        "pattern": "import { (.*) } from \"@mui/material\";",
+        "replacement": "SPLIT_IMPORTS",
+        "splitImportPath": "@mui/material",
+        "example": {
+          "bad": "import { Button, Typography } from '@mui/material';",
+          "good": "import Button from '@mui/material/Button';\nimport Typography from '@mui/material/Typography';"
+        }
+      }
+
+  - description: "Importer les icônes MUI directement"
+    action: "Refactor"
+    target: "*.{tsx,jsx}"
+    transformType: "imports"
+    instructions: |
+      {
+        "pattern": "import { (.*) } from \"@mui/icons-material\";",
+        "replacement": "SPLIT_IMPORTS",
+        "splitImportPath": "@mui/icons-material",
+        "pathTransform": "camelToPath",
+        "example": {
+          "bad": "import { HomeIcon, EmailIcon } from '@mui/icons-material';",
+          "good": "import HomeIcon from '@mui/icons-material/Home';\nimport EmailIcon from '@mui/icons-material/Email';"
+        }
+      }
+
+  - description: "Importer les hooks MUI directement"
+    action: "Refactor"
+    target: "*.{tsx,jsx}"
+    transformType: "imports"
+    instructions: |
+      {
+        "pattern": "import { useTheme, useMediaQuery } from \"@mui/material\";",
+        "replacement": "import useTheme from '@mui/material/styles/useTheme';\nimport useMediaQuery from '@mui/material/useMediaQuery';",
+        "example": {
+          "bad": "import { useTheme, useMediaQuery } from '@mui/material';",
+          "good": "import useTheme from '@mui/material/styles/useTheme';\nimport useMediaQuery from '@mui/material/useMediaQuery';"
+        }
+      }
+
+  - description: "Utiliser la propriété 'size' au lieu de 'item' pour Grid"
+    action: "Refactor"
+    target: "*.{tsx,jsx}"
+    transformType: "jsx"
+    instructions: |
+      {
+        "pattern": "<Grid item ([^>]*)>",
+        "replacement": "<Grid size={$1}>",
+        "example": {
+          "bad": "<Grid item xs={12} md={6}>",
+          "good": "<Grid size={{ xs: 12, md: 6 }}>"
+        }
+      }
+
+  - description: "Préférer les imports spécifiques pour React"
+    action: "Refactor"
+    target: "*.{tsx,jsx}"
+    transformType: "imports"
+    instructions: |
+      {
+        "pattern": "import React, { (.*) } from 'react';",
+        "replacement": "import { $1 } from 'react';",
+        "example": {
+          "bad": "import React, { useState, useEffect } from 'react';",
+          "good": "import { useState, useEffect } from 'react';"
+        }
+      }
+
+  - description: "Utiliser les alias pour les importations internes"
+    action: "Refactor"
+    target: "*.{tsx,jsx}"
+    transformType: "imports"
+    instructions: |
+      {
+        "pattern": "import (.*) from \"\\.\\./(.*)\";",
+        "replacement": "import $1 from '@/$2';",
+        "example": {
+          "bad": "import Layout from '../components/Layout';",
+          "good": "import Layout from '@/components/Layout';"
+        }
+      }
+
+  - description: "Typer explicitement les props des composants"
+    action: "Refactor"
+    target: "*.tsx"
+    transformType: "typescript"
+    instructions: |
+      {
+        "pattern": "function ([A-Z][a-zA-Z0-9]*)\\(\\{ ([^}]*) \\}\\) \\{",
+        "replacement": "type $1Props = {\n  $2\n};\n\nfunction $1({ $2 }: $1Props) {",
+        "typeInference": true,
+        "example": {
+          "bad": "function MyComponent({ title, onClick }) {",
+          "good": "type MyComponentProps = {\n  title: string;\n  onClick: () => void;\n};\n\nfunction MyComponent({ title, onClick }: MyComponentProps) {"
+        }
+      }
+
+  - description: "Extraire les variants d'animation dans des constantes"
+    action: "Refactor"
+    target: "*.{tsx,jsx}"
+    transformType: "jsx"
+    instructions: |
+      {
+        "pattern": "<motion\\.div animate=\\{\\{ ([^}]*) \\}\\} initial=\\{\\{ ([^}]*) \\}\\} />",
+        "replacement": "const variants = {\n  initial: { $2 },\n  animate: { $1 }\n};\n\n<motion.div variants={variants} initial=\"initial\" animate=\"animate\" />",
+        "example": {
+          "bad": "<motion.div animate={{ opacity: 1, y: 0 }} initial={{ opacity: 0, y: 20 }} />",
+          "good": "const variants = {\n  initial: { opacity: 0, y: 20 },\n  animate: { opacity: 1, y: 0 }\n};\n\n<motion.div variants={variants} initial=\"initial\" animate=\"animate\" />"
+        }
+      }
+
+  - description: "Optimiser la taille du bundle avec des importations directes"
+    action: "Enforce"
+    target: "*.{tsx,jsx}"
+    rule: "direct-imports"
+    instructions: |
+      {
+        "libraries": ["@mui/material", "@mui/icons-material", "@mui/lab"],
+        "enforceDirectImports": true
+      }
+
+  - description: "Utiliser les composants MUI avec des props typées"
+    action: "Enforce"
+    target: "*.tsx"
+    rule: "typed-props"
+    instructions: |
+      {
+        "components": ["Button", "Typography", "Grid", "Box", "Container"],
+        "enforceTypedProps": true
+      }
+
+  - description: "Assurer la cohérence des animations Framer Motion"
+    action: "Enforce"
+    target: "*.{tsx,jsx}"
+    rule: "animation-variants"
+    instructions: |
+      {
+        "extractVariants": true,
+        "consistentTransitions": true
+      }
+
+  - description: "Optimiser les performances des composants React"
+    action: "Optimize"
+    target: "*.{tsx,jsx}"
+    transformations:
+      - useMemo: true
+      - useCallback: true
+      - memoization: true
+
+  - description: "Maintenir une structure de projet cohérente"
+    action: "Enforce"
+    target: "src/**/*"
+    rule: "project-structure"
+    instructions: |
+      {
+        "components": "src/components",
+        "pages": "src/pages",
+        "hooks": "src/hooks",
+        "utils": "src/utils",
+        "types": "src/types",
+        "assets": "src/assets"
+      }
