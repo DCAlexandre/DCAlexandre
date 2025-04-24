@@ -16,21 +16,6 @@ import AndroidIcon from "@mui/icons-material/Android";
 import { useTheme } from "@kared/kui/ThemeProvider";
 import { Project } from "@/stores/types/projects.types";
 
-// Animation pour les cartes de projets
-const cardVariants = {
-  hidden: { opacity: 0, y: 50 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      delay: i * 0.1,
-      duration: 0.5,
-      type: "spring",
-      stiffness: 100,
-    },
-  }),
-};
-
 // ----------------------------------------------------------------------
 
 type CardProjectProps = {
@@ -39,8 +24,30 @@ type CardProjectProps = {
   onOpenDetails: (project: Project) => void;
 };
 
+/**
+ * Affiche un projet avec une animation fluide
+ * @param project - Le projet à afficher
+ * @param index - L'index du projet
+ * @param onOpenDetails - La fonction pour ouvrir les détails du projet
+ */
 function CardProject({ project, index, onOpenDetails }: CardProjectProps) {
   const { theme } = useTheme();
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: i * 0.1,
+        duration: 0.5,
+        type: "spring",
+        stiffness: 100
+      }
+    })
+  };
+
+  // ----------------------------------------------------------------------
 
   return (
     <motion.div
@@ -58,7 +65,7 @@ function CardProject({ project, index, onOpenDetails }: CardProjectProps) {
           display: "flex",
           flexDirection: "column",
           position: "relative",
-          overflow: "visible",
+          overflow: "visible"
         }}
       >
         {/* Badge flottant pour les projets récents */}
@@ -69,9 +76,7 @@ function CardProject({ project, index, onOpenDetails }: CardProjectProps) {
               top: -15,
               right: -15,
               bgcolor: theme.palette.secondary.main,
-              color: theme.palette.getContrastText(
-                theme.palette.secondary.main
-              ),
+              color: theme.palette.getContrastText(theme.palette.secondary.main),
               borderRadius: "50%",
               width: 40,
               height: 40,
@@ -81,7 +86,7 @@ function CardProject({ project, index, onOpenDetails }: CardProjectProps) {
               fontWeight: "bold",
               fontSize: "0.8rem",
               boxShadow: theme.shadows[3],
-              zIndex: 1,
+              zIndex: 1
             }}
           >
             NEW
@@ -91,27 +96,17 @@ function CardProject({ project, index, onOpenDetails }: CardProjectProps) {
         <CardMedia
           component="img"
           height="160"
-          image={
-            project.image ||
-            `https://source.unsplash.com/random/300x200?app&sig=${project.id}`
-          }
+          image={project.image || `https://source.unsplash.com/random/300x200?app&sig=${project.id}`}
           alt={project.title}
         />
 
         <CardContent sx={{ flexGrow: 1 }}>
-          <Typography
-            variant="h5"
-            component="div"
-            gutterBottom
-            fontWeight="bold"
-          >
+          <Typography variant="h5" component="div" gutterBottom fontWeight="bold">
             {project.title}
           </Typography>
 
           <Typography variant="body2" color="text.secondary" paragraph>
-            {project.description.length > 120
-              ? `${project.description.substring(0, 120)}...`
-              : project.description}
+            {project.description.length > 120 ? `${project.description.substring(0, 120)}...` : project.description}
           </Typography>
 
           <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5, mt: 2 }}>
@@ -124,7 +119,7 @@ function CardProject({ project, index, onOpenDetails }: CardProjectProps) {
                   bgcolor: `${tech.color}20`,
                   color: tech.color,
                   fontWeight: "bold",
-                  fontSize: "0.7rem",
+                  fontSize: "0.7rem"
                 }}
               />
             ))}
@@ -134,7 +129,7 @@ function CardProject({ project, index, onOpenDetails }: CardProjectProps) {
                 size="small"
                 sx={{
                   bgcolor: "grey.200",
-                  fontSize: "0.7rem",
+                  fontSize: "0.7rem"
                 }}
               />
             )}
@@ -164,8 +159,8 @@ function CardProject({ project, index, onOpenDetails }: CardProjectProps) {
               sx={{
                 "&:hover": {
                   transform: "translateY(-3px)",
-                  transition: "transform 0.2s",
-                },
+                  transition: "transform 0.2s"
+                }
               }}
             >
               <OpenInNewIcon />
@@ -182,8 +177,8 @@ function CardProject({ project, index, onOpenDetails }: CardProjectProps) {
               sx={{
                 "&:hover": {
                   transform: "translateY(-3px)",
-                  transition: "transform 0.2s",
-                },
+                  transition: "transform 0.2s"
+                }
               }}
             >
               <AppleIcon />
@@ -200,8 +195,8 @@ function CardProject({ project, index, onOpenDetails }: CardProjectProps) {
               sx={{
                 "&:hover": {
                   transform: "translateY(-3px)",
-                  transition: "transform 0.2s",
-                },
+                  transition: "transform 0.2s"
+                }
               }}
             >
               <AndroidIcon />

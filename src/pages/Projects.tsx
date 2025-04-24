@@ -1,34 +1,14 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Typography, Box, Container, Grid, Button } from "@mui/material";
+import { Typography, Box, Grid, Button } from "@mui/material";
 // import GitHubIcon from '@mui/icons-material/GitHub';
 import CardProject from "@/components/CardProject";
 import DialogProject from "@/components/DialogProject";
+import PageContainer from "@/components/PageContainer";
 import { Project } from "@/stores/types/projects.types";
 import projectsData from "@/stores/data/projects";
 
 // ----------------------------------------------------------------------
-
-const pageVariants = {
-  initial: {
-    opacity: 0,
-    y: 50,
-  },
-  in: {
-    opacity: 1,
-    y: 0,
-  },
-  out: {
-    opacity: 0,
-    y: -50,
-  },
-};
-
-const pageTransition = {
-  type: "tween",
-  ease: "anticipate",
-  duration: 0.5,
-};
 
 /**
  * Projects page
@@ -53,93 +33,58 @@ function Projects() {
   // ----------------------------------------------------------------------
 
   return (
-    <motion.div
-      initial="initial"
-      animate="in"
-      exit="out"
-      variants={pageVariants}
-      transition={pageTransition}
-    >
-      <Container maxWidth="lg">
-        <Box sx={{ my: 4 }}>
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <Typography variant="h3" component="h1" gutterBottom align="center">
-              Mes Projets
-            </Typography>
-            <Typography
-              variant="h6"
-              color="textSecondary"
-              paragraph
-              align="center"
-              sx={{ mb: 6 }}
-            >
-              Découvrez les projets sur lesquels j'ai travaillé en tant que Lead
-              Developer
-            </Typography>
-          </motion.div>
+    <PageContainer motionVariant="bottom-in">
+      <DialogProject project={selectedProject} open={dialogOpen} onClose={handleCloseDetails} />
 
-          <Grid container spacing={3}>
-            {projectsData.map((project, index) => (
-              <Grid size={{ xs: 12, sm: 6, md: 4 }} key={project.id}>
-                <CardProject
-                  project={project}
-                  index={index}
-                  onOpenDetails={handleOpenDetails}
-                />
-              </Grid>
-            ))}
+      <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+        <Typography variant="h3" component="h1" gutterBottom align="center">
+          Mes Projets
+        </Typography>
+
+        <Typography variant="h6" color="textSecondary" paragraph align="center" sx={{ mb: 6 }}>
+          Découvrez les projets sur lesquels j'ai travaillé en tant que Lead Developer
+        </Typography>
+      </motion.div>
+
+      <Grid container spacing={3}>
+        {projectsData.map((project, index) => (
+          <Grid size={{ xs: 12, sm: 6, md: 4 }} key={project.id}>
+            <CardProject project={project} index={index} onOpenDetails={handleOpenDetails} />
           </Grid>
+        ))}
+      </Grid>
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.6 }}
-          >
-            <Box
-              sx={{
-                mt: 8,
-                p: 3,
-                bgcolor: "background.paper",
-                borderRadius: 2,
-                boxShadow: 2,
-                textAlign: "center",
-              }}
-            >
-              <Typography variant="h5" gutterBottom>
-                Vous avez un projet en tête ?
-              </Typography>
-              <Typography variant="body1" paragraph>
-                Je suis disponible pour réaliser des projets en collaboration.
-                N'hésitez pas à me contacter !
-              </Typography>
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Button
-                  variant="contained"
-                  color="primary"
-                  size="large"
-                  href="#/contact"
-                >
-                  Me contacter
-                </Button>
-              </motion.div>
-            </Box>
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.6 }}
+      >
+        <Box
+          sx={{
+            mt: 8,
+            p: 3,
+            bgcolor: "background.paper",
+            borderRadius: 2,
+            boxShadow: 2,
+            textAlign: "center"
+          }}
+        >
+          <Typography variant="h5" gutterBottom>
+            Vous avez un projet en tête ?
+          </Typography>
+
+          <Typography variant="body1" paragraph>
+            Je suis disponible pour réaliser des projets en collaboration. N'hésitez pas à me contacter !
+          </Typography>
+
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <Button variant="contained" color="primary" size="large" href="#/contact">
+              Me contacter
+            </Button>
           </motion.div>
         </Box>
-      </Container>
-
-      <DialogProject
-        project={selectedProject}
-        open={dialogOpen}
-        onClose={handleCloseDetails}
-      />
-    </motion.div>
+      </motion.div>
+    </PageContainer>
   );
 }
 

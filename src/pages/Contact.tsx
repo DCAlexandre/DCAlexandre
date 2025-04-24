@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import {
   Typography,
   Box,
-  Container,
   Grid,
   TextField,
   Button,
@@ -17,7 +16,7 @@ import {
   IconButton,
   useTheme,
   useMediaQuery,
-  AlertColor,
+  AlertColor
 } from "@mui/material";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import EmailIcon from "@mui/icons-material/Email";
@@ -25,28 +24,7 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import SendIcon from "@mui/icons-material/Send";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import PhoneIcon from "@mui/icons-material/Phone";
-
-// Animations pour la page
-const pageVariants = {
-  initial: {
-    opacity: 0,
-    y: 50,
-  },
-  in: {
-    opacity: 1,
-    y: 0,
-  },
-  out: {
-    opacity: 0,
-    y: -50,
-  },
-};
-
-const pageTransition = {
-  type: "tween",
-  ease: "anticipate",
-  duration: 0.5,
-};
+import PageContainer from "@/components/PageContainer";
 
 // Animation pour les éléments qui apparaissent en séquence
 const containerVariants = {
@@ -54,9 +32,9 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.2,
-    },
-  },
+      staggerChildren: 0.2
+    }
+  }
 };
 
 const itemVariants = {
@@ -66,18 +44,20 @@ const itemVariants = {
     opacity: 1,
     transition: {
       type: "spring",
-      stiffness: 100,
-    },
-  },
+      stiffness: 100
+    }
+  }
 };
+
+const { VITE_MY_EMAIL, VITE_MY_PHONE, VITE_MY_LOCATION, VITE_MY_LINKEDIN, VITE_MY_GITHUB } = import.meta.env;
 
 // Données de contact basées sur votre README
 const contactInfo = {
-  email: "dc.alexandre137@gmail.com",
-  linkedin: "https://www.linkedin.com/in/alexandre-dacosta",
-  github: "https://github.com/DCAlexandre",
-  location: "France", // À ajuster selon votre localisation
-  phone: "+33 6 XX XX XX XX", // À ajuster selon votre numéro
+  email: VITE_MY_EMAIL,
+  linkedin: VITE_MY_LINKEDIN,
+  github: VITE_MY_GITHUB,
+  location: VITE_MY_LOCATION,
+  phone: VITE_MY_PHONE
 };
 
 function Contact() {
@@ -88,7 +68,7 @@ function Contact() {
     name: "",
     email: "",
     subject: "",
-    message: "",
+    message: ""
   });
 
   const [errors, setErrors] = useState<{
@@ -100,7 +80,7 @@ function Contact() {
     name: false,
     email: false,
     subject: false,
-    message: false,
+    message: false
   });
 
   const [snackbar, setSnackbar] = useState<{
@@ -110,21 +90,21 @@ function Contact() {
   }>({
     open: false,
     message: "",
-    severity: "success",
+    severity: "success"
   });
 
   const handleChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = ev.target;
     setFormData((prev) => ({
       ...prev,
-      [name]: value,
+      [name]: value
     }));
 
     // Réinitialiser l'erreur lorsque l'utilisateur commence à taper
     if (errors[name as keyof typeof errors]) {
       setErrors((prev) => ({
         ...prev,
-        [name]: false,
+        [name]: false
       }));
     }
   };
@@ -134,7 +114,7 @@ function Contact() {
       name: formData.name.trim() === "",
       email: !/^\S+@\S+\.\S+$/.test(formData.email),
       subject: formData.subject.trim() === "",
-      message: formData.message.trim() === "",
+      message: formData.message.trim() === ""
     };
 
     setErrors(newErrors);
@@ -154,7 +134,7 @@ function Contact() {
       setSnackbar({
         open: true,
         message: "Votre message a été envoyé avec succès !",
-        severity: "success",
+        severity: "success"
       });
 
       // Réinitialiser le formulaire
@@ -162,13 +142,13 @@ function Contact() {
         name: "",
         email: "",
         subject: "",
-        message: "",
+        message: ""
       });
     } else {
       setSnackbar({
         open: true,
         message: "Veuillez corriger les erreurs dans le formulaire.",
-        severity: "error",
+        severity: "error"
       });
     }
   };
@@ -176,7 +156,7 @@ function Contact() {
   const handleCloseSnackbar = () => {
     setSnackbar((prev) => ({
       ...prev,
-      open: false,
+      open: false
     }));
   };
 
@@ -186,363 +166,292 @@ function Contact() {
       title: "Email",
       value: contactInfo.email,
       link: `mailto:${contactInfo.email}`,
-      color: "#D14836",
+      color: "#D14836"
     },
     {
       icon: <LinkedInIcon fontSize="large" />,
       title: "LinkedIn",
       value: "Alexandre Da Costa",
       link: contactInfo.linkedin,
-      color: "#0077B5",
+      color: "#0077B5"
     },
     {
       icon: <GitHubIcon fontSize="large" />,
       title: "GitHub",
       value: "DCAlexandre",
       link: contactInfo.github,
-      color: "#333",
+      color: "#333"
     },
     {
       icon: <LocationOnIcon fontSize="large" />,
       title: "Localisation",
       value: contactInfo.location,
       link: null,
-      color: "#4285F4",
+      color: "#4285F4"
     },
     {
       icon: <PhoneIcon fontSize="large" />,
       title: "Téléphone",
       value: contactInfo.phone,
       link: `tel:${contactInfo.phone.replace(/\s/g, "")}`,
-      color: "#0F9D58",
-    },
+      color: "#0F9D58"
+    }
   ];
 
   return (
-    <motion.div
-      initial="initial"
-      animate="in"
-      exit="out"
-      variants={pageVariants}
-      transition={pageTransition}
-    >
-      <Container maxWidth="lg">
-        <Box sx={{ my: 4 }}>
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <Typography variant="h3" component="h1" gutterBottom align="center">
-              Me Contacter
-            </Typography>
-            <Typography
-              variant="h6"
-              color="textSecondary"
-              paragraph
-              align="center"
-              sx={{ mb: 6 }}
-            >
-              N'hésitez pas à me contacter pour discuter de vos projets ou
-              opportunités de collaboration
-            </Typography>
-          </motion.div>
-
-          <Grid container spacing={4}>
-            {/* Informations de contact */}
-            <Grid size={{ xs: 12, md: 5 }}>
-              <motion.div
-                initial="hidden"
-                animate="visible"
-                variants={containerVariants}
-              >
-                <Paper elevation={3} sx={{ p: 3, height: "100%" }}>
-                  <Typography
-                    variant="h5"
-                    gutterBottom
-                    sx={{ mb: 3, fontWeight: "bold" }}
-                  >
-                    Mes coordonnées
-                  </Typography>
-
-                  <Box
-                    sx={{ display: "flex", flexDirection: "column", gap: 3 }}
-                  >
-                    {contactMethods.map((method, index) => (
-                      <motion.div key={index} variants={itemVariants}>
-                        <Box
-                          sx={{ display: "flex", alignItems: "center", gap: 2 }}
-                        >
-                          <IconButton
-                            sx={{
-                              bgcolor: `${method.color}20`,
-                              color: method.color,
-                              "&:hover": { bgcolor: `${method.color}30` },
-                            }}
-                          >
-                            {method.icon}
-                          </IconButton>
-                          <Box>
-                            <Typography variant="subtitle1" fontWeight="bold">
-                              {method.title}
-                            </Typography>
-                            {method.link ? (
-                              <Link
-                                href={method.link}
-                                target={
-                                  method.link.startsWith("mailto:") ||
-                                  method.link.startsWith("tel:")
-                                    ? "_self"
-                                    : "_blank"
-                                }
-                                underline="hover"
-                                color="primary"
-                              >
-                                {method.value}
-                              </Link>
-                            ) : (
-                              <Typography variant="body2" color="textSecondary">
-                                {method.value}
-                              </Typography>
-                            )}
-                          </Box>
-                        </Box>
-                      </motion.div>
-                    ))}
-                  </Box>
-
-                  <Divider sx={{ my: 3 }} />
-
-                  <Typography variant="h6" gutterBottom>
-                    Retrouvez-moi sur
-                  </Typography>
-
-                  <Box sx={{ display: "flex", gap: 2, mt: 2 }}>
-                    <motion.div
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      <IconButton
-                        href={contactInfo.linkedin}
-                        target="_blank"
-                        sx={{
-                          bgcolor: "#0077B520",
-                          color: "#0077B5",
-                          "&:hover": { bgcolor: "#0077B530" },
-                        }}
-                      >
-                        <LinkedInIcon fontSize="large" />
-                      </IconButton>
-                    </motion.div>
-
-                    <motion.div
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      <IconButton
-                        href={`mailto:${contactInfo.email}`}
-                        sx={{
-                          bgcolor: "#D1483620",
-                          color: "#D14836",
-                          "&:hover": { bgcolor: "#D1483630" },
-                        }}
-                      >
-                        <EmailIcon fontSize="large" />
-                      </IconButton>
-                    </motion.div>
-
-                    <motion.div
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      <IconButton
-                        href={contactInfo.github}
-                        target="_blank"
-                        sx={{
-                          bgcolor: "#33333320",
-                          color: "#333333",
-                          "&:hover": { bgcolor: "#33333330" },
-                        }}
-                      >
-                        <GitHubIcon fontSize="large" />
-                      </IconButton>
-                    </motion.div>
-                  </Box>
-                </Paper>
-              </motion.div>
-            </Grid>
-
-            {/* Formulaire de contact */}
-            <Grid size={{ xs: 12, md: 7 }}>
-              <motion.div
-                initial={{ opacity: 0, x: 50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-              >
-                <Paper elevation={3} sx={{ p: 3 }}>
-                  <Typography
-                    variant="h5"
-                    gutterBottom
-                    sx={{ mb: 3, fontWeight: "bold" }}
-                  >
-                    Envoyez-moi un message
-                  </Typography>
-
-                  <form onSubmit={handleSubmit}>
-                    <Grid container spacing={2}>
-                      <Grid size={{ xs: 12, sm: 6 }}>
-                        <TextField
-                          fullWidth
-                          label="Nom"
-                          name="name"
-                          value={formData.name}
-                          onChange={handleChange}
-                          error={errors.name}
-                          helperText={
-                            errors.name ? "Veuillez entrer votre nom" : ""
-                          }
-                          required
-                        />
-                      </Grid>
-                      <Grid size={{ xs: 12, sm: 6 }}>
-                        <TextField
-                          fullWidth
-                          label="Email"
-                          name="email"
-                          type="email"
-                          value={formData.email}
-                          onChange={handleChange}
-                          error={errors.email}
-                          helperText={
-                            errors.email
-                              ? "Veuillez entrer un email valide"
-                              : ""
-                          }
-                          required
-                        />
-                      </Grid>
-                      <Grid size={{ xs: 12 }}>
-                        <TextField
-                          fullWidth
-                          label="Sujet"
-                          name="subject"
-                          value={formData.subject}
-                          onChange={handleChange}
-                          error={errors.subject}
-                          helperText={
-                            errors.subject ? "Veuillez entrer un sujet" : ""
-                          }
-                          required
-                        />
-                      </Grid>
-                      <Grid size={{ xs: 12 }}>
-                        <TextField
-                          fullWidth
-                          label="Message"
-                          name="message"
-                          multiline
-                          rows={6}
-                          value={formData.message}
-                          onChange={handleChange}
-                          error={errors.message}
-                          helperText={
-                            errors.message
-                              ? "Veuillez entrer votre message"
-                              : ""
-                          }
-                          required
-                        />
-                      </Grid>
-                      <Grid size={{ xs: 12 }}>
-                        <motion.div
-                          whileHover={{ scale: 1.02 }}
-                          whileTap={{ scale: 0.98 }}
-                        >
-                          <Button
-                            type="submit"
-                            variant="contained"
-                            color="primary"
-                            size="large"
-                            fullWidth={isMobile}
-                            startIcon={<SendIcon />}
-                            sx={{ py: 1.5, px: 4 }}
-                          >
-                            Envoyer le message
-                          </Button>
-                        </motion.div>
-                      </Grid>
-                    </Grid>
-                  </form>
-                </Paper>
-              </motion.div>
-            </Grid>
-          </Grid>
-
-          {/* Carte de disponibilité */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-          >
-            <Card
-              elevation={2}
-              sx={{
-                mt: 6,
-                p: 2,
-                bgcolor: theme.palette.primary.main,
-                color: "white",
-              }}
-            >
-              <CardContent>
-                <Box
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    flexWrap: "wrap",
-                    gap: 2,
-                  }}
-                >
-                  <Typography variant="h6" component="div">
-                    👯 Je suis disponible pour réaliser des projets en
-                    collaboration
-                  </Typography>
-                  <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <Button
-                      variant="contained"
-                      color="secondary"
-                      href={`mailto:${contactInfo.email}?subject=Proposition%20de%20collaboration`}
-                      sx={{ color: "black", fontWeight: "bold" }}
-                    >
-                      Me contacter
-                    </Button>
-                  </motion.div>
-                </Box>
-              </CardContent>
-            </Card>
-          </motion.div>
-        </Box>
-      </Container>
-
+    <PageContainer motionVariant="bottom-in">
       <Snackbar
         open={snackbar.open}
         autoHideDuration={6000}
         onClose={handleCloseSnackbar}
         anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
       >
-        <Alert
-          onClose={handleCloseSnackbar}
-          severity={snackbar.severity}
-          variant="filled"
-          sx={{ width: "100%" }}
-        >
+        <Alert onClose={handleCloseSnackbar} severity={snackbar.severity} variant="filled" sx={{ width: "100%" }}>
           {snackbar.message}
         </Alert>
       </Snackbar>
-    </motion.div>
+
+      <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+        <Typography variant="h3" component="h1" gutterBottom align="center">
+          Me Contacter
+        </Typography>
+        <Typography variant="h6" color="textSecondary" paragraph align="center" sx={{ mb: 6 }}>
+          N'hésitez pas à me contacter pour discuter de vos projets ou opportunités de collaboration
+        </Typography>
+      </motion.div>
+
+      <Grid container spacing={4}>
+        {/* Informations de contact */}
+        <Grid size={{ xs: 12, md: 5 }}>
+          <motion.div initial="hidden" animate="visible" variants={containerVariants}>
+            <Paper elevation={3} sx={{ p: 3, height: "100%" }}>
+              <Typography variant="h5" gutterBottom sx={{ mb: 3, fontWeight: "bold" }}>
+                Mes coordonnées
+              </Typography>
+
+              <Box sx={{ display: "flex", flexDirection: "column", gap: 3 }}>
+                {contactMethods.map((method, index) => (
+                  <motion.div key={index} variants={itemVariants}>
+                    <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+                      <IconButton
+                        sx={{
+                          bgcolor: `${method.color}20`,
+                          color: method.color,
+                          "&:hover": { bgcolor: `${method.color}30` }
+                        }}
+                      >
+                        {method.icon}
+                      </IconButton>
+
+                      <Box>
+                        <Typography variant="subtitle1" fontWeight="bold">
+                          {method.title}
+                        </Typography>
+
+                        {method.link ? (
+                          <Link
+                            href={method.link}
+                            target={
+                              method.link.startsWith("mailto:") || method.link.startsWith("tel:") ? "_self" : "_blank"
+                            }
+                            underline="hover"
+                            color="primary"
+                          >
+                            {method.value}
+                          </Link>
+                        ) : (
+                          <Typography variant="body2" color="textSecondary">
+                            {method.value}
+                          </Typography>
+                        )}
+                      </Box>
+                    </Box>
+                  </motion.div>
+                ))}
+              </Box>
+
+              <Divider sx={{ my: 3 }} />
+
+              <Typography variant="h6" gutterBottom>
+                Retrouvez-moi sur
+              </Typography>
+
+              <Box sx={{ display: "flex", gap: 2, mt: 2 }}>
+                <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
+                  <IconButton
+                    href={contactInfo.linkedin}
+                    target="_blank"
+                    sx={{
+                      bgcolor: "#0077B520",
+                      color: "#0077B5",
+                      "&:hover": { bgcolor: "#0077B530" }
+                    }}
+                  >
+                    <LinkedInIcon fontSize="large" />
+                  </IconButton>
+                </motion.div>
+
+                <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
+                  <IconButton
+                    href={`mailto:${contactInfo.email}`}
+                    sx={{
+                      bgcolor: "#D1483620",
+                      color: "#D14836",
+                      "&:hover": { bgcolor: "#D1483630" }
+                    }}
+                  >
+                    <EmailIcon fontSize="large" />
+                  </IconButton>
+                </motion.div>
+
+                <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
+                  <IconButton
+                    href={contactInfo.github}
+                    target="_blank"
+                    sx={{
+                      bgcolor: "#33333320",
+                      color: "#333333",
+                      "&:hover": { bgcolor: "#33333330" }
+                    }}
+                  >
+                    <GitHubIcon fontSize="large" />
+                  </IconButton>
+                </motion.div>
+              </Box>
+            </Paper>
+          </motion.div>
+        </Grid>
+
+        {/* Formulaire de contact */}
+        <Grid size={{ xs: 12, md: 7 }}>
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            <Paper elevation={3} sx={{ p: 3 }}>
+              <Typography variant="h5" gutterBottom sx={{ mb: 3, fontWeight: "bold" }}>
+                Envoyez-moi un message
+              </Typography>
+
+              <form onSubmit={handleSubmit}>
+                <Grid container spacing={2}>
+                  <Grid size={{ xs: 12, sm: 6 }}>
+                    <TextField
+                      fullWidth
+                      label="Nom"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      error={errors.name}
+                      helperText={errors.name ? "Veuillez entrer votre nom" : ""}
+                      required
+                    />
+                  </Grid>
+                  <Grid size={{ xs: 12, sm: 6 }}>
+                    <TextField
+                      fullWidth
+                      label="Email"
+                      name="email"
+                      type="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      error={errors.email}
+                      helperText={errors.email ? "Veuillez entrer un email valide" : ""}
+                      required
+                    />
+                  </Grid>
+                  <Grid size={{ xs: 12 }}>
+                    <TextField
+                      fullWidth
+                      label="Sujet"
+                      name="subject"
+                      value={formData.subject}
+                      onChange={handleChange}
+                      error={errors.subject}
+                      helperText={errors.subject ? "Veuillez entrer un sujet" : ""}
+                      required
+                    />
+                  </Grid>
+                  <Grid size={{ xs: 12 }}>
+                    <TextField
+                      fullWidth
+                      label="Message"
+                      name="message"
+                      multiline
+                      rows={6}
+                      value={formData.message}
+                      onChange={handleChange}
+                      error={errors.message}
+                      helperText={errors.message ? "Veuillez entrer votre message" : ""}
+                      required
+                    />
+                  </Grid>
+                  <Grid size={{ xs: 12 }}>
+                    <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                      <Button
+                        type="submit"
+                        variant="contained"
+                        color="primary"
+                        size="large"
+                        fullWidth={isMobile}
+                        startIcon={<SendIcon />}
+                        sx={{ py: 1.5, px: 4 }}
+                      >
+                        Envoyer le message
+                      </Button>
+                    </motion.div>
+                  </Grid>
+                </Grid>
+              </form>
+            </Paper>
+          </motion.div>
+        </Grid>
+      </Grid>
+
+      {/* Carte de disponibilité */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.4 }}
+      >
+        <Card
+          elevation={2}
+          sx={{
+            mt: 6,
+            p: 2,
+            bgcolor: theme.palette.primary.main,
+            color: "white"
+          }}
+        >
+          <CardContent>
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                flexWrap: "wrap",
+                gap: 2
+              }}
+            >
+              <Typography variant="h6" component="div">
+                👯 Je suis disponible pour réaliser des projets en collaboration
+              </Typography>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  href={`mailto:${contactInfo.email}?subject=Proposition%20de%20collaboration`}
+                  sx={{ color: "black", fontWeight: "bold" }}
+                >
+                  Me contacter
+                </Button>
+              </motion.div>
+            </Box>
+          </CardContent>
+        </Card>
+      </motion.div>
+    </PageContainer>
   );
 }
 

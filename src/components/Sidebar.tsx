@@ -1,83 +1,142 @@
-import {
-  Box,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-  Avatar,
-  Typography,
-  Divider,
-} from "@mui/material";
 import { NavLink } from "react-router-dom";
+import Box from "@mui/material/Box";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
+import Avatar from "@mui/material/Avatar";
+import Typography from "@mui/material/Typography";
+import Divider from "@mui/material/Divider";
+import Stack from "@mui/material/Stack";
+import useMediaQuery from "@mui/material/useMediaQuery";
 import HomeIcon from "@mui/icons-material/Home";
 import CodeIcon from "@mui/icons-material/Code";
 import WorkIcon from "@mui/icons-material/Work";
 import EmailIcon from "@mui/icons-material/Email";
+import { useTheme } from "@kared/kui/ThemeProvider";
 import { PATH_PAGE } from "@/routes/paths";
 
 /**
- * Sidebar component
- * @returns {JSX.Element} - The sidebar component
+ * Barre de navigation latérale
  */
 function Sidebar() {
+  const { theme } = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  const { VITE_MY_NAME, VITE_MY_JOB } = import.meta.env;
   const menuItems = [
     { text: "Accueil", icon: <HomeIcon />, path: PATH_PAGE.home },
     { text: "Compétences", icon: <CodeIcon />, path: PATH_PAGE.skills },
     { text: "Projets", icon: <WorkIcon />, path: PATH_PAGE.projects },
-    { text: "Contact", icon: <EmailIcon />, path: PATH_PAGE.contact },
+    { text: "Contact", icon: <EmailIcon />, path: PATH_PAGE.contact }
   ];
+
+  // ----------------------------------------------------------------------
 
   return (
     <Box
       sx={{
         height: "100%",
-        width: 250,
+        width: "100%",
         color: "white",
         display: "flex",
         flexDirection: "column",
-        m: 2,
         borderRadius: 4,
-        bgcolor: "rgba(255,255,255,0.1)",
+        bgcolor: "rgba(255,255,255,0.1)"
       }}
     >
-      <Box sx={{ p: 3, textAlign: "center" }}>
+      <Box
+        sx={{
+          display: "flex",
+          p: isMobile ? 2 : 3,
+          flexDirection: isMobile ? "row" : "column",
+          alignItems: isMobile ? "flex-start" : "center"
+        }}
+      >
         <Avatar
-          sx={{ width: 100, height: 100, mx: "auto", mb: 2 }}
-          alt="Alexandre DC"
-          src="/path-to-your-photo.jpg"
+          sx={{
+            width: isMobile ? 60 : 100,
+            height: isMobile ? 60 : 100,
+            mb: isMobile ? 0 : 2,
+            mr: isMobile ? 2 : 0
+          }}
+          alt={VITE_MY_NAME}
+          src="/me.jpg"
         />
-        <Typography variant="h6">Alexandre DC</Typography>
-        <Typography variant="body2">Lead Developer</Typography>
+
+        <Box>
+          <Typography variant="h6" component="h1">
+            {VITE_MY_NAME}
+          </Typography>
+
+          <Typography variant="body2" component="h2">
+            {VITE_MY_JOB}
+          </Typography>
+        </Box>
       </Box>
 
-      <Divider sx={{ bgcolor: "rgba(255,255,255,0.1)" }} />
+      <Divider />
 
-      <List sx={{ flexGrow: 1 }}>
-        {menuItems.map((item, idx) => (
-          <ListItem
-            key={idx}
-            component={NavLink}
-            to={item.path}
-            sx={{
-              color: "primary.main",
-              borderRadius: 4,
-              "&.active": {
-                color: "primary.light",
-                bgcolor: "rgba(255,255,255,0.2)",
-              },
-              "&:hover": {
-                color: "primary.light",
-                bgcolor: "rgba(255,255,255,0.1)",
-                border: "1px solid",
-                borderColor: "primary.light",
-              },
-            }}
-          >
-            <ListItemIcon sx={{ color: "white" }}>{item.icon}</ListItemIcon>
-            <ListItemText primary={item.text} />
-          </ListItem>
-        ))}
-      </List>
+      {isMobile ? (
+        <Stack direction="row" spacing={1} justifyContent="center" sx={{ p: 1 }}>
+          {menuItems.map((item, idx) => (
+            <Box
+              key={idx}
+              component={NavLink}
+              to={item.path}
+              sx={{
+                color: "primary.main",
+                borderRadius: 2,
+                p: 1,
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                "&.active": {
+                  color: "primary.light",
+                  bgcolor: "rgba(255,255,255,0.2)"
+                },
+                "&:hover": {
+                  color: "primary.light",
+                  bgcolor: "rgba(255,255,255,0.1)",
+                  border: "1px solid",
+                  borderColor: "primary.light"
+                }
+              }}
+            >
+              {item.icon}
+            </Box>
+          ))}
+        </Stack>
+      ) : (
+        <List sx={{ flexGrow: 1 }}>
+          {menuItems.map((item, idx) => (
+            <ListItem
+              key={idx}
+              component={NavLink}
+              to={item.path}
+              sx={{
+                color: "text.secondary",
+                borderRadius: 4,
+                "&.active": {
+                  color: "primary.light",
+                  bgcolor: "rgba(255,255,255,0.1)"
+                },
+                "&:hover": {
+                  color: "primary.light",
+                  border: "1px solid",
+                  borderColor: "primary.light",
+                  "& .MuiListItemIcon-root": {
+                    color: "primary.light"
+                  }
+                }
+              }}
+            >
+              <ListItemIcon>{item.icon}</ListItemIcon>
+
+              <ListItemText primary={item.text} />
+            </ListItem>
+          ))}
+        </List>
+      )}
     </Box>
   );
 }

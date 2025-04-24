@@ -14,8 +14,7 @@ const data: Project[] = [
     links: {
       website: "https://www.linkedin.com/company/kared-dev",
       ios: "https://apps.apple.com/fr/app/kared-fit/id6739947899?platform=iphone",
-      android:
-        "https://play.google.com/store/apps/details?id=com.kared.karedfit",
+      android: "https://play.google.com/store/apps/details?id=com.kared.karedfit"
     },
     technologies: [
       { name: "React", color: "#61DAFB" },
@@ -24,8 +23,8 @@ const data: Project[] = [
       { name: "AWS", color: "#FF9900" },
       { name: "Linux", color: "#FCC624" },
       { name: "iOS", color: "#000000" },
-      { name: "Android", color: "#3DDC84" },
-    ],
+      { name: "Android", color: "#3DDC84" }
+    ]
   },
 
   // ----------------------------------------------------------------------
@@ -33,16 +32,14 @@ const data: Project[] = [
   {
     id: 2,
     title: "Solutions Terrains",
-    description:
-      "Plateforme dédiée à la valorisation des terrains auprès de particuliers, aménageurs et promoteurs.",
+    description: "Plateforme dédiée à la valorisation des terrains auprès de particuliers, aménageurs et promoteurs.",
     longDescription:
       "Solutions Terrains est une plateforme innovante dédiée à la valorisation des assiettes foncières. Elle met en relation les propriétaires de terrains avec des particuliers, aménageurs et promoteurs intéressés par l'acquisition de terrains. La plateforme offre une interface intuitive et des outils puissants pour faciliter la recherche et la valorisation des terrains. Disponible sur iOS, Android et Web, elle s'adapte à tous les utilisateurs et leurs besoins spécifiques.",
     image: "/path-to-solutions-terrains-image.jpg", // Remplacer par le chemin de votre image
     links: {
       website: "https://www.solutions-terrains.com",
       ios: "https://apps.apple.com/fr/app/solutions-terrains/id6742559497?platform=iphone",
-      android:
-        "https://play.google.com/store/apps/details?id=com.solutionsterrains.app",
+      android: "https://play.google.com/store/apps/details?id=com.solutionsterrains.app"
     },
     technologies: [
       { name: "React", color: "#61DAFB" },
@@ -50,8 +47,8 @@ const data: Project[] = [
       { name: "Firebase", color: "#FFCA28" },
       { name: "iOS", color: "#000000" },
       { name: "Android", color: "#3DDC84" },
-      { name: "Web", color: "#FF7139" },
-    ],
+      { name: "Web", color: "#FF7139" }
+    ]
   },
 
   // ----------------------------------------------------------------------
@@ -65,13 +62,13 @@ const data: Project[] = [
       "Comète est une solution complète conçue pour simplifier et optimiser tous les processus administratifs des sociétés de sécurité. Elle offre une gestion intégrée des plannings, des ressources humaines, de la facturation et du reporting. Grâce à son interface intuitive et ses fonctionnalités avancées, Comète permet aux entreprises de sécurité de gagner en efficacité et en productivité. La solution est proposée en mode SaaS, garantissant une disponibilité et une sécurité optimales.",
     image: "/path-to-comete-image.jpg", // Remplacer par le chemin de votre image
     links: {
-      website: "https://logiciel-comete.fr",
+      website: "https://logiciel-comete.fr"
     },
     technologies: [
       { name: "SaaS", color: "#0080FF" },
       { name: "MySQL", color: "#4479A1" },
-      { name: "Omnis", color: "#0080FF" },
-    ],
+      { name: "Omnis", color: "#0080FF" }
+    ]
   },
 
   // ----------------------------------------------------------------------
@@ -87,7 +84,7 @@ const data: Project[] = [
     links: {
       website: "https://logiciel-comete.fr/comete-link",
       ios: "https://apps.apple.com/fr/app/com%C3%A8te-link/id1608699303",
-      android: "https://play.google.com/store/apps/details?id=fr.aexae.comete",
+      android: "https://play.google.com/store/apps/details?id=fr.aexae.comete"
     },
     technologies: [
       { name: "WebApp", color: "#4285F4" },
@@ -99,8 +96,8 @@ const data: Project[] = [
       { name: "PostgreSQL", color: "#4169E1" },
       { name: "Electron", color: "#47848F" },
       { name: "iOS", color: "#000000" },
-      { name: "Android", color: "#3DDC84" },
-    ],
+      { name: "Android", color: "#3DDC84" }
+    ]
   },
 
   // ----------------------------------------------------------------------
@@ -117,8 +114,7 @@ const data: Project[] = [
       website:
         "https://logiciel-comete.fr/2023/12/20/comete-on-time-les-pointages-geolocalises-disponibles-dans-comete",
       ios: "https://apps.apple.com/fr/app/com%C3%A8te-on-time/id6445984894",
-      android:
-        "https://play.google.com/store/apps/details?id=fr.aexae.comete_pointages",
+      android: "https://play.google.com/store/apps/details?id=fr.aexae.comete_pointages"
     },
     technologies: [
       { name: "WebApp", color: "#4285F4" },
@@ -130,9 +126,9 @@ const data: Project[] = [
       { name: "PostgreSQL", color: "#4169E1" },
       { name: "Electron", color: "#47848F" },
       { name: "iOS", color: "#000000" },
-      { name: "Android", color: "#3DDC84" },
-    ],
-  },
+      { name: "Android", color: "#3DDC84" }
+    ]
+  }
 ];
 
 // ----------------------------------------------------------------------

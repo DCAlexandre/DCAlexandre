@@ -7,8 +7,8 @@ import Contact from "@/pages/Contact";
 import { PATH_PAGE } from "./paths";
 
 /**
- * AnimatedRoutes component
- * @returns {JSX.Element} - The animated routes component
+ * Gestion des routes animées
+ * @returns {JSX.Element}
  */
 function AnimatedRoutes() {
   const location = useLocation();
@@ -16,10 +16,7 @@ function AnimatedRoutes() {
   return (
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
-        <Route
-          path={PATH_PAGE.root}
-          element={<Navigate to={PATH_PAGE.home} />}
-        />
+        <Route path={PATH_PAGE.root} element={<Navigate to={PATH_PAGE.home} />} />
         <Route path={PATH_PAGE.home} element={<Home />} />
         <Route path={PATH_PAGE.skills} element={<Skills />} />
         <Route path={PATH_PAGE.projects} element={<Projects />} />

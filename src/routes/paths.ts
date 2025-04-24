@@ -1,28 +1,22 @@
 /**
- * Helper function to construct paths
- * @param {string} root - The root path
- * @param {string} pathname - The pathname to append to the root
- * @returns {string} - The combined path
+ * Fonction helper pour construire des chemins
+ * @param {string} root - Le chemin racine
+ * @param {string} pathname - Le chemin à ajouter à la racine
+ * @returns {string} - Le chemin combiné
  */
-// const path = (root: string, pathname: string): string => {
-//   return `${root}${pathname}`.replace(/\/\//g, "/");
-// };
+const path = (root: string, pathname: string): string => {
+  return `${root}${pathname}`.replace(/\/\//g, "/");
+};
 
-// const ROOT = "/";
+const ROOT = "/";
 
 /**
- * Define the paths for the application
- * @type {Object}
+ * Définition des chemins de l'application
  */
-export const PATH_PAGE = {
-  // root: ROOT,
-  // home: path(ROOT, "home"),
-  // skills: path(ROOT, "skills"),
-  // projects: path(ROOT, "projects"),
-  // contact: path(ROOT, "contact"),
-  root: "",
-  home: "home",
-  skills: "skills",
-  projects: "projects",
-  contact: "contact",
+export const PATH_PAGE: Record<string, string> = {
+  root: ROOT,
+  home: path(ROOT, "home"),
+  skills: path(ROOT, "skills"),
+  projects: path(ROOT, "projects"),
+  contact: path(ROOT, "contact")
 };

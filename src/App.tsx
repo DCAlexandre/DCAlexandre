@@ -22,8 +22,7 @@ import "@/App.css";
 // ];
 
 /**
- * Main component for the application
- * @returns {JSX.Element} - The root component
+ * Composant principal de l'application
  */
 function App() {
   return (

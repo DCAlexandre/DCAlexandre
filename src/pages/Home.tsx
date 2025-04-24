@@ -1,57 +1,72 @@
+import { NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Typography, Box, Button, Container } from "@mui/material";
+import Button from "@mui/material/Button";
+import PageContainer from "@/components/PageContainer";
+import BoxDescription from "@/components/BoxDescription";
+import BoxAbout from "@/components/BoxAbout";
+// import BoxContact from "@/components/BoxContact";
+import { PATH_PAGE } from "@/routes/paths";
 
-// ----------------------------------------------------------------------
-
-const pageVariants = {
-  initial: {
-    opacity: 0,
-    x: "-100vw",
-  },
-  in: {
-    opacity: 1,
-    x: 0,
-  },
-  out: {
-    opacity: 0,
-    x: "100vw",
-  },
-};
-
-const pageTransition = {
-  type: "tween",
-  ease: "anticipate",
-  duration: 0.5,
-};
-
+/**
+ * Page d'accueil
+ * @description Affiche une présentation générale
+ */
 function Home() {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.5
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.6
+      }
+    }
+  };
+
+  // ----------------------------------------------------------------------
+
   return (
-    <motion.div
-      initial="initial"
-      animate="in"
-      exit="out"
-      variants={pageVariants}
-      transition={pageTransition}
-    >
-      <Container sx={{ width: "100%" }}>
-        <Box sx={{ textAlign: "center", my: 8 }}>
-          <Typography variant="h3" component="h1" gutterBottom>
-            Bonjour, je suis Alexandre 👋
-          </Typography>
-          <Typography variant="h5" color="textSecondary" paragraph>
-            Lead Developer avec plus de 10 ans d'expérience
-          </Typography>
+    <PageContainer>
+      <motion.div variants={containerVariants} initial="hidden" animate="visible">
+        <BoxDescription />
+
+        <BoxAbout />
+
+        {/* <BoxContact /> */}
+
+        <motion.div variants={itemVariants} style={{ textAlign: "center", marginTop: "2rem" }}>
           <Button
             variant="contained"
-            color="secondary"
+            color="primary"
             size="large"
-            href="#/projects"
+            component={NavLink}
+            to={PATH_PAGE.projects}
+            sx={{
+              borderRadius: 8,
+              px: 4,
+              py: 1.5,
+              fontSize: "0.9rem",
+              transition: "transform 0.3s",
+              "&:hover": {
+                transform: "scale(1.05)"
+              }
+            }}
           >
             Voir mes projets
           </Button>
-        </Box>
-      </Container>
-    </motion.div>
+        </motion.div>
+      </motion.div>
+    </PageContainer>
   );
 }
 

@@ -26,6 +26,7 @@ type DialogProjectProps = {
 };
 
 /**
+ * Affiche un dialogue avec les détails d'un projet
  * @param {DialogProjectProps} props
  * @returns {JSX.Element}
  */
@@ -46,11 +47,13 @@ function DialogProject({ project, open, onClose }: DialogProjectProps) {
       fullScreen={fullScreen}
       maxWidth="md"
       fullWidth
-      PaperProps={{
-        sx: {
-          borderRadius: 2,
-          overflow: "hidden",
-        },
+      slotProps={{
+        paper: {
+          sx: {
+            borderRadius: 2
+            // overflow: "hidden",
+          }
+        }
       }}
     >
       <DialogTitle
@@ -60,18 +63,14 @@ function DialogProject({ project, open, onClose }: DialogProjectProps) {
           alignItems: "center",
           bgcolor: theme.palette.primary.main,
           color: "white",
-          py: 2,
+          py: 2
         }}
       >
         <Typography variant="h5" component="div" fontWeight="bold">
           {project.title}
         </Typography>
-        <IconButton
-          edge="end"
-          color="inherit"
-          onClick={onClose}
-          aria-label="close"
-        >
+
+        <IconButton edge="end" color="inherit" onClick={onClose} aria-label="close">
           <CloseIcon />
         </IconButton>
       </DialogTitle>
@@ -85,12 +84,9 @@ function DialogProject({ project, open, onClose }: DialogProjectProps) {
                 width: "100%",
                 borderRadius: 1,
                 boxShadow: theme.shadows[2],
-                mb: 2,
+                mb: 2
               }}
-              src={
-                project.image ||
-                `https://source.unsplash.com/random/600x400?app&sig=${project.id}`
-              }
+              src={project.image || `https://source.unsplash.com/random/600x400?app&sig=${project.id}`}
               alt={project.title}
             />
 
@@ -106,7 +102,7 @@ function DialogProject({ project, open, onClose }: DialogProjectProps) {
                   sx={{
                     bgcolor: `${tech.color}20`,
                     color: tech.color,
-                    fontWeight: "bold",
+                    fontWeight: "bold"
                   }}
                 />
               ))}
@@ -267,6 +263,7 @@ function DialogProject({ project, open, onClose }: DialogProjectProps) {
         <Button onClick={onClose} color="primary">
           Fermer
         </Button>
+
         {project.links.website && (
           <Button
             variant="contained"
