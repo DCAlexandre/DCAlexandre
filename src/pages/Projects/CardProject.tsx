@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { format } from "date-fns";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
@@ -42,9 +43,9 @@ function CardProject({ project, index, onOpenDetails }: CardProjectProps) {
         delay: i * 0.1,
         duration: 0.5,
         type: "spring",
-        stiffness: 100
-      }
-    })
+        stiffness: 100,
+      },
+    }),
   };
 
   // ----------------------------------------------------------------------
@@ -65,7 +66,7 @@ function CardProject({ project, index, onOpenDetails }: CardProjectProps) {
           display: "flex",
           flexDirection: "column",
           position: "relative",
-          overflow: "visible"
+          overflow: "visible",
         }}
       >
         {/* Badge flottant pour les projets récents */}
@@ -73,6 +74,7 @@ function CardProject({ project, index, onOpenDetails }: CardProjectProps) {
           <Box
             sx={{
               position: "absolute",
+              userSelect: "none",
               top: -15,
               right: -15,
               bgcolor: theme.palette.secondary.main,
@@ -86,50 +88,62 @@ function CardProject({ project, index, onOpenDetails }: CardProjectProps) {
               fontWeight: "bold",
               fontSize: "0.8rem",
               boxShadow: theme.shadows[3],
-              zIndex: 1
+              zIndex: 1,
             }}
           >
             NEW
           </Box>
         )}
 
-        <CardMedia
-          component="img"
-          height="160"
-          image={project.image || `https://source.unsplash.com/random/300x200?app&sig=${project.id}`}
-          alt={project.title}
-        />
+        <CardMedia component="img" height="216" image={project.image} alt={project.title} />
 
         <CardContent sx={{ flexGrow: 1 }}>
-          <Typography variant="h5" component="div" gutterBottom fontWeight="bold">
+          <Typography gutterBottom variant="h5" component="div" fontWeight="bold">
             {project.title}
           </Typography>
 
-          <Typography variant="body2" color="text.secondary" paragraph>
-            {project.description.length > 120 ? `${project.description.substring(0, 120)}...` : project.description}
+          <Typography
+            gutterBottom
+            variant="body2"
+            color="text.secondary"
+            sx={{
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+              display: "-webkit-box",
+              WebkitLineClamp: 4,
+              WebkitBoxOrient: "vertical",
+            }}
+          >
+            {project.description}
+          </Typography>
+
+          <Typography variant="caption" color="text.secondary">
+            {format(new Date(project.dateStart), "dd/MM/yyyy")}
           </Typography>
 
           <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5, mt: 2 }}>
-            {project.technologies.slice(0, 4).map((tech, i) => (
+            {project.technologies.slice(0, 3).map((tech, idx) => (
               <Chip
-                key={i}
+                key={idx}
                 label={tech.name}
                 size="small"
                 sx={{
                   bgcolor: `${tech.color}20`,
                   color: tech.color,
                   fontWeight: "bold",
-                  fontSize: "0.7rem"
+                  fontSize: "0.7rem",
                 }}
               />
             ))}
-            {project.technologies.length > 4 && (
+
+            {project.technologies.length > 3 && (
               <Chip
-                label={`+${project.technologies.length - 4}`}
+                label={`+${project.technologies.length - 3}`}
                 size="small"
                 sx={{
-                  bgcolor: "grey.200",
-                  fontSize: "0.7rem"
+                  bgcolor: "grey.400",
+                  color: "grey.800",
+                  fontSize: "0.7rem",
                 }}
               />
             )}
@@ -149,59 +163,39 @@ function CardProject({ project, index, onOpenDetails }: CardProjectProps) {
 
           <Box sx={{ flexGrow: 1 }} />
 
-          {project.links.website && (
-            <IconButton
-              size="small"
-              color="primary"
-              component={Link}
-              href={project.links.website}
-              target="_blank"
-              sx={{
-                "&:hover": {
-                  transform: "translateY(-3px)",
-                  transition: "transform 0.2s"
-                }
-              }}
-            >
-              <OpenInNewIcon />
-            </IconButton>
-          )}
+          {Object.entries(project.links || {}).map(([key, value]) => {
+            let icon = <OpenInNewIcon />;
+            switch (key) {
+              case "website":
+                icon = <OpenInNewIcon />;
+                break;
+              case "ios":
+                icon = <AppleIcon />;
+                break;
+              case "android":
+                icon = <AndroidIcon />;
+                break;
+            }
 
-          {project.links.ios && (
-            <IconButton
-              size="small"
-              color="primary"
-              component={Link}
-              href={project.links.ios}
-              target="_blank"
-              sx={{
-                "&:hover": {
-                  transform: "translateY(-3px)",
-                  transition: "transform 0.2s"
-                }
-              }}
-            >
-              <AppleIcon />
-            </IconButton>
-          )}
-
-          {project.links.android && (
-            <IconButton
-              size="small"
-              color="primary"
-              component={Link}
-              href={project.links.android}
-              target="_blank"
-              sx={{
-                "&:hover": {
-                  transform: "translateY(-3px)",
-                  transition: "transform 0.2s"
-                }
-              }}
-            >
-              <AndroidIcon />
-            </IconButton>
-          )}
+            return (
+              <IconButton
+                key={key}
+                size="small"
+                color="primary"
+                component={Link}
+                href={value}
+                target="_blank"
+                sx={{
+                  "&:hover": {
+                    transform: "translateY(-3px)",
+                    transition: "transform 0.2s",
+                  },
+                }}
+              >
+                {icon}
+              </IconButton>
+            );
+          })}
         </CardActions>
       </Card>
     </motion.div>

@@ -16,7 +16,7 @@ import {
   IconButton,
   useTheme,
   useMediaQuery,
-  AlertColor
+  AlertColor,
 } from "@mui/material";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import EmailIcon from "@mui/icons-material/Email";
@@ -32,9 +32,9 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.2
-    }
-  }
+      staggerChildren: 0.2,
+    },
+  },
 };
 
 const itemVariants = {
@@ -44,9 +44,9 @@ const itemVariants = {
     opacity: 1,
     transition: {
       type: "spring",
-      stiffness: 100
-    }
-  }
+      stiffness: 100,
+    },
+  },
 };
 
 const { VITE_MY_EMAIL, VITE_MY_PHONE, VITE_MY_LOCATION, VITE_MY_LINKEDIN, VITE_MY_GITHUB } = import.meta.env;
@@ -57,10 +57,10 @@ const contactInfo = {
   linkedin: VITE_MY_LINKEDIN,
   github: VITE_MY_GITHUB,
   location: VITE_MY_LOCATION,
-  phone: VITE_MY_PHONE
+  phone: VITE_MY_PHONE,
 };
 
-function Contact() {
+function PageContact() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
@@ -68,7 +68,7 @@ function Contact() {
     name: "",
     email: "",
     subject: "",
-    message: ""
+    message: "",
   });
 
   const [errors, setErrors] = useState<{
@@ -80,7 +80,7 @@ function Contact() {
     name: false,
     email: false,
     subject: false,
-    message: false
+    message: false,
   });
 
   const [snackbar, setSnackbar] = useState<{
@@ -90,21 +90,21 @@ function Contact() {
   }>({
     open: false,
     message: "",
-    severity: "success"
+    severity: "success",
   });
 
   const handleChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = ev.target;
     setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
 
     // Réinitialiser l'erreur lorsque l'utilisateur commence à taper
     if (errors[name as keyof typeof errors]) {
       setErrors((prev) => ({
         ...prev,
-        [name]: false
+        [name]: false,
       }));
     }
   };
@@ -114,7 +114,7 @@ function Contact() {
       name: formData.name.trim() === "",
       email: !/^\S+@\S+\.\S+$/.test(formData.email),
       subject: formData.subject.trim() === "",
-      message: formData.message.trim() === ""
+      message: formData.message.trim() === "",
     };
 
     setErrors(newErrors);
@@ -134,7 +134,7 @@ function Contact() {
       setSnackbar({
         open: true,
         message: "Votre message a été envoyé avec succès !",
-        severity: "success"
+        severity: "success",
       });
 
       // Réinitialiser le formulaire
@@ -142,13 +142,13 @@ function Contact() {
         name: "",
         email: "",
         subject: "",
-        message: ""
+        message: "",
       });
     } else {
       setSnackbar({
         open: true,
         message: "Veuillez corriger les erreurs dans le formulaire.",
-        severity: "error"
+        severity: "error",
       });
     }
   };
@@ -156,7 +156,7 @@ function Contact() {
   const handleCloseSnackbar = () => {
     setSnackbar((prev) => ({
       ...prev,
-      open: false
+      open: false,
     }));
   };
 
@@ -166,36 +166,36 @@ function Contact() {
       title: "Email",
       value: contactInfo.email,
       link: `mailto:${contactInfo.email}`,
-      color: "#D14836"
+      color: "#D14836",
     },
     {
       icon: <LinkedInIcon fontSize="large" />,
       title: "LinkedIn",
       value: "Alexandre Da Costa",
       link: contactInfo.linkedin,
-      color: "#0077B5"
+      color: "#0077B5",
     },
     {
       icon: <GitHubIcon fontSize="large" />,
       title: "GitHub",
       value: "DCAlexandre",
       link: contactInfo.github,
-      color: "#333"
+      color: "#333",
     },
     {
       icon: <LocationOnIcon fontSize="large" />,
       title: "Localisation",
       value: contactInfo.location,
       link: null,
-      color: "#4285F4"
+      color: "#4285F4",
     },
     {
       icon: <PhoneIcon fontSize="large" />,
       title: "Téléphone",
       value: contactInfo.phone,
       link: `tel:${contactInfo.phone.replace(/\s/g, "")}`,
-      color: "#0F9D58"
-    }
+      color: "#0F9D58",
+    },
   ];
 
   return (
@@ -237,7 +237,7 @@ function Contact() {
                         sx={{
                           bgcolor: `${method.color}20`,
                           color: method.color,
-                          "&:hover": { bgcolor: `${method.color}30` }
+                          "&:hover": { bgcolor: `${method.color}30` },
                         }}
                       >
                         {method.icon}
@@ -284,7 +284,7 @@ function Contact() {
                     sx={{
                       bgcolor: "#0077B520",
                       color: "#0077B5",
-                      "&:hover": { bgcolor: "#0077B530" }
+                      "&:hover": { bgcolor: "#0077B530" },
                     }}
                   >
                     <LinkedInIcon fontSize="large" />
@@ -297,7 +297,7 @@ function Contact() {
                     sx={{
                       bgcolor: "#D1483620",
                       color: "#D14836",
-                      "&:hover": { bgcolor: "#D1483630" }
+                      "&:hover": { bgcolor: "#D1483630" },
                     }}
                   >
                     <EmailIcon fontSize="large" />
@@ -311,7 +311,7 @@ function Contact() {
                     sx={{
                       bgcolor: "#33333320",
                       color: "#333333",
-                      "&:hover": { bgcolor: "#33333330" }
+                      "&:hover": { bgcolor: "#33333330" },
                     }}
                   >
                     <GitHubIcon fontSize="large" />
@@ -421,7 +421,7 @@ function Contact() {
             mt: 6,
             p: 2,
             bgcolor: theme.palette.primary.main,
-            color: "white"
+            color: "white",
           }}
         >
           <CardContent>
@@ -431,7 +431,7 @@ function Contact() {
                 alignItems: "center",
                 justifyContent: "center",
                 flexWrap: "wrap",
-                gap: 2
+                gap: 2,
               }}
             >
               <Typography variant="h6" component="div">
@@ -455,4 +455,6 @@ function Contact() {
   );
 }
 
-export default Contact;
+// ----------------------------------------------------------------------
+
+export default PageContact;

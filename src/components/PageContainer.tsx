@@ -19,29 +19,29 @@ function PageContainer({ children, motionVariant = "left-in" }: PageContainerPro
     "left-in": {
       initial: { opacity: 0, x: "-100vw" },
       in: { opacity: 1, x: 0 },
-      out: { opacity: 0, x: "100vw" }
+      out: { opacity: 0, x: "100vw" },
     },
     "right-in": {
       initial: { opacity: 0, x: "100vw" },
       in: { opacity: 1, x: 0 },
-      out: { opacity: 0, x: "-100vw" }
+      out: { opacity: 0, x: "-100vw" },
     },
     "top-in": {
       initial: { opacity: 0, y: -50 },
       in: { opacity: 1, y: 0 },
-      out: { opacity: 0, y: 50 }
+      out: { opacity: 0, y: 50 },
     },
     "bottom-in": {
       initial: { opacity: 0, y: 50 },
       in: { opacity: 1, y: 0 },
-      out: { opacity: 0, y: -50 }
-    }
+      out: { opacity: 0, y: -50 },
+    },
   };
 
   const pageTransition = {
     type: "tween",
     ease: "anticipate",
-    duration: 0.5
+    duration: 0.5,
   };
 
   // ----------------------------------------------------------------------

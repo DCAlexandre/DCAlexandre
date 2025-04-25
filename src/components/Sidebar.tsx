@@ -27,7 +27,7 @@ function Sidebar() {
     { text: "Accueil", icon: <HomeIcon />, path: PATH_PAGE.home },
     { text: "Compétences", icon: <CodeIcon />, path: PATH_PAGE.skills },
     { text: "Projets", icon: <WorkIcon />, path: PATH_PAGE.projects },
-    { text: "Contact", icon: <EmailIcon />, path: PATH_PAGE.contact }
+    { text: "Contact", icon: <EmailIcon />, path: PATH_PAGE.contact },
   ];
 
   // ----------------------------------------------------------------------
@@ -41,15 +41,15 @@ function Sidebar() {
         display: "flex",
         flexDirection: "column",
         borderRadius: 4,
-        bgcolor: "rgba(255,255,255,0.1)"
+        bgcolor: "rgba(255,255,255,0.1)",
       }}
     >
       <Box
         sx={{
           display: "flex",
-          p: isMobile ? 2 : 3,
           flexDirection: isMobile ? "row" : "column",
-          alignItems: isMobile ? "flex-start" : "center"
+          alignItems: isMobile ? "flex-start" : "center",
+          p: isMobile ? 2 : 3,
         }}
       >
         <Avatar
@@ -57,10 +57,10 @@ function Sidebar() {
             width: isMobile ? 60 : 100,
             height: isMobile ? 60 : 100,
             mb: isMobile ? 0 : 2,
-            mr: isMobile ? 2 : 0
+            mr: isMobile ? 2 : 0,
           }}
           alt={VITE_MY_NAME}
-          src="/me.jpg"
+          src="/icons/me.jpg"
         />
 
         <Box>
@@ -92,14 +92,14 @@ function Sidebar() {
                 alignItems: "center",
                 "&.active": {
                   color: "primary.light",
-                  bgcolor: "rgba(255,255,255,0.2)"
+                  bgcolor: "rgba(255,255,255,0.2)",
                 },
                 "&:hover": {
                   color: "primary.light",
                   bgcolor: "rgba(255,255,255,0.1)",
                   border: "1px solid",
-                  borderColor: "primary.light"
-                }
+                  borderColor: "primary.light",
+                },
               }}
             >
               {item.icon}
@@ -118,16 +118,16 @@ function Sidebar() {
                 borderRadius: 4,
                 "&.active": {
                   color: "primary.light",
-                  bgcolor: "rgba(255,255,255,0.1)"
+                  bgcolor: "rgba(255,255,255,0.1)",
                 },
                 "&:hover": {
                   color: "primary.light",
                   border: "1px solid",
                   borderColor: "primary.light",
                   "& .MuiListItemIcon-root": {
-                    color: "primary.light"
-                  }
-                }
+                    color: "primary.light",
+                  },
+                },
               }}
             >
               <ListItemIcon>{item.icon}</ListItemIcon>

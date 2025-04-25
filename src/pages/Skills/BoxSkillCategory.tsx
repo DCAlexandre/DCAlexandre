@@ -31,9 +31,9 @@ const BoxSkillCategory = ({ title, skills, delay = 0 }: BoxSkillCategoryProps) =
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1
-      }
-    }
+        staggerChildren: 0.1,
+      },
+    },
   };
 
   const itemVariants = {
@@ -43,9 +43,9 @@ const BoxSkillCategory = ({ title, skills, delay = 0 }: BoxSkillCategoryProps) =
       opacity: 1,
       transition: {
         type: "spring",
-        stiffness: 100
-      }
-    }
+        stiffness: 100,
+      },
+    },
   };
 
   // ----------------------------------------------------------------------
@@ -68,8 +68,8 @@ const BoxSkillCategory = ({ title, skills, delay = 0 }: BoxSkillCategoryProps) =
                   transition: "transform 0.3s, box-shadow 0.3s",
                   "&:hover": {
                     transform: "translateY(-5px)",
-                    boxShadow: theme.shadows[6]
-                  }
+                    boxShadow: theme.shadows[6],
+                  },
                 }}
               >
                 <Box
@@ -77,7 +77,7 @@ const BoxSkillCategory = ({ title, skills, delay = 0 }: BoxSkillCategoryProps) =
                     display: "flex",
                     justifyContent: "space-between",
                     alignItems: "center",
-                    mb: 1
+                    mb: 1,
                   }}
                 >
                   <Typography variant="subtitle1" fontWeight="bold">
@@ -90,7 +90,7 @@ const BoxSkillCategory = ({ title, skills, delay = 0 }: BoxSkillCategoryProps) =
                     sx={{
                       bgcolor: skill.color,
                       color: theme.palette.getContrastText(skill.color),
-                      fontWeight: "bold"
+                      fontWeight: "bold",
                     }}
                   />
                 </Box>
@@ -103,8 +103,8 @@ const BoxSkillCategory = ({ title, skills, delay = 0 }: BoxSkillCategoryProps) =
                     borderRadius: 4,
                     bgcolor: "rgba(0,0,0,0.1)",
                     "& .MuiLinearProgress-bar": {
-                      bgcolor: skill.color
-                    }
+                      bgcolor: skill.color,
+                    },
                   }}
                 />
               </Paper>

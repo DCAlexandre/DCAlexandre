@@ -12,9 +12,9 @@ const BoxDescription = () => {
       y: 0,
       opacity: 1,
       transition: {
-        duration: 0.6
-      }
-    }
+        duration: 0.6,
+      },
+    },
   };
 
   // ----------------------------------------------------------------------
@@ -28,7 +28,7 @@ const BoxDescription = () => {
           background: "linear-gradient(45deg, #1e2a1e 30%, #184123 90%)",
           boxShadow: "0 4px 8px rgba(102, 187, 106, 0.2)",
           borderRadius: 2,
-          p: 4
+          p: 4,
         }}
       >
         <Typography variant="h2" component="h1" fontWeight="bold" sx={{ mb: 2 }}>

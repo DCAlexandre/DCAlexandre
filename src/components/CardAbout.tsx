@@ -18,7 +18,7 @@ const CardAbout = ({ color, Icon, children }: CardAboutProps) => {
     borderLeft: "4px solid",
     borderColor: color,
     transition: "transform 0.3s",
-    "&:hover": { transform: "translateY(-5px)" }
+    "&:hover": { transform: "translateY(-5px)" },
   };
 
   // ----------------------------------------------------------------------

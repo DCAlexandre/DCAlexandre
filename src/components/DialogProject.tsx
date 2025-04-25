@@ -49,11 +49,9 @@ function DialogProject({ project, open, onClose }: DialogProjectProps) {
       fullWidth
       slotProps={{
         paper: {
-          sx: {
-            borderRadius: 2
-            // overflow: "hidden",
-          }
-        }
+          elevation: 1,
+          sx: { borderRadius: { xs: 0, md: 2 } },
+        },
       }}
     >
       <DialogTitle
@@ -61,9 +59,9 @@ function DialogProject({ project, open, onClose }: DialogProjectProps) {
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-          bgcolor: theme.palette.primary.main,
+          bgcolor: theme.palette.primary.dark,
           color: "white",
-          py: 2
+          py: 2,
         }}
       >
         <Typography variant="h5" component="div" fontWeight="bold">
@@ -75,83 +73,91 @@ function DialogProject({ project, open, onClose }: DialogProjectProps) {
         </IconButton>
       </DialogTitle>
 
-      <DialogContent dividers>
+      <DialogContent dividers sx={{ p: 1.5 }}>
         <Grid container spacing={3}>
           <Grid size={{ xs: 12, md: 6 }}>
             <Box
+              src={project.image}
+              alt={project.title}
               component="img"
               sx={{
                 width: "100%",
                 borderRadius: 1,
                 boxShadow: theme.shadows[2],
-                mb: 2
+                mb: 2,
               }}
-              src={project.image || `https://source.unsplash.com/random/600x400?app&sig=${project.id}`}
-              alt={project.title}
             />
 
-            <Typography variant="h6" gutterBottom sx={{ mt: 2 }}>
+            <Typography gutterBottom variant="h6">
               Technologies utilisées
             </Typography>
 
             <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.8, mb: 3 }}>
-              {project.technologies.map((tech, i) => (
+              {project.technologies.map((tech, idx) => (
                 <Chip
-                  key={i}
+                  key={idx}
                   label={tech.name}
+                  size="small"
                   sx={{
-                    bgcolor: `${tech.color}20`,
                     color: tech.color,
-                    fontWeight: "bold"
+                    bgcolor: `${tech.color}10`,
+                    border: "1px solid",
+                    borderColor: tech.color,
+                    borderRadius: 8,
+                    fontWeight: "bold",
+                    boxShadow: `0 0 0 1px ${tech.color}40`,
+                    transition: "all 0.2s ease-in-out",
+                    "&:hover": {
+                      transform: "translateY(-1px)",
+                    },
                   }}
                 />
               ))}
             </Box>
 
-            <Typography variant="h6" gutterBottom>
-              Liens
-            </Typography>
+            {project.links && (
+              <>
+                <Typography variant="h6" gutterBottom>
+                  Liens
+                </Typography>
 
-            <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
-              {project.links.website && (
-                <Button
-                  variant="outlined"
-                  color="primary"
-                  startIcon={<OpenInNewIcon />}
-                  href={project.links.website}
-                  target="_blank"
-                  sx={{ mr: 1, mb: 1 }}
-                >
-                  Site Web
-                </Button>
-              )}
+                <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
+                  {Object.entries(project.links).map(([key, value]) => {
+                    let icon = <OpenInNewIcon />;
+                    let text = "Site web";
+                    switch (key) {
+                      case "website":
+                        icon = <OpenInNewIcon />;
+                        text = "Site web";
+                        break;
+                      case "ios":
+                        icon = <AppleIcon />;
+                        text = "iOS";
+                        break;
+                      case "android":
+                        icon = <AndroidIcon />;
+                        text = "Android";
+                        break;
+                    }
 
-              {project.links.ios && (
-                <Button
-                  variant="outlined"
-                  color="primary"
-                  startIcon={<AppleIcon />}
-                  href={project.links.ios}
-                  target="_blank"
-                  sx={{ mr: 1, mb: 1 }}
-                >
-                  App Store
-                </Button>
-              )}
-
-              {project.links.android && (
-                <Button
-                  variant="outlined"
-                  color="primary"
-                  startIcon={<AndroidIcon />}
-                  href={project.links.android}
-                  target="_blank"
-                  sx={{ mb: 1 }}
-                >
-                  Google Play
-                </Button>
-              )}
-            </Box>
+                    return (
+                      <Button
+                        key={key}
+                        variant="outlined"
+                        color="primary"
+                        size="small"
+                        startIcon={icon}
+                        href={value}
+                        target="_blank"
+                        sx={{ mr: 1 }}
+                      >
+                        {text}
+                      </Button>
+                    );
+                  })}
+                </Box>
+              </>
+            )}
           </Grid>
 
           <Grid size={{ xs: 12, md: 6 }}>
@@ -159,9 +165,7 @@ function DialogProject({ project, open, onClose }: DialogProjectProps) {
               Description
             </Typography>
 
-            <Typography variant="body1" paragraph>
-              {project.longDescription}
-            </Typography>
+            <Typography variant="body1">{project.description}</Typography>
 
             <Divider sx={{ my: 2 }} />
 
@@ -170,90 +174,11 @@ function DialogProject({ project, open, onClose }: DialogProjectProps) {
             </Typography>
 
             <Box component="ul" sx={{ pl: 2 }}>
-              {project.id === 1 && (
-                <>
-                  <Typography component="li" variant="body1" paragraph>
-                    Planification de routines sportives personnalisées
-                  </Typography>
-                  <Typography component="li" variant="body1" paragraph>
-                    Défis entre amis et suivi en temps réel
-                  </Typography>
-                  <Typography component="li" variant="body1" paragraph>
-                    Système de récompenses et de progression
-                  </Typography>
-                  <Typography component="li" variant="body1" paragraph>
-                    Applications iOS et Android natives via Capacitor
-                  </Typography>
-                </>
-              )}
-
-              {project.id === 2 && (
-                <>
-                  <Typography component="li" variant="body1" paragraph>
-                    Valorisation d'assiettes foncières
-                  </Typography>
-                  <Typography component="li" variant="body1" paragraph>
-                    Mise en relation entre propriétaires et acheteurs
-                  </Typography>
-                  <Typography component="li" variant="body1" paragraph>
-                    Interface intuitive et outils de recherche avancés
-                  </Typography>
-                  <Typography component="li" variant="body1" paragraph>
-                    Disponible sur web, iOS et Android
-                  </Typography>
-                </>
-              )}
-
-              {project.id === 3 && (
-                <>
-                  <Typography component="li" variant="body1" paragraph>
-                    Gestion administrative complète pour sociétés de sécurité
-                  </Typography>
-                  <Typography component="li" variant="body1" paragraph>
-                    Optimisation des processus administratifs
-                  </Typography>
-                  <Typography component="li" variant="body1" paragraph>
-                    Solution SaaS sécurisée et performante
-                  </Typography>
-                  <Typography component="li" variant="body1" paragraph>
-                    Interface utilisateur intuitive
-                  </Typography>
-                </>
-              )}
-
-              {project.id === 4 && (
-                <>
-                  <Typography component="li" variant="body1" paragraph>
-                    Extension modulaire pour la solution Comète
-                  </Typography>
-                  <Typography component="li" variant="body1" paragraph>
-                    Espaces dédiés et modules complémentaires
-                  </Typography>
-                  <Typography component="li" variant="body1" paragraph>
-                    Personnalisation selon les besoins des clients
-                  </Typography>
-                  <Typography component="li" variant="body1" paragraph>
-                    Disponible sur web, iOS, Android et desktop
-                  </Typography>
-                </>
-              )}
-
-              {project.id === 5 && (
-                <>
-                  <Typography component="li" variant="body1" paragraph>
-                    Pointages géolocalisés pour agents de sécurité
-                  </Typography>
-                  <Typography component="li" variant="body1" paragraph>
-                    Vérification de présence sur site en temps réel
-                  </Typography>
-                  <Typography component="li" variant="body1" paragraph>
-                    Interface adaptée aux besoins des agents
-                  </Typography>
-                  <Typography component="li" variant="body1" paragraph>
-                    Intégration complète avec la solution Comète
-                  </Typography>
-                </>
-              )}
+              {project.features.map((feature, idx) => (
+                <Typography component="li" variant="body1" key={idx}>
+                  {feature}
+                </Typography>
+              ))}
             </Box>
           </Grid>
         </Grid>
@@ -263,18 +188,6 @@ function DialogProject({ project, open, onClose }: DialogProjectProps) {
         <Button onClick={onClose} color="primary">
           Fermer
         </Button>
-
-        {project.links.website && (
-          <Button
-            variant="contained"
-            color="primary"
-            href={project.links.website}
-            target="_blank"
-            endIcon={<OpenInNewIcon />}
-          >
-            Visiter le site
-          </Button>
-        )}
       </DialogActions>
     </Dialog>
   );

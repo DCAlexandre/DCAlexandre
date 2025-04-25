@@ -2,7 +2,7 @@ import { HashRouter as Router } from "react-router-dom";
 import ThemeProvider from "@kared/kui/ThemeProvider";
 // import AvatarMenu from "@kared/kui/AvatarMenu";
 import Layout from "@/components/Layout";
-import AnimatedRoutes from "@/routes";
+import Routes from "@/routes";
 import themeConfig from "@/config/theme.config";
 import "@/App.css";
 
@@ -36,7 +36,7 @@ function App() {
             onClickOption={() => {}}
           /> */}
 
-          <AnimatedRoutes />
+          <Routes />
         </Layout>
       </Router>
     </ThemeProvider>

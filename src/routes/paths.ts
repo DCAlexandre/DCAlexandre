@@ -18,5 +18,5 @@ export const PATH_PAGE: Record<string, string> = {
   home: path(ROOT, "home"),
   skills: path(ROOT, "skills"),
   projects: path(ROOT, "projects"),
-  contact: path(ROOT, "contact")
+  contact: path(ROOT, "contact"),
 };

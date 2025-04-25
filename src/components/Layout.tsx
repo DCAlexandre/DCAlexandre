@@ -43,7 +43,7 @@ function Layout({ children }: LayoutProps) {
           bgcolor: "background.default",
           position: { xs: "sticky", md: "fixed" },
           width: { md: sidebarWidthMd, xl: sidebarWidthXl },
-          height: { xs: "auto", md: "100vh" }
+          height: { xs: "auto", md: "100vh" },
         }}
       >
         <Sidebar />
@@ -59,7 +59,7 @@ function Layout({ children }: LayoutProps) {
           minHeight: { xs: "100vh" },
           ml: { xs: 0, md: sidebarWidthMd, xl: sidebarWidthXl },
           p: { md: 2, xl: 4 },
-          pt: { xs: 2 }
+          pt: { xs: 2 },
         }}
       >
         <Box sx={{ maxWidth: "1200px", width: "100%", mx: "auto" }}>{children}</Box>

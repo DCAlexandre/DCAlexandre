@@ -29,7 +29,7 @@ export default tseslint.config(
         2,
         {
           printWidth: 120,
-          trailingComma: "none",
+          trailingComma: "es5",
           tabWidth: 2,
           endOfLine: "auto",
         },

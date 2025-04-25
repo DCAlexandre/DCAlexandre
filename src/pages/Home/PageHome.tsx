@@ -2,24 +2,23 @@ import { NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
 import Button from "@mui/material/Button";
 import PageContainer from "@/components/PageContainer";
-import BoxDescription from "@/components/BoxDescription";
-import BoxAbout from "@/components/BoxAbout";
-// import BoxContact from "@/components/BoxContact";
+import BoxDescription from "@/pages/Home/BoxDescription";
+import BoxAbout from "@/pages/Home/BoxAbout";
 import { PATH_PAGE } from "@/routes/paths";
 
 /**
  * Page d'accueil
  * @description Affiche une présentation générale
  */
-function Home() {
+function PageHome() {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.5
-      }
-    }
+        staggerChildren: 0.5,
+      },
+    },
   };
 
   const itemVariants = {
@@ -28,9 +27,9 @@ function Home() {
       y: 0,
       opacity: 1,
       transition: {
-        duration: 0.6
-      }
-    }
+        duration: 0.6,
+      },
+    },
   };
 
   // ----------------------------------------------------------------------
@@ -41,8 +40,6 @@ function Home() {
         <BoxDescription />
 
         <BoxAbout />
-
-        {/* <BoxContact /> */}
 
         <motion.div variants={itemVariants} style={{ textAlign: "center", marginTop: "2rem" }}>
           <Button
@@ -58,8 +55,8 @@ function Home() {
               fontSize: "0.9rem",
               transition: "transform 0.3s",
               "&:hover": {
-                transform: "scale(1.05)"
-              }
+                transform: "scale(1.05)",
+              },
             }}
           >
             Voir mes projets
@@ -72,4 +69,4 @@ function Home() {
 
 // ----------------------------------------------------------------------
 
-export default Home;
+export default PageHome;
