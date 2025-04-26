@@ -81,7 +81,9 @@ function DialogProject({ project, open, onClose }: DialogProjectProps) {
               alt={project.title}
               component="img"
               sx={{
-                width: "100%",
+                width: { xs: "100%", sm: "70%", md: "100%" },
+                display: "flex",
+                justifySelf: "center",
                 borderRadius: 1,
                 boxShadow: theme.shadows[2],
                 mb: 2,

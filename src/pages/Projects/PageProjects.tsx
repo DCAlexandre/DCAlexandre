@@ -2,7 +2,6 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
-// import GitHubIcon from '@mui/icons-material/GitHub';
 import CardProject from "@/pages/Projects/CardProject";
 import DialogProject from "@/components/DialogProject";
 import PageContainer from "@/components/PageContainer";

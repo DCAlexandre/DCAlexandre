@@ -8,7 +8,7 @@ const project: Project = {
   title: "DevTools",
   subtitle: "Outil de développement pour les développeurs de Comète Link.",
   description:
-    "Application permettant de gérer les projets de Comète Link, maintenance des packages, publication des modules, lancement de commandes personnalisées, etc.",
+    "Application spécialement conçu pour les développeurs, elle leur permet de gérer les projets liés à Comète, maintenance des packages, publication des modules, lancement de commandes personnalisées, etc.",
   image: "/assets/projects/logo_dev_tools.png",
   features: [
     "Gestion des projets de Comète Link",

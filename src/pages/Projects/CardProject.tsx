@@ -142,6 +142,9 @@ function CardProject({ project, index, onOpenDetails }: CardProjectProps) {
                   "&:hover": {
                     transform: "translateY(-3px)",
                     transition: "transform 0.2s",
+                    "& .MuiSvgIcon-root": {
+                      color: "primary.light",
+                    },
                   },
                 }}
               >

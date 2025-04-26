@@ -20,6 +20,9 @@ const config: ThemeOptions = {
       dark: "#5D99C6",
       contrastText: "#000000",
     },
+    action: {
+      selected: "rgba(255,255,255,0.1)",
+    },
     background: {
       default: "rgba(5, 20, 24, 1)",
       paper: "rgba(12, 30, 36, 1)",

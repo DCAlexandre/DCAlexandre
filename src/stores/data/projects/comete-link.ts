@@ -9,7 +9,7 @@ const project: Project = {
   subtitle:
     "Extension modulaire pour Comète. Plateforme composée de plusieurs espaces dédiés et de modules complémentaires à composer selon les besoins des clients.",
   description:
-    "Comète Link est une extension modulaire pour la solution Comète, offrant une plateforme composée de plusieurs espaces dédiés.\nLes clients peuvent composer leur solution selon leurs besoins spécifiques, bénéficiant ainsi d'une flexibilité maximale.",
+    "Comète Link est une extension modulaire pour la solution Comète, offrant une plateforme composée de plusieurs espaces dédiés.\n\nLes clients peuvent composer leur solution selon leurs besoins spécifiques, bénéficiant ainsi d'une flexibilité maximale.",
   image: "/assets/projects/logo_comete_link.png",
   links: {
     website: "https://logiciel-comete.fr/comete-link",

@@ -8,7 +8,7 @@ const project: Project = {
   title: "Kared UI",
   subtitle: "Design system pour les applications de Kared Dev.",
   description:
-    "Kared UI (kui) est une librairie de composants React pour les applications de Kared Dev.\nElle permet de créer des applications plus rapidement et esthétiques.",
+    "Kared UI (kui) est une librairie de composants React pour les applications de Kared Dev.\n\nElle permet de créer des applications plus rapidement et esthétiques.",
   image: "/assets/projects/kared_ui.png",
   features: ["Composants React", "Design system", "Tests unitaires complets"],
   technologies: [

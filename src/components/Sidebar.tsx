@@ -36,12 +36,10 @@ function Sidebar() {
     <Box
       sx={{
         height: "100%",
-        width: "100%",
-        color: "white",
         display: "flex",
         flexDirection: "column",
+        bgcolor: "background.paper",
         borderRadius: 4,
-        bgcolor: "rgba(255,255,255,0.1)",
       }}
     >
       <Box
@@ -84,21 +82,23 @@ function Sidebar() {
               component={NavLink}
               to={item.path}
               sx={{
-                color: "primary.main",
-                borderRadius: 2,
+                color: "text.secondary",
                 p: 1,
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
                 "&.active": {
                   color: "primary.light",
-                  bgcolor: "rgba(255,255,255,0.2)",
+                  bgcolor: "action.selected",
+                  "& .MuiSvgIcon-root": {
+                    color: "primary.main",
+                  },
                 },
                 "&:hover": {
                   color: "primary.light",
-                  bgcolor: "rgba(255,255,255,0.1)",
-                  border: "1px solid",
-                  borderColor: "primary.light",
+                  "& .MuiSvgIcon-root": {
+                    color: "primary.light",
+                  },
                 },
               }}
             >
@@ -115,14 +115,17 @@ function Sidebar() {
               to={item.path}
               sx={{
                 color: "text.secondary",
-                borderRadius: 4,
                 "&.active": {
                   color: "primary.light",
-                  bgcolor: "rgba(255,255,255,0.1)",
+                  bgcolor: "action.selected",
+                  "& .MuiListItemIcon-root": {
+                    color: "primary.main",
+                  },
                 },
                 "&:hover": {
                   color: "primary.light",
-                  border: "1px solid",
+                  borderTop: "1px solid",
+                  borderBottom: "1px solid",
                   borderColor: "primary.light",
                   "& .MuiListItemIcon-root": {
                     color: "primary.light",
