@@ -12,6 +12,7 @@ type TechnologyKeys =
    * Backend
    */
   | "nodeJs"
+  | "socketIo"
   | "php"
   | "laravel"
   | "express"
@@ -28,6 +29,7 @@ type TechnologyKeys =
   /**
    * DevOps
    */
+  | "githubActions"
   | "aws"
   | "linux"
   | "docker"
@@ -78,6 +80,7 @@ const data: Technologies = {
    * Backend
    */
   nodeJs: { name: "NodeJS", color: "#47c047" },
+  socketIo: { name: "Socket.io", color: "#3be0b7" },
   php: { name: "PHP", color: "#777BB4" },
   laravel: { name: "Laravel", color: "#FF2D20" },
   express: { name: "Express", color: "#000000" },
@@ -94,6 +97,7 @@ const data: Technologies = {
   /**
    * DevOps
    */
+  githubActions: { name: "GitHub Actions", color: "#2088FF" },
   aws: { name: "AWS", color: "#FF9900" },
   linux: { name: "Linux", color: "#e3bb40" },
   docker: { name: "Docker", color: "#2496ED" },

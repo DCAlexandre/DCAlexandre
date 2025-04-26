@@ -4,6 +4,7 @@ import { Skill } from "@/stores/types/skills.types";
 // ----------------------------------------------------------------------
 
 const data: Skill[] = [
+  { ...technology.githubActions, level: 95 },
   { ...technology.linux, level: 90 },
   { ...technology.sentry, level: 85 },
   { ...technology.grafana, level: 75 },
