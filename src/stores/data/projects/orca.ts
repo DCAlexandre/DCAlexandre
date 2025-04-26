@@ -16,7 +16,7 @@ const project: Project = {
     "Analyse des données transférées",
     "Déclenchement d'alertes",
   ],
-  technologies: [technology.electron, technology.nodeJs, technology.react, technology.laravel],
+  technologies: [technology.electron, technology.nodeJs, technology.react, technology.laravel, technology.phpUnit],
 };
 
 // ----------------------------------------------------------------------

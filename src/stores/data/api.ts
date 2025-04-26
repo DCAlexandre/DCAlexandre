@@ -18,6 +18,7 @@
  */
 async function get<T>(path: string): Promise<T> {
   return new Promise((resolve) => {
+    /* @vite-ignore */
     import(`./${path}`)
       .then((module) => {
         resolve(module.default);

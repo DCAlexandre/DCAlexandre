@@ -6,6 +6,7 @@ import Chip from "@mui/material/Chip";
 import Typography from "@mui/material/Typography";
 import LinearProgress from "@mui/material/LinearProgress";
 import { useTheme } from "@kared/kui/ThemeProvider";
+import BoxNew from "@/components/BoxNew";
 import { Skill } from "@/stores/types/skills.types";
 
 // ----------------------------------------------------------------------
@@ -13,6 +14,7 @@ import { Skill } from "@/stores/types/skills.types";
 type BoxSkillCategoryProps = {
   title: string;
   skills: Skill[];
+  inTraining?: boolean;
   delay?: number;
 };
 
@@ -20,9 +22,10 @@ type BoxSkillCategoryProps = {
  * Affiche une catégorie de compétences avec une animation fluide
  * @param title - Le titre de la catégorie
  * @param skills - Les compétences à afficher
+ * @param inTraining - Si la compétence est en cours de formation
  * @param delay - Le délai d'animation
  */
-const BoxSkillCategory = ({ title, skills, delay = 0 }: BoxSkillCategoryProps) => {
+const BoxSkillCategory = ({ title, skills, inTraining = false, delay = 0 }: BoxSkillCategoryProps) => {
   const { theme } = useTheme();
 
   // Animation pour les éléments qui apparaissent en séquence
@@ -52,65 +55,74 @@ const BoxSkillCategory = ({ title, skills, delay = 0 }: BoxSkillCategoryProps) =
 
   return (
     <motion.div initial="hidden" animate="visible" variants={containerVariants} transition={{ delayChildren: delay }}>
-      <Typography variant="h5" gutterBottom sx={{ mt: 4, mb: 2, fontWeight: "bold" }}>
-        {title}
-      </Typography>
+      <Box display="flex" alignItems="center" sx={{ mt: 4, mb: 2 }}>
+        <Typography variant="h5" sx={{ fontWeight: "bold" }}>
+          {title}
+        </Typography>
+
+        {inTraining && <Chip label="En cours de formation" color="info" size="small" sx={{ ml: 2 }} />}
+      </Box>
 
       <Grid container spacing={2}>
-        {skills.map((skill, idx) => (
-          <Grid size={{ xs: 12, sm: 6, md: 4 }} key={idx}>
-            <motion.div variants={itemVariants}>
-              <Paper
-                elevation={3}
-                sx={{
-                  p: 2,
-                  height: "100%",
-                  transition: "transform 0.3s, box-shadow 0.3s",
-                  "&:hover": {
-                    transform: "translateY(-5px)",
-                    boxShadow: theme.shadows[6],
-                  },
-                }}
-              >
-                <Box
+        {skills
+          .sort((a, b) => b.level - a.level)
+          .map((item, idx) => (
+            <Grid size={{ xs: 12, sm: 6, md: 4 }} key={idx}>
+              <motion.div variants={itemVariants}>
+                <Paper
+                  elevation={3}
                   sx={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                    mb: 1,
-                  }}
-                >
-                  <Typography variant="subtitle1" fontWeight="bold">
-                    {skill.name}
-                  </Typography>
-
-                  <Chip
-                    label={`${skill.level}%`}
-                    size="small"
-                    sx={{
-                      bgcolor: skill.color,
-                      color: theme.palette.getContrastText(skill.color),
-                      fontWeight: "bold",
-                    }}
-                  />
-                </Box>
-
-                <LinearProgress
-                  variant="determinate"
-                  value={skill.level}
-                  sx={{
-                    height: 8,
-                    borderRadius: 4,
-                    bgcolor: "rgba(0,0,0,0.1)",
-                    "& .MuiLinearProgress-bar": {
-                      bgcolor: skill.color,
+                    p: 2,
+                    height: "100%",
+                    position: "relative",
+                    transition: "transform 0.3s, box-shadow 0.3s",
+                    "&:hover": {
+                      transform: "translateY(-5px)",
+                      boxShadow: theme.shadows[6],
                     },
                   }}
-                />
-              </Paper>
-            </motion.div>
-          </Grid>
-        ))}
+                >
+                  <Box
+                    sx={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                      mb: 1,
+                    }}
+                  >
+                    {item.inTraining && <BoxNew size="small" />}
+
+                    <Typography variant="subtitle1" fontWeight="bold">
+                      {item.name}
+                    </Typography>
+
+                    <Chip
+                      label={`${item.level}%`}
+                      size="small"
+                      sx={{
+                        bgcolor: item.color,
+                        color: theme.palette.getContrastText(item.color),
+                        fontWeight: "bold",
+                      }}
+                    />
+                  </Box>
+
+                  <LinearProgress
+                    variant="determinate"
+                    value={item.level}
+                    sx={{
+                      height: 8,
+                      borderRadius: 4,
+                      bgcolor: "rgba(0,0,0,0.1)",
+                      "& .MuiLinearProgress-bar": {
+                        bgcolor: item.color,
+                      },
+                    }}
+                  />
+                </Paper>
+              </motion.div>
+            </Grid>
+          ))}
       </Grid>
     </motion.div>
   );

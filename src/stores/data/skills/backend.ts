@@ -1,13 +1,15 @@
+import technology from "@/stores/data/technology";
 import { Skill } from "@/stores/types/skills.types";
 
 // ----------------------------------------------------------------------
 
 const data: Skill[] = [
-  { name: "NodeJS", color: "#339933", level: 90 },
-  { name: "PHP", color: "#777BB4", level: 85 },
-  { name: "Laravel", color: "#FF2D20", level: 85 },
-  { name: "Express", color: "#000000", level: 90 },
-  { name: "Python", color: "#3776AB", level: 75 },
+  { ...technology.nodeJs, level: 95 },
+  { ...technology.express, level: 90 },
+  { ...technology.php, level: 90 },
+  { ...technology.laravel, level: 85 },
+  { ...technology.python, level: 50 },
+  { ...technology.ai, level: 15, inTraining: true },
 ];
 
 // ----------------------------------------------------------------------

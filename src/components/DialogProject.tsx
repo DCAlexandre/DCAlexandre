@@ -7,7 +7,6 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
-import Chip from "@mui/material/Chip";
 import Button from "@mui/material/Button";
 import Divider from "@mui/material/Divider";
 import CloseIcon from "@mui/icons-material/Close";
@@ -15,6 +14,7 @@ import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import AppleIcon from "@mui/icons-material/Apple";
 import AndroidIcon from "@mui/icons-material/Android";
 import { useTheme } from "@kared/kui/ThemeProvider";
+import ChipList from "@/components/ChipList";
 import { Project } from "@/stores/types/projects.types";
 
 // ----------------------------------------------------------------------
@@ -27,8 +27,9 @@ type DialogProjectProps = {
 
 /**
  * Affiche un dialogue avec les détails d'un projet
- * @param {DialogProjectProps} props
- * @returns {JSX.Element}
+ * @param project - Le projet à afficher
+ * @param open - Indique si le dialogue est ouvert
+ * @param onClose - Fonction appelée lors de la fermeture du dialogue
  */
 function DialogProject({ project, open, onClose }: DialogProjectProps) {
   const { theme } = useTheme();
@@ -60,7 +61,6 @@ function DialogProject({ project, open, onClose }: DialogProjectProps) {
           justifyContent: "space-between",
           alignItems: "center",
           bgcolor: theme.palette.primary.dark,
-          color: "white",
           py: 2,
         }}
       >
@@ -92,28 +92,7 @@ function DialogProject({ project, open, onClose }: DialogProjectProps) {
               Technologies utilisées
             </Typography>
 
-            <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.8, mb: 3 }}>
-              {project.technologies.map((tech, idx) => (
-                <Chip
-                  key={idx}
-                  label={tech.name}
-                  size="small"
-                  sx={{
-                    color: tech.color,
-                    bgcolor: `${tech.color}10`,
-                    border: "1px solid",
-                    borderColor: tech.color,
-                    borderRadius: 8,
-                    fontWeight: "bold",
-                    boxShadow: `0 0 0 1px ${tech.color}40`,
-                    transition: "all 0.2s ease-in-out",
-                    "&:hover": {
-                      transform: "translateY(-1px)",
-                    },
-                  }}
-                />
-              ))}
-            </Box>
+            <ChipList data={project.technologies} size="small" slotProps={{ box: { mb: 3 } }} />
 
             {project.links && (
               <>

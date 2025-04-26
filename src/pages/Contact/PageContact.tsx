@@ -21,6 +21,7 @@ import {
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import EmailIcon from "@mui/icons-material/Email";
 import GitHubIcon from "@mui/icons-material/GitHub";
+import FacebookIcon from "@mui/icons-material/Facebook";
 import SendIcon from "@mui/icons-material/Send";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import PhoneIcon from "@mui/icons-material/Phone";
@@ -49,15 +50,17 @@ const itemVariants = {
   },
 };
 
-const { VITE_MY_EMAIL, VITE_MY_PHONE, VITE_MY_LOCATION, VITE_MY_LINKEDIN, VITE_MY_GITHUB } = import.meta.env;
+const { VITE_MY_EMAIL, VITE_MY_PHONE, VITE_MY_LOCATION, VITE_MY_LINKEDIN, VITE_MY_GITHUB, VITE_MY_FACEBOOK } =
+  import.meta.env;
 
 // Données de contact basées sur votre README
 const contactInfo = {
   email: VITE_MY_EMAIL,
-  linkedin: VITE_MY_LINKEDIN,
-  github: VITE_MY_GITHUB,
-  location: VITE_MY_LOCATION,
   phone: VITE_MY_PHONE,
+  location: VITE_MY_LOCATION,
+  linkedin: VITE_MY_LINKEDIN,
+  facebook: VITE_MY_FACEBOOK,
+  github: VITE_MY_GITHUB,
 };
 
 function PageContact() {
@@ -166,22 +169,22 @@ function PageContact() {
       title: "Email",
       value: contactInfo.email,
       link: `mailto:${contactInfo.email}`,
-      color: "#D14836",
+      color: "#e8614f",
     },
-    {
-      icon: <LinkedInIcon fontSize="large" />,
-      title: "LinkedIn",
-      value: "Alexandre Da Costa",
-      link: contactInfo.linkedin,
-      color: "#0077B5",
-    },
-    {
-      icon: <GitHubIcon fontSize="large" />,
-      title: "GitHub",
-      value: "DCAlexandre",
-      link: contactInfo.github,
-      color: "#333",
-    },
+    // {
+    //   icon: <LinkedInIcon fontSize="large" />,
+    //   title: "LinkedIn",
+    //   value: "Alexandre Da Costa",
+    //   link: contactInfo.linkedin,
+    //   color: "#078ad1",
+    // },
+    // {
+    //   icon: <GitHubIcon fontSize="large" />,
+    //   title: "GitHub",
+    //   value: "DCAlexandre",
+    //   link: contactInfo.github,
+    //   color: "#a2a2a2",
+    // },
     {
       icon: <LocationOnIcon fontSize="large" />,
       title: "Localisation",
@@ -224,7 +227,7 @@ function PageContact() {
         {/* Informations de contact */}
         <Grid size={{ xs: 12, md: 5 }}>
           <motion.div initial="hidden" animate="visible" variants={containerVariants}>
-            <Paper elevation={3} sx={{ p: 3, height: "100%" }}>
+            <Paper elevation={3} sx={{ p: 3, height: "100%", minHeight: 500 }}>
               <Typography variant="h5" gutterBottom sx={{ mb: 3, fontWeight: "bold" }}>
                 Mes coordonnées
               </Typography>
@@ -282,36 +285,51 @@ function PageContact() {
                     href={contactInfo.linkedin}
                     target="_blank"
                     sx={{
-                      bgcolor: "#0077B520",
-                      color: "#0077B5",
-                      "&:hover": { bgcolor: "#0077B530" },
+                      bgcolor: "#078ad120",
+                      color: "#078ad1",
+                      "&:hover": { bgcolor: "#078ad130" },
                     }}
                   >
                     <LinkedInIcon fontSize="large" />
                   </IconButton>
                 </motion.div>
 
+                {/* Facebook */}
                 <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
+                  <IconButton
+                    href={contactInfo.facebook}
+                    target="_blank"
+                    sx={{
+                      bgcolor: "#0077B520",
+                      color: "#0077B5",
+                      "&:hover": { bgcolor: "#0077B530" },
+                    }}
+                  >
+                    <FacebookIcon fontSize="large" />
+                  </IconButton>
+                </motion.div>
+
+                {/* <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
                   <IconButton
                     href={`mailto:${contactInfo.email}`}
                     sx={{
-                      bgcolor: "#D1483620",
-                      color: "#D14836",
-                      "&:hover": { bgcolor: "#D1483630" },
+                      bgcolor: "#e8614f20",
+                      color: "#e8614f",
+                      "&:hover": { bgcolor: "#e8614f30" },
                     }}
                   >
                     <EmailIcon fontSize="large" />
                   </IconButton>
-                </motion.div>
+                </motion.div> */}
 
                 <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
                   <IconButton
                     href={contactInfo.github}
                     target="_blank"
                     sx={{
-                      bgcolor: "#33333320",
-                      color: "#333333",
-                      "&:hover": { bgcolor: "#33333330" },
+                      bgcolor: "#a2a2a220",
+                      color: "#a2a2a2",
+                      "&:hover": { bgcolor: "#a2a2a230" },
                     }}
                   >
                     <GitHubIcon fontSize="large" />
@@ -329,7 +347,7 @@ function PageContact() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <Paper elevation={3} sx={{ p: 3 }}>
+            <Paper elevation={3} sx={{ p: 3, minHeight: 500 }}>
               <Typography variant="h5" gutterBottom sx={{ mb: 3, fontWeight: "bold" }}>
                 Envoyez-moi un message
               </Typography>
@@ -388,15 +406,18 @@ function PageContact() {
                     />
                   </Grid>
                   <Grid size={{ xs: 12 }}>
-                    <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                    <motion.div
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      style={{ display: "flex", justifyContent: "flex-end", alignSelf: "flex-end" }}
+                    >
                       <Button
                         type="submit"
                         variant="contained"
                         color="primary"
-                        size="large"
                         fullWidth={isMobile}
                         startIcon={<SendIcon />}
-                        sx={{ py: 1.5, px: 4 }}
+                        sx={{ py: 1, px: 3 }}
                       >
                         Envoyer le message
                       </Button>
@@ -418,13 +439,14 @@ function PageContact() {
         <Card
           elevation={2}
           sx={{
-            mt: 6,
+            mt: 4,
             p: 2,
-            bgcolor: theme.palette.primary.main,
-            color: "white",
+            elevation: 3,
+            bgcolor: "background.paper",
+            borderColor: "primary.main",
           }}
         >
-          <CardContent>
+          <CardContent sx={{ p: 1, paddingBottom: "8px !important" }}>
             <Box
               sx={{
                 display: "flex",
@@ -437,14 +459,16 @@ function PageContact() {
               <Typography variant="h6" component="div">
                 👯 Je suis disponible pour réaliser des projets en collaboration
               </Typography>
+
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <Button
+                  startIcon={<EmailIcon />}
                   variant="contained"
-                  color="secondary"
+                  color="primary"
                   href={`mailto:${contactInfo.email}?subject=Proposition%20de%20collaboration`}
-                  sx={{ color: "black", fontWeight: "bold" }}
+                  sx={{ fontWeight: "bold" }}
                 >
-                  Me contacter
+                  Contacter
                 </Button>
               </motion.div>
             </Box>

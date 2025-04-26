@@ -1,11 +1,14 @@
 import { motion } from "framer-motion";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
+import { useTheme } from "@kared/kui/ThemeProvider";
 
 /**
  * Affiche une description avec une animation fluide
  */
 const BoxDescription = () => {
+  const { theme } = useTheme();
+
   const itemVariants = {
     hidden: { y: 20, opacity: 0 },
     visible: {
@@ -25,8 +28,8 @@ const BoxDescription = () => {
         sx={{
           textAlign: "center",
           userSelect: "none",
-          background: "linear-gradient(45deg, #1e2a1e 30%, #184123 90%)",
-          boxShadow: "0 4px 8px rgba(102, 187, 106, 0.2)",
+          background: `linear-gradient(45deg, ${theme.palette.primary.dark}60 30%, ${theme.palette.primary.main}65 90%)`,
+          boxShadow: `0 2px 4px ${theme.palette.primary.main}33`,
           borderRadius: 2,
           p: 4,
         }}

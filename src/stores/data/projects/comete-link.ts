@@ -29,7 +29,7 @@ const project: Project = {
     technology.capacitor,
     technology.cypress,
     technology.laravel,
-    technology.phpunit,
+    technology.phpUnit,
     technology.mysql,
     technology.postgresql,
     technology.ios,

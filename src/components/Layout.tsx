@@ -55,6 +55,7 @@ function Layout({ children }: LayoutProps) {
         sx={{
           overflow: "auto",
           boxSizing: "border-box",
+          bgcolor: "background.default",
           height: { xs: "auto", md: "100vh" },
           minHeight: { xs: "100vh" },
           ml: { xs: 0, md: sidebarWidthMd, xl: sidebarWidthXl },

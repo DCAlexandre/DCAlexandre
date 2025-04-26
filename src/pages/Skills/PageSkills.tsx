@@ -34,9 +34,9 @@ function PageSkills() {
 
       <BoxSkillCategory title="Gestion des données" skills={skills.database} delay={0.6} />
 
-      <BoxSkillCategory title="DevOps" skills={skills.devops} delay={0.8} />
+      <BoxSkillCategory title="DevOps" skills={skills.devops} inTraining delay={0.8} />
 
-      <BoxSkillCategory title="Tests" skills={skills.testing} delay={1.0} />
+      <BoxSkillCategory title="Tests & Qualité" skills={skills.testing} delay={1.0} />
     </PageContainer>
   );
 }

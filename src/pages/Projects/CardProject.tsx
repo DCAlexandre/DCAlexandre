@@ -7,14 +7,14 @@ import CardMedia from "@mui/material/CardMedia";
 import CardActions from "@mui/material/CardActions";
 import Link from "@mui/material/Link";
 import Button from "@mui/material/Button";
-import Chip from "@mui/material/Chip";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
-import InfoIcon from "@mui/icons-material/Info";
+import InfoIcon from "@mui/icons-material/InfoOutline";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import AppleIcon from "@mui/icons-material/Apple";
 import AndroidIcon from "@mui/icons-material/Android";
-import { useTheme } from "@kared/kui/ThemeProvider";
+import ChipList from "@/components/ChipList";
+import BoxNew from "@/components/BoxNew";
 import { Project } from "@/stores/types/projects.types";
 
 // ----------------------------------------------------------------------
@@ -32,8 +32,6 @@ type CardProjectProps = {
  * @param onOpenDetails - La fonction pour ouvrir les détails du projet
  */
 function CardProject({ project, index, onOpenDetails }: CardProjectProps) {
-  const { theme } = useTheme();
-
   const cardVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: (i: number) => ({
@@ -70,33 +68,12 @@ function CardProject({ project, index, onOpenDetails }: CardProjectProps) {
         }}
       >
         {/* Badge flottant pour les projets récents */}
-        {index < 2 && (
-          <Box
-            sx={{
-              position: "absolute",
-              userSelect: "none",
-              top: -15,
-              right: -15,
-              bgcolor: theme.palette.secondary.main,
-              color: theme.palette.getContrastText(theme.palette.secondary.main),
-              borderRadius: "50%",
-              width: 40,
-              height: 40,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontWeight: "bold",
-              fontSize: "0.8rem",
-              boxShadow: theme.shadows[3],
-              zIndex: 1,
-            }}
-          >
-            NEW
-          </Box>
-        )}
+        {index < 2 && <BoxNew />}
 
-        <CardMedia component="img" height="216" image={project.image} alt={project.title} />
+        {/* Image du projet */}
+        <CardMedia component="img" height="216" image={project.image} alt={project.title} sx={{ mb: 1 }} />
 
+        {/* Contenu du projet */}
         <CardContent sx={{ flexGrow: 1 }}>
           <Typography gutterBottom variant="h5" component="div" fontWeight="bold">
             {project.title}
@@ -121,33 +98,7 @@ function CardProject({ project, index, onOpenDetails }: CardProjectProps) {
             {format(new Date(project.dateStart), "dd/MM/yyyy")}
           </Typography>
 
-          <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5, mt: 2 }}>
-            {project.technologies.slice(0, 3).map((tech, idx) => (
-              <Chip
-                key={idx}
-                label={tech.name}
-                size="small"
-                sx={{
-                  bgcolor: `${tech.color}20`,
-                  color: tech.color,
-                  fontWeight: "bold",
-                  fontSize: "0.7rem",
-                }}
-              />
-            ))}
-
-            {project.technologies.length > 3 && (
-              <Chip
-                label={`+${project.technologies.length - 3}`}
-                size="small"
-                sx={{
-                  bgcolor: "grey.400",
-                  color: "grey.800",
-                  fontSize: "0.7rem",
-                }}
-              />
-            )}
-          </Box>
+          <ChipList data={project.technologies} size="small" maxItems={3} slotProps={{ box: { mt: 2 } }} />
         </CardContent>
 
         <CardActions sx={{ p: 2, pt: 0 }}>
@@ -155,8 +106,9 @@ function CardProject({ project, index, onOpenDetails }: CardProjectProps) {
             size="small"
             variant="outlined"
             color="primary"
-            onClick={() => onOpenDetails(project)}
             startIcon={<InfoIcon />}
+            sx={{ py: 0.5, px: 1 }}
+            onClick={() => onOpenDetails(project)}
           >
             Détails
           </Button>
@@ -186,6 +138,7 @@ function CardProject({ project, index, onOpenDetails }: CardProjectProps) {
                 href={value}
                 target="_blank"
                 sx={{
+                  p: 0.5,
                   "&:hover": {
                     transform: "translateY(-3px)",
                     transition: "transform 0.2s",

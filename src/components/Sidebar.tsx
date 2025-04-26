@@ -60,7 +60,7 @@ function Sidebar() {
             mr: isMobile ? 2 : 0,
           }}
           alt={VITE_MY_NAME}
-          src="/icons/me.jpg"
+          src="/assets/me.jpg"
         />
 
         <Box>

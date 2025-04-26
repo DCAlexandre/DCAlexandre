@@ -4,7 +4,7 @@ import technology from "@/stores/data/technology";
 // ----------------------------------------------------------------------
 
 const project: Project = {
-  dateStart: "2024-12-18",
+  dateStart: "2024-08-18",
   title: "Kared Fit",
   subtitle:
     "Application de planification de routines sportives. Planifie tes séances, défie tes amis, évoluez ensemble en temps réel et gagnez des récompenses. Transforme chaque entraînement en un défi motivant et ludique !",

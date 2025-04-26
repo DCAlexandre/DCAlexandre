@@ -19,6 +19,10 @@ export type Skill = {
    * Niveau de la compétence.
    */
   level: number;
+  /**
+   * Indique si la compétence est en cours de formation.
+   */
+  inTraining?: boolean;
 };
 
 /**
