@@ -16,7 +16,8 @@ const ROOT = "/";
 export const PATH_PAGE: Record<string, string> = {
   root: ROOT,
   home: path(ROOT, "home"),
-  skills: path(ROOT, "skills"),
   projects: path(ROOT, "projects"),
+  career: path(ROOT, "career"),
+  skills: path(ROOT, "skills"),
   contact: path(ROOT, "contact"),
 };

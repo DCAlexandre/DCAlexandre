@@ -11,16 +11,6 @@ import { PATH_PAGE } from "@/routes/paths";
  * @description Affiche une présentation générale
  */
 function PageHome() {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.5,
-      },
-    },
-  };
-
   const itemVariants = {
     hidden: { y: 20, opacity: 0 },
     visible: {
@@ -35,33 +25,31 @@ function PageHome() {
   // ----------------------------------------------------------------------
 
   return (
-    <PageContainer>
-      <motion.div variants={containerVariants} initial="hidden" animate="visible">
-        <BoxDescription />
+    <PageContainer motionVariant="stagger-children">
+      <BoxDescription />
 
-        <BoxAbout />
+      <BoxAbout />
 
-        <motion.div variants={itemVariants} style={{ textAlign: "center", marginTop: "2rem" }}>
-          <Button
-            variant="contained"
-            color="primary"
-            size="large"
-            component={NavLink}
-            to={PATH_PAGE.projects}
-            sx={{
-              borderRadius: 8,
-              px: 4,
-              py: 1.5,
-              fontSize: "0.9rem",
-              transition: "transform 0.3s",
-              "&:hover": {
-                transform: "scale(1.05)",
-              },
-            }}
-          >
-            Voir mes projets
-          </Button>
-        </motion.div>
+      <motion.div variants={itemVariants} style={{ textAlign: "center", marginTop: "2rem" }}>
+        <Button
+          variant="contained"
+          color="primary"
+          size="large"
+          component={NavLink}
+          to={PATH_PAGE.projects}
+          sx={{
+            borderRadius: 8,
+            px: 4,
+            py: 1.5,
+            fontSize: "0.9rem",
+            transition: "transform 0.3s",
+            "&:hover": {
+              transform: "scale(1.05)",
+            },
+          }}
+        >
+          Voir mes projets
+        </Button>
       </motion.div>
     </PageContainer>
   );

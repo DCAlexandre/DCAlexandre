@@ -2,21 +2,27 @@ import { useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-import Sidebar from "./Sidebar";
+import Sidebar, { SidebarItem } from "./Sidebar";
 
 // ----------------------------------------------------------------------
 
 type LayoutProps = {
   children: React.ReactNode;
+  sidebarItems: SidebarItem[];
 };
 
 /**
  * Layout pour les pages
+ * @param sidebarItems - Les items de la barre de navigation
  * @param children - Les enfants à afficher
  */
-function Layout({ children }: LayoutProps) {
+function Layout({ sidebarItems, children }: LayoutProps) {
   const location = useLocation();
   const contentRef = useRef<HTMLDivElement>(null);
+  const { VITE_MY_NAME, VITE_MY_JOB } = import.meta.env;
+  const sidebarTitle = VITE_MY_NAME;
+  const sidebarSubtitle = VITE_MY_JOB;
+  const sidebarImageUrl = "/assets/me.jpg";
   const sidebarWidthMd = "25%";
   const sidebarWidthXl = "20%";
 
@@ -46,7 +52,7 @@ function Layout({ children }: LayoutProps) {
           height: { xs: "auto", md: "100vh" },
         }}
       >
-        <Sidebar />
+        <Sidebar items={sidebarItems} title={sidebarTitle} subtitle={sidebarSubtitle} imageUrl={sidebarImageUrl} />
       </Grid>
 
       <Grid
