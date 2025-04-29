@@ -1,10 +1,12 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Sidebar, { SidebarItem } from "./Sidebar";
 
 // ----------------------------------------------------------------------
+
+const { VITE_MY_NAME, VITE_MY_JOB } = import.meta.env;
 
 type LayoutProps = {
   children: React.ReactNode;
@@ -18,8 +20,9 @@ type LayoutProps = {
  */
 function Layout({ sidebarItems, children }: LayoutProps) {
   const location = useLocation();
+  const sidebarRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
-  const { VITE_MY_NAME, VITE_MY_JOB } = import.meta.env;
+  const [sidebarHeight, setSidebarHeight] = useState(0);
   const sidebarTitle = VITE_MY_NAME;
   const sidebarSubtitle = VITE_MY_JOB;
   const sidebarImageUrl = "/assets/me.jpg";
@@ -27,6 +30,33 @@ function Layout({ sidebarItems, children }: LayoutProps) {
   const sidebarWidthXl = "20%";
 
   // ----------------------------------------------------------------------
+
+  // Recalcule de la hauteur de la sidebar
+  const updateSidebarHeight = () => {
+    if (sidebarRef.current) {
+      setSidebarHeight(sidebarRef.current.clientHeight);
+    }
+  };
+
+  useEffect(() => {
+    // Calculer la hauteur initiale
+    updateSidebarHeight();
+
+    // Recalculer lors du redimensionnement
+    window.addEventListener("resize", updateSidebarHeight);
+
+    // Observer les changements de taille de la sidebar
+    const resizeObserver = new ResizeObserver(updateSidebarHeight);
+
+    if (sidebarRef.current) {
+      resizeObserver.observe(sidebarRef.current);
+    }
+
+    return () => {
+      window.removeEventListener("resize", updateSidebarHeight);
+      resizeObserver.disconnect();
+    };
+  }, []);
 
   useEffect(() => {
     if (contentRef.current) {
@@ -37,8 +67,9 @@ function Layout({ sidebarItems, children }: LayoutProps) {
   // ----------------------------------------------------------------------
 
   return (
-    <Grid container sx={{ minHeight: "100vh", width: "100%" }}>
+    <Grid container sx={{ minHeight: "100vh", width: "100%", overflow: "hidden" }}>
       <Grid
+        ref={sidebarRef}
         size={{ xs: 12, md: 3, xl: 2 }}
         sx={{
           p: 2,
@@ -62,8 +93,9 @@ function Layout({ sidebarItems, children }: LayoutProps) {
           overflow: "auto",
           boxSizing: "border-box",
           bgcolor: "background.default",
-          height: { xs: "auto", md: "100vh" },
-          minHeight: { xs: "100vh" },
+          position: "relative",
+          height: { xs: `calc(100vh - ${sidebarHeight}px)`, md: "100vh" },
+          minHeight: { xs: `calc(100vh - ${sidebarHeight}px)`, md: "100vh" },
           ml: { xs: 0, md: sidebarWidthMd, xl: sidebarWidthXl },
           p: { md: 2, xl: 4 },
           pt: { xs: 2 },

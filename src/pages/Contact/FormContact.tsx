@@ -12,12 +12,12 @@ import SendIcon from "@mui/icons-material/Send";
 import useFormContact from "./useFormContact";
 
 /**
- * Formulaires de contact
+ * Formulaire de contact
  */
 function FormContact() {
   const { theme } = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-  const { formData, errors, snackbar, handleChange, handleSubmit, handleCloseSnackbar } = useFormContact();
+  const { errors, isSubmitting, snackbar, register, submit, closeSnackbar } = useFormContact();
 
   // ----------------------------------------------------------------------
 
@@ -26,10 +26,10 @@ function FormContact() {
       <Snackbar
         open={snackbar.open}
         autoHideDuration={6000}
-        onClose={handleCloseSnackbar}
+        onClose={closeSnackbar}
         anchorOrigin={{ vertical: "top", horizontal: "right" }}
       >
-        <Alert onClose={handleCloseSnackbar} severity={snackbar.severity} variant="filled" sx={{ width: "100%" }}>
+        <Alert onClose={closeSnackbar} severity={snackbar.severity} variant="filled" sx={{ width: "100%" }}>
           {snackbar.message}
         </Alert>
       </Snackbar>
@@ -44,59 +44,55 @@ function FormContact() {
             Envoyez-moi un message
           </Typography>
 
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={submit}>
             <Grid container spacing={2}>
               <Grid size={{ xs: 12, sm: 6 }}>
                 <TextField
+                  required
                   fullWidth
                   label="Nom"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  error={errors.name}
-                  helperText={errors.name ? "Veuillez entrer votre nom" : ""}
-                  required
+                  {...register("name")}
+                  error={!!errors.name}
+                  helperText={errors.name?.message || ""}
                 />
               </Grid>
+
               <Grid size={{ xs: 12, sm: 6 }}>
                 <TextField
+                  required
                   fullWidth
                   label="Email"
-                  name="email"
                   type="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  error={errors.email}
-                  helperText={errors.email ? "Veuillez entrer un email valide" : ""}
-                  required
+                  {...register("email")}
+                  error={!!errors.email}
+                  helperText={errors.email?.message || ""}
                 />
               </Grid>
+
               <Grid size={{ xs: 12 }}>
                 <TextField
+                  required
                   fullWidth
                   label="Sujet"
-                  name="subject"
-                  value={formData.subject}
-                  onChange={handleChange}
-                  error={errors.subject}
-                  helperText={errors.subject ? "Veuillez entrer un sujet" : ""}
-                  required
+                  {...register("subject")}
+                  error={!!errors.subject}
+                  helperText={errors.subject?.message || ""}
                 />
               </Grid>
+
               <Grid size={{ xs: 12 }}>
                 <TextField
+                  required
                   fullWidth
-                  label="Message"
-                  name="message"
                   multiline
                   rows={6}
-                  value={formData.message}
-                  onChange={handleChange}
-                  error={errors.message}
-                  helperText={errors.message ? "Veuillez entrer votre message" : ""}
-                  required
+                  label="Message"
+                  {...register("message")}
+                  error={!!errors.message}
+                  helperText={errors.message?.message || ""}
                 />
               </Grid>
+
               <Grid size={{ xs: 12 }}>
                 <motion.div
                   whileHover={{ scale: 1.02 }}
@@ -107,11 +103,12 @@ function FormContact() {
                     type="submit"
                     variant="contained"
                     color="primary"
-                    fullWidth={isMobile}
                     startIcon={<SendIcon />}
                     sx={{ py: 1, px: 3 }}
+                    fullWidth={isMobile}
+                    loading={isSubmitting}
                   >
-                    Envoyer le message
+                    {isSubmitting ? "Envoi en cours..." : "Envoyer le message"}
                   </Button>
                 </motion.div>
               </Grid>
