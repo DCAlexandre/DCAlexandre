@@ -11,43 +11,32 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import EmailIcon from "@mui/icons-material/Email";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import PhoneIcon from "@mui/icons-material/Phone";
-
-const { VITE_MY_EMAIL, VITE_MY_PHONE, VITE_MY_LOCATION, VITE_MY_LINKEDIN, VITE_MY_GITHUB, VITE_MY_FACEBOOK } =
-  import.meta.env;
+import contactConfig from "@/config/contact.config";
 
 /**
  * Carte contenant les informations de contact
  */
 function CardContact() {
-  const contactInfo = {
-    email: VITE_MY_EMAIL,
-    phone: VITE_MY_PHONE,
-    location: VITE_MY_LOCATION,
-    linkedin: VITE_MY_LINKEDIN,
-    facebook: VITE_MY_FACEBOOK,
-    github: VITE_MY_GITHUB,
-  };
-
   const contactMethods = [
     {
       icon: <EmailIcon fontSize="large" />,
       title: "Email",
-      value: contactInfo.email,
-      link: `mailto:${contactInfo.email}`,
+      value: contactConfig.email,
+      link: `mailto:${contactConfig.email}`,
       color: "#e8614f",
     },
     {
       icon: <LocationOnIcon fontSize="large" />,
       title: "Localisation",
-      value: contactInfo.location,
+      value: contactConfig.location,
       link: null,
       color: "#4285F4",
     },
     {
       icon: <PhoneIcon fontSize="large" />,
       title: "Téléphone",
-      value: contactInfo.phone,
-      link: `tel:${contactInfo.phone.replace(/\s/g, "")}`,
+      value: contactConfig.phone,
+      link: `tel:${contactConfig.phone.replace(/\s/g, "")}`,
       color: "#0F9D58",
     },
   ];
@@ -133,7 +122,7 @@ function CardContact() {
         <Box sx={{ display: "flex", gap: 2, mt: 2 }}>
           <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
             <IconButton
-              href={contactInfo.linkedin}
+              href={contactConfig.linkedIn}
               target="_blank"
               sx={{
                 bgcolor: "#078ad120",
@@ -148,7 +137,7 @@ function CardContact() {
           {/* Facebook */}
           <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
             <IconButton
-              href={contactInfo.facebook}
+              href={contactConfig.facebook}
               target="_blank"
               sx={{
                 bgcolor: "#0077B520",
@@ -162,7 +151,7 @@ function CardContact() {
 
           <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
             <IconButton
-              href={contactInfo.github}
+              href={contactConfig.github}
               target="_blank"
               sx={{
                 bgcolor: "#a2a2a220",
