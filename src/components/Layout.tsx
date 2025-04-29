@@ -90,7 +90,9 @@ function Layout({ sidebarItems, children }: LayoutProps) {
         ref={contentRef}
         size={{ xs: 12, md: 9, xl: 10 }}
         sx={{
-          overflow: "auto",
+          // overflow: "auto",
+          overflowY: "auto",
+          overflowX: "hidden",
           boxSizing: "border-box",
           bgcolor: "background.default",
           position: "relative",
