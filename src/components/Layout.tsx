@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Sidebar, { SidebarItem } from "./Sidebar";
+import assetMe from "/assets/me.jpg";
 
 // ----------------------------------------------------------------------
 
@@ -25,7 +26,7 @@ function Layout({ sidebarItems, children }: LayoutProps) {
   const [sidebarHeight, setSidebarHeight] = useState(0);
   const sidebarTitle = VITE_MY_NAME;
   const sidebarSubtitle = VITE_MY_JOB;
-  const sidebarImageUrl = "/assets/me.jpg";
+  const sidebarImageUrl = assetMe;
   const sidebarWidthMd = "25%";
   const sidebarWidthXl = "20%";
 

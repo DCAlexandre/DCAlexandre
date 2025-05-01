@@ -1,5 +1,6 @@
 import { Project } from "@/stores/types/projects.types";
 import technology from "@/stores/data/technology";
+import assetLogoKaredFit from "/assets/projects/logo_kared_fit.png";
 
 // ----------------------------------------------------------------------
 
@@ -10,7 +11,7 @@ const project: Project = {
     "Application de planification de routines sportives. Planifie tes séances, défie tes amis, évoluez ensemble en temps réel et gagnez des récompenses. Transforme chaque entraînement en un défi motivant et ludique !",
   description:
     "Kared Fit est une application mobile innovante qui révolutionne l'expérience d'entraînement.\n\nElle permet aux utilisateurs de planifier leurs séances, de défier leurs amis et d'évoluer ensemble en temps réel.\nChaque entraînement devient un défi motivant et ludique, avec un système de récompenses et d'expérience qui encourage la progression.\n\nL'application est disponible sur iOS et Android, offrant une expérience utilisateur fluide et engageante.",
-  image: "/assets/projects/logo_kared_fit.png",
+  image: assetLogoKaredFit,
   links: {
     website: "https://www.linkedin.com/company/kared-dev",
     ios: "https://apps.apple.com/fr/app/kared-fit/id6739947899?platform=iphone",

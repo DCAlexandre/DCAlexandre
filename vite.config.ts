@@ -9,7 +9,8 @@ import path from "path";
  * @see https://vitejs.dev/config
  */
 export default defineConfig({
-  // Configuration du dossier public
+  // Configuration des chemins
+  base: "/alexandre/",
   publicDir: "public",
 
   // Configuration du serveur
@@ -45,10 +46,7 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
 
       // Importation déclarée uniquement en dev du module @kared/kui
-      "@emotion/react": path.resolve(
-        __dirname,
-        "./node_modules/@emotion/react"
-      ),
+      "@emotion/react": path.resolve(__dirname, "./node_modules/@emotion/react"),
       react: path.resolve(__dirname, "./node_modules/react"),
       "react-dom": path.resolve(__dirname, "./node_modules/react-dom"),
     },
@@ -76,11 +74,7 @@ export default defineConfig({
               return "@mui/x-date-pickers";
             }
 
-            return id
-              .toString()
-              .split("node_modules/")[1]
-              .split("/")[0]
-              .toString();
+            return id.toString().split("node_modules/")[1].split("/")[0].toString();
           } else {
             return "index";
           }

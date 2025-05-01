@@ -1,5 +1,6 @@
 import { Project } from "@/stores/types/projects.types";
 import technology from "@/stores/data/technology";
+import assetLogoOrca from "/assets/projects/logo_orca.png";
 
 // ----------------------------------------------------------------------
 
@@ -9,7 +10,7 @@ const project: Project = {
   subtitle: "Application de synchronisation de base de données et de fichiers.",
   description:
     "Application permettant de synchroniser des bases de données et des fichiers entre différentes plateformes. Elle a été conçu sur mesure pour les applications de Comète.",
-  image: "/assets/projects/logo_orca.png",
+  image: assetLogoOrca,
   features: [
     "Synchronisation de bases de données",
     "Synchronisation de fichiers",

@@ -1,5 +1,6 @@
 import { Project } from "@/stores/types/projects.types";
 import technology from "@/stores/data/technology";
+import assetLogoComete from "/assets/projects/logo_comete.png";
 
 // ----------------------------------------------------------------------
 
@@ -9,8 +10,8 @@ const project: Project = {
   subtitle:
     "Solution complète pour simplifier et optimiser tous les processus administratifs pour les sociétés de sécurité.",
   description:
-    "Comète est une solution complète conçue pour simplifier et optimiser tous les processus administratifs des sociétés de sécurité.\n\nElle offre une gestion intégrée des plannings, des ressources humaines, de la facturation et du reporting. Grâce à son interface intuitive et ses fonctionnalités avancées, Comète permet aux entreprises de sécurité de gagner en efficacité et en productivité.\n\nLa solution est proposée en mode SaaS, garantissant une disponibilité et une sécurité optimales.",
-  image: "/assets/projects/logo_comete.png",
+    "Comète est une solution complète conçue pour simplifier et optimiser tous les processus administratifs des sociétés de sécurité.\n\nElle offre une gestion intégrée des plannings, des ressources humaines, de la facturation et du reporting. Comète permet aux entreprises de sécurité de gagner en efficacité et en productivité.\n\nLa solution est proposée en mode SaaS, garantissant une disponibilité et une sécurité optimales.",
+  image: assetLogoComete,
   links: {
     website: "https://logiciel-comete.fr",
   },

@@ -8,89 +8,22 @@ import TimelineSeparator from "@mui/lab/TimelineSeparator";
 import TimelineConnector from "@mui/lab/TimelineConnector";
 import TimelineContent from "@mui/lab/TimelineContent";
 import TimelineOppositeContent from "@mui/lab/TimelineOppositeContent";
-import TimelineDot, { TimelineDotProps } from "@mui/lab/TimelineDot";
-import WorkIcon from "@mui/icons-material/Work";
+import TimelineDot from "@mui/lab/TimelineDot";
 import Typography from "@mui/material/Typography";
+import useCareers from "@/stores/hooks/useCareers";
 
 /**
- * Carte de LinkedIn
- * @description Affiche un lien vers LinkedIn
+ * Timeline des carrières
+ * @description Affiche les carrières
  */
 function TimelineCareer() {
-  type TimelineItem = {
-    title: string;
-    subtitle: string;
-    date: string;
-    img?: string;
-    icon?: React.ReactNode;
-    color?: TimelineDotProps["color"];
-    variant?: TimelineDotProps["variant"];
-  };
-
-  const timelineItems: TimelineItem[] = [
-    {
-      title: "Entrepreneur indépendant",
-      subtitle: "Kared Dev",
-      date: "2024-12-01",
-      color: "primary",
-      variant: "filled",
-      img: "/assets/career/logo_kared_dev.jpg",
-    },
-    {
-      title: "Lead developer",
-      subtitle: "Logiciel Comète",
-      date: "2020-01-01",
-      color: "primary",
-      variant: "filled",
-      img: "/assets/career/logo_comete.jpg",
-    },
-    {
-      title: "Software Engineer",
-      subtitle: "Aexae",
-      date: "2017-07-01",
-      color: "primary",
-      variant: "outlined",
-      img: "/assets/career/logo_aexae.jpg",
-    },
-    {
-      title: "Développeur en alternance",
-      subtitle: "Aexae",
-      date: "2016-10-09",
-      color: "secondary",
-      variant: "filled",
-      img: "/assets/career/logo_aexae.jpg",
-    },
-    {
-      title: "Développeur en alternance",
-      subtitle: "GuestWhat",
-      date: "2016-05-01",
-      color: "secondary",
-      variant: "filled",
-      icon: <WorkIcon />,
-    },
-    {
-      title: "Formation - BTS SIO",
-      subtitle: "INSTA",
-      date: "2015-09-01",
-      color: "secondary",
-      variant: "outlined",
-      img: "/assets/career/logo_insta.jpg",
-    },
-    {
-      title: "Licence informatique",
-      subtitle: "Université Évry Paris-Saclay",
-      date: "2013-09-01",
-      color: "secondary",
-      variant: "outlined",
-      img: "/assets/career/logo_universite_evry.jpg",
-    },
-  ];
+  const { careers } = useCareers();
 
   // ----------------------------------------------------------------------
 
   return (
     <Timeline position="alternate">
-      {timelineItems.map((item, idx) => {
+      {careers.map((item, idx) => {
         const timelineItemMotionProps = {
           initial: { opacity: 0, y: 30 },
           animate: { opacity: 1, y: 0 },

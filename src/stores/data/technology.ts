@@ -48,6 +48,7 @@ type TechnologyKeys =
   | "react"
   | "capacitor"
   | "electron"
+  | "wordpress"
 
   /**
    * Testing
@@ -116,6 +117,7 @@ const data: Technologies = {
   react: { name: "React", color: "#61DAFB" },
   capacitor: { name: "Capacitor", color: "#119EFF" },
   electron: { name: "Electron", color: "#7eb5be" },
+  wordpress: { name: "WordPress", color: "#00749C" },
 
   /**
    * Testing

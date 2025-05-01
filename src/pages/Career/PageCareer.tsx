@@ -5,8 +5,8 @@ import CardLinkedIn from "@/pages/Career/CardLinkedIn";
 import TimelineCareer from "@/pages/Career/TimelineCareer";
 
 /**
- * Page d'accueil
- * @description Affiche une présentation générale
+ * Page des carrières
+ * @description Affiche les carrières
  */
 function PageCareer() {
   return (

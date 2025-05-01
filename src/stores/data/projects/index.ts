@@ -1,11 +1,12 @@
 import { Project } from "@/stores/types/projects.types";
+import cityWheels from "./city-wheels";
 import cometeLink from "./comete-link";
 import cometeOntime from "./comete-ontime";
 import comete from "./comete";
 import devTools from "./dev-tools";
-import orca from "./orca";
 import karedFit from "./kared-fit";
 import karedUi from "./kared-ui";
+import orca from "./orca";
 import solutionsTerrains from "./solutions-terrains";
 
 // ----------------------------------------------------------------------
@@ -58,6 +59,12 @@ const data: Project[] = [
    * @description Outil de développement pour les développeurs de Comète Link
    */
   devTools,
+
+  /**
+   * City Wheels
+   * @description Site e-commerce d'excursion touristique à Paris en voiture de collection
+   */
+  cityWheels,
 ];
 
 // ----------------------------------------------------------------------

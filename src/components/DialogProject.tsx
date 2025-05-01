@@ -84,12 +84,25 @@ function DialogProject({ project, open, onClose }: DialogProjectProps) {
                 width: { xs: "100%", sm: "70%", md: "100%" },
                 display: "flex",
                 justifySelf: "center",
-                borderRadius: 1,
-                boxShadow: theme.shadows[2],
+                borderRadius: 2,
                 mb: 2,
               }}
             />
 
+            <Typography variant="body1" component="h5" gutterBottom>
+              {project.subtitle}
+            </Typography>
+
+            <Divider sx={{ my: 2 }} />
+
+            <Typography variant="h6" gutterBottom>
+              Description
+            </Typography>
+
+            <Typography variant="body1">{project.description}</Typography>
+          </Grid>
+
+          <Grid size={{ xs: 12, md: 6 }}>
             <Typography gutterBottom variant="h6">
               Technologies utilisées
             </Typography>
@@ -139,14 +152,6 @@ function DialogProject({ project, open, onClose }: DialogProjectProps) {
                 </Box>
               </>
             )}
-          </Grid>
-
-          <Grid size={{ xs: 12, md: 6 }}>
-            <Typography variant="h6" gutterBottom>
-              Description
-            </Typography>
-
-            <Typography variant="body1">{project.description}</Typography>
 
             <Divider sx={{ my: 2 }} />
 
