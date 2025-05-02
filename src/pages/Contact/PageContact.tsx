@@ -16,7 +16,7 @@ function PageContact() {
           Me contacter
         </Typography>
 
-        <Typography variant="h6" color="textSecondary" paragraph align="center" sx={{ mb: 6 }}>
+        <Typography variant="h6" color="textSecondary" align="center" sx={{ mb: 6 }}>
           N'hésitez pas à me contacter pour discuter de vos projets ou opportunités de collaboration
         </Typography>
       </motion.div>

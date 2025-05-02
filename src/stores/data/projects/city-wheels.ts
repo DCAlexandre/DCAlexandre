@@ -9,7 +9,7 @@ const project: Project = {
   title: "City Wheels",
   subtitle: "Site e-commerce d'excursion touristique à Paris en voiture de collection.",
   description:
-    "Visitez Paris en Citroën Traction à ciel ouvert !\nDécouvrez la capitale à travers ses monuments, ses grandes avenues et petites ruelles escarpées.",
+    "Visitez Paris en Citroën Traction à ciel ouvert !\n\nDécouvrez la capitale à travers ses monuments, ses grandes avenues et petites ruelles escarpées.",
   image: assetLogoCityWheels,
   links: {
     website: "https://www.citywheels-paristours.com",

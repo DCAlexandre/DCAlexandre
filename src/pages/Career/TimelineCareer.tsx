@@ -22,7 +22,7 @@ function TimelineCareer() {
   // ----------------------------------------------------------------------
 
   return (
-    <Timeline position="alternate">
+    <Timeline position="alternate" sx={{ p: 0 }}>
       {careers.map((item, idx) => {
         const timelineItemMotionProps = {
           initial: { opacity: 0, y: 30 },
@@ -32,8 +32,9 @@ function TimelineCareer() {
 
         return (
           <TimelineItem key={idx}>
+            {/* Date */}
             <TimelineOppositeContent
-              sx={{ m: "auto 0" }}
+              sx={{ m: "auto 0", px: 0 }}
               align={idx % 2 === 0 ? "left" : "right"}
               variant="body2"
               color="text.secondary"
@@ -43,18 +44,20 @@ function TimelineCareer() {
               </motion.div>
             </TimelineOppositeContent>
 
-            <TimelineSeparator>
-              <TimelineConnector sx={{ bgcolor: `${item.color}.main` }} />
+            {/* Separator */}
+            <TimelineSeparator sx={{ px: 1 }}>
+              <TimelineConnector sx={{ bgcolor: `${item.color}.main`, height: "25px" }} />
 
               <TimelineDot color={item.color} variant={item.variant} sx={{ p: item.img ? 0 : 0.5 }}>
                 {item.img && <Avatar src={item.img} alt={item.title} sx={{ width: 36, height: 36 }} />}
                 {item.icon && item.icon}
               </TimelineDot>
 
-              <TimelineConnector sx={{ bgcolor: `${item.color}.main` }} />
+              <TimelineConnector sx={{ bgcolor: `${item.color}.main`, height: "25px" }} />
             </TimelineSeparator>
 
-            <TimelineContent sx={{ py: "12px", px: 2 }}>
+            {/* Content */}
+            <TimelineContent sx={{ m: "auto 0", py: 1, px: 0 }}>
               <motion.div {...timelineItemMotionProps}>
                 <Typography variant="h6" component="span">
                   {item.title}

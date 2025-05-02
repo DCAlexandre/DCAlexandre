@@ -1,6 +1,5 @@
 import { motion, Transition, Variants } from "framer-motion";
 import Container from "@mui/material/Container";
-import Box from "@mui/material/Box";
 
 // ----------------------------------------------------------------------
 
@@ -63,17 +62,15 @@ function PageContainer({ children, motionVariant = "left-in" }: PageContainerPro
 
   return (
     <Container maxWidth="xl">
-      <Box sx={{ my: 4 }}>
-        <motion.div
-          initial={motionInitial}
-          animate={motionAnimate}
-          exit="out"
-          variants={motionPageVariant}
-          transition={motionPageTransition}
-        >
-          {children}
-        </motion.div>
-      </Box>
+      <motion.div
+        initial={motionInitial}
+        animate={motionAnimate}
+        exit="out"
+        variants={motionPageVariant}
+        transition={motionPageTransition}
+      >
+        {children}
+      </motion.div>
     </Container>
   );
 }

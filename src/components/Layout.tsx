@@ -1,6 +1,5 @@
 import { useEffect, useState, useRef } from "react";
 import { useLocation } from "react-router-dom";
-import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Sidebar, { SidebarItem } from "./Sidebar";
 import assetMe from "/assets/me.jpg";
@@ -68,12 +67,14 @@ function Layout({ sidebarItems, children }: LayoutProps) {
   // ----------------------------------------------------------------------
 
   return (
-    <Grid container sx={{ minHeight: "100vh", width: "100%", overflow: "hidden" }}>
+    <Grid container sx={{ height: "100%", width: "100%", overflow: "hidden" }}>
       <Grid
         ref={sidebarRef}
-        size={{ xs: 12, md: 3, xl: 2 }}
+        size={{ xs: 12, md: 3, lg: 2 }}
         sx={{
-          p: 2,
+          py: 2,
+          pl: 2,
+          pr: { xs: 2, md: 0 },
           top: 0,
           zIndex: 1000,
           overflow: "auto",
@@ -81,7 +82,7 @@ function Layout({ sidebarItems, children }: LayoutProps) {
           bgcolor: "background.default",
           position: { xs: "sticky", md: "fixed" },
           width: { md: sidebarWidthMd, xl: sidebarWidthXl },
-          height: { xs: "auto", md: "100vh" },
+          height: { xs: "auto", md: "100%" },
         }}
       >
         <Sidebar items={sidebarItems} title={sidebarTitle} subtitle={sidebarSubtitle} imageUrl={sidebarImageUrl} />
@@ -89,22 +90,21 @@ function Layout({ sidebarItems, children }: LayoutProps) {
 
       <Grid
         ref={contentRef}
-        size={{ xs: 12, md: 9, xl: 10 }}
+        size={{ xs: 12, md: 9, lg: 10 }}
         sx={{
-          // overflow: "auto",
           overflowY: "auto",
           overflowX: "hidden",
           boxSizing: "border-box",
           bgcolor: "background.default",
           position: "relative",
-          height: { xs: `calc(100vh - ${sidebarHeight}px)`, md: "100vh" },
-          minHeight: { xs: `calc(100vh - ${sidebarHeight}px)`, md: "100vh" },
+          height: { xs: `calc(100% - ${sidebarHeight}px - env(safe-area-inset-bottom))`, md: "100%" },
           ml: { xs: 0, md: sidebarWidthMd, xl: sidebarWidthXl },
-          p: { md: 2, xl: 4 },
-          pt: { xs: 2 },
+          px: { xs: 0, md: 2 },
+          py: { xs: 2, md: 6 },
+          pb: { xs: 4, md: 6 },
         }}
       >
-        <Box sx={{ maxWidth: "1200px", width: "100%", mx: "auto" }}>{children}</Box>
+        {children}
       </Grid>
     </Grid>
   );

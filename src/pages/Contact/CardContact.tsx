@@ -26,20 +26,27 @@ function CardContact() {
       color: "#e8614f",
     },
     {
-      icon: <LocationOnIcon fontSize="large" />,
-      title: "Localisation",
-      value: contactConfig.location,
-      link: null,
-      color: "#4285F4",
-    },
-    {
       icon: <PhoneIcon fontSize="large" />,
       title: "Téléphone",
       value: contactConfig.phone,
       link: `tel:${contactConfig.phone.replace(/\s/g, "")}`,
       color: "#0F9D58",
     },
+    {
+      icon: <LocationOnIcon fontSize="large" />,
+      title: "Localisation",
+      value: contactConfig.location,
+      color: "#4285F4",
+    },
   ];
+
+  // ----------------------------------------------------------------------
+
+  const handleClickContactMethod = (link?: string) => {
+    if (link) {
+      window.open(link, "_blank");
+    }
+  };
 
   // ----------------------------------------------------------------------
 
@@ -69,7 +76,7 @@ function CardContact() {
 
   return (
     <motion.div initial="hidden" animate="visible" variants={containerVariants}>
-      <Paper elevation={3} sx={{ p: 3, height: "100%", minHeight: 500 }}>
+      <Paper elevation={3} sx={{ p: 2.5, height: "100%", minHeight: 500 }}>
         <Typography variant="h5" gutterBottom sx={{ mb: 3, fontWeight: "bold" }}>
           Mes coordonnées
         </Typography>
@@ -79,7 +86,10 @@ function CardContact() {
             <motion.div key={index} variants={itemVariants}>
               <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
                 <IconButton
+                  onClick={() => handleClickContactMethod(method.link)}
                   sx={{
+                    cursor: method.link ? "pointer" : "default",
+                    p: { xs: 1, md: 0.5 },
                     bgcolor: `${method.color}20`,
                     color: method.color,
                     "&:hover": { bgcolor: `${method.color}30` },

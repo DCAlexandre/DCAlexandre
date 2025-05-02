@@ -23,12 +23,7 @@ function FormContact() {
 
   return (
     <>
-      <Snackbar
-        open={snackbar.open}
-        autoHideDuration={6000}
-        onClose={closeSnackbar}
-        anchorOrigin={{ vertical: "top", horizontal: "right" }}
-      >
+      <Snackbar open={snackbar.open} onClose={closeSnackbar} anchorOrigin={{ vertical: "top", horizontal: "right" }}>
         <Alert onClose={closeSnackbar} severity={snackbar.severity} variant="filled" sx={{ width: "100%" }}>
           {snackbar.message}
         </Alert>
@@ -39,7 +34,7 @@ function FormContact() {
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5, delay: 0.2 }}
       >
-        <Paper elevation={3} sx={{ p: 3, minHeight: 500 }}>
+        <Paper elevation={3} sx={{ p: 2.5, minHeight: 500 }}>
           <Typography variant="h5" gutterBottom sx={{ mb: 3, fontWeight: "bold" }}>
             Envoyez-moi un message
           </Typography>

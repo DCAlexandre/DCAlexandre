@@ -15,8 +15,8 @@ html, body {
 }
 
 body {
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
 }
