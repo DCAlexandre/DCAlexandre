@@ -38,11 +38,11 @@ const BoxDescription = () => {
           Bonjour, je suis Alexandre 👋
         </Typography>
 
-        <Typography variant="h5" sx={{ mb: 3, fontWeight: "light" }}>
+        <Typography variant="h5" component="h2" sx={{ mb: 3, fontWeight: "light" }}>
           Passionné par l'informatique, je suis toujours à la recherche de nouveaux défis.
         </Typography>
 
-        <Typography variant="h6" sx={{ fontStyle: "italic" }}>
+        <Typography variant="h6" component="h3" sx={{ fontStyle: "italic" }}>
           Lead Developer avec plus de 10 ans d'expérience
         </Typography>
       </Box>

@@ -39,7 +39,7 @@ function PageProjects() {
           Mes Projets
         </Typography>
 
-        <Typography variant="h6" color="textSecondary" align="center" sx={{ mb: 6 }}>
+        <Typography variant="h6" component="h2" color="textSecondary" align="center" sx={{ mb: 6 }}>
           Découvrez les projets sur lesquels j'ai travaillé en tant que Lead Developer et Entrepreneur indépendant
         </Typography>
       </motion.div>

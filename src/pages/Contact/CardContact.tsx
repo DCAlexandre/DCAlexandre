@@ -77,7 +77,7 @@ function CardContact() {
   return (
     <motion.div initial="hidden" animate="visible" variants={containerVariants}>
       <Paper elevation={3} sx={{ p: 2.5, height: "100%", minHeight: 500 }}>
-        <Typography variant="h5" gutterBottom sx={{ mb: 3, fontWeight: "bold" }}>
+        <Typography variant="h5" component="h3" gutterBottom sx={{ mb: 3, fontWeight: "bold" }}>
           Mes coordonnées
         </Typography>
 
@@ -86,6 +86,7 @@ function CardContact() {
             <motion.div key={index} variants={itemVariants}>
               <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
                 <IconButton
+                  aria-label={`Ouvrir le lien ${method.title}`}
                   onClick={() => handleClickContactMethod(method.link)}
                   sx={{
                     cursor: method.link ? "pointer" : "default",
@@ -99,7 +100,7 @@ function CardContact() {
                 </IconButton>
 
                 <Box>
-                  <Typography variant="subtitle1" fontWeight="bold">
+                  <Typography variant="subtitle1" component="h4" fontWeight="bold">
                     {method.title}
                   </Typography>
 
@@ -125,7 +126,7 @@ function CardContact() {
 
         <Divider sx={{ my: 3 }} />
 
-        <Typography variant="h6" gutterBottom>
+        <Typography variant="h6" component="h5" gutterBottom>
           Retrouvez-moi sur
         </Typography>
 
@@ -133,6 +134,7 @@ function CardContact() {
           <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
             <IconButton
               href={contactConfig.linkedIn}
+              aria-label="Ouvrir le lien LinkedIn"
               target="_blank"
               sx={{
                 bgcolor: "#078ad120",
@@ -148,6 +150,7 @@ function CardContact() {
           <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
             <IconButton
               href={contactConfig.facebook}
+              aria-label="Ouvrir le lien Facebook"
               target="_blank"
               sx={{
                 bgcolor: "#0077B520",
@@ -162,6 +165,7 @@ function CardContact() {
           <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
             <IconButton
               href={contactConfig.github}
+              aria-label="Ouvrir le lien GitHub"
               target="_blank"
               sx={{
                 bgcolor: "#a2a2a220",

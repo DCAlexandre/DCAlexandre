@@ -35,7 +35,7 @@ function FormContact() {
         transition={{ duration: 0.5, delay: 0.2 }}
       >
         <Paper elevation={3} sx={{ p: 2.5, minHeight: 500 }}>
-          <Typography variant="h5" gutterBottom sx={{ mb: 3, fontWeight: "bold" }}>
+          <Typography variant="h5" component="h3" gutterBottom sx={{ mb: 3, fontWeight: "bold" }}>
             Envoyez-moi un message
           </Typography>
 
@@ -96,6 +96,7 @@ function FormContact() {
                 >
                   <Button
                     type="submit"
+                    aria-label="Envoyer le message"
                     variant="contained"
                     color="primary"
                     startIcon={<SendIcon />}

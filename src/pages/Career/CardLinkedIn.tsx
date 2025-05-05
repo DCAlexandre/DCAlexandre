@@ -52,6 +52,7 @@ function CardLinkedIn() {
                 <IconButton
                   href={VITE_MY_LINKEDIN}
                   target="_blank"
+                  aria-label="Ouvrir le lien LinkedIn"
                   sx={{
                     bgcolor: "#078ad120",
                     color: "#078ad1",

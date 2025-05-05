@@ -16,7 +16,7 @@ function PageCareer() {
           Mon parcours
         </Typography>
 
-        <Typography variant="h6" color="textSecondary" align="center" sx={{ mb: 6 }}>
+        <Typography variant="h6" component="h2" color="textSecondary" align="center" sx={{ mb: 6 }}>
           Visualisez mon parcours professionnel et mes expériences
         </Typography>
       </motion.div>

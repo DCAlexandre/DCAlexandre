@@ -137,6 +137,7 @@ function CardProject({ project, index, onOpenDetails }: CardProjectProps) {
                 component={Link}
                 href={value}
                 target="_blank"
+                aria-label={`Ouvrir le lien ${key}`}
                 sx={{
                   p: 0.5,
                   "&:hover": {

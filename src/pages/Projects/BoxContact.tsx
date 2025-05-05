@@ -27,11 +27,11 @@ const BoxContact = () => {
       transition={{ duration: 0.5, delay: 0.6 }}
     >
       <Box sx={styleBox}>
-        <Typography variant="h5" gutterBottom>
+        <Typography variant="h5" component="h3" gutterBottom>
           Vous avez un projet en tête ?
         </Typography>
 
-        <Typography variant="body1">
+        <Typography variant="body1" component="h4">
           Je suis disponible pour réaliser des projets en collaboration. N'hésitez pas à me contacter !
         </Typography>
 

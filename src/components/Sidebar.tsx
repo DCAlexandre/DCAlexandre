@@ -55,14 +55,14 @@ function Sidebar({ title, subtitle, imageUrl, items }: SidebarProps) {
       >
         {imageUrl && (
           <Avatar
+            alt={title}
+            src={imageUrl}
             sx={{
               width: isMobile ? 60 : 100,
               height: isMobile ? 60 : 100,
               mb: isMobile ? 0 : 2,
               mr: isMobile ? 2 : 0,
             }}
-            alt={title}
-            src={imageUrl}
           />
         )}
 
@@ -114,34 +114,35 @@ function Sidebar({ title, subtitle, imageUrl, items }: SidebarProps) {
       ) : (
         <List sx={{ flexGrow: 1 }}>
           {items.map((item, idx) => (
-            <ListItem
-              key={idx}
-              component={NavLink}
-              to={item.path}
-              sx={{
-                color: "text.secondary",
-                "&.active": {
-                  color: "primary.light",
-                  bgcolor: "action.selected",
-                  "& .MuiListItemIcon-root": {
-                    color: "primary.main",
-                  },
-                },
-                "&:hover": {
-                  color: "primary.light",
-                  borderTop: "1px solid",
-                  borderBottom: "1px solid",
-                  borderColor: "primary.light",
-                  "& .MuiListItemIcon-root": {
+            <li key={idx}>
+              <ListItem
+                component={NavLink}
+                to={item.path}
+                sx={{
+                  color: "text.secondary",
+                  "&.active": {
                     color: "primary.light",
+                    bgcolor: "action.selected",
+                    "& .MuiListItemIcon-root": {
+                      color: "primary.main",
+                    },
                   },
-                },
-              }}
-            >
-              <ListItemIcon>{item.icon}</ListItemIcon>
+                  "&:hover": {
+                    color: "primary.light",
+                    borderTop: "1px solid",
+                    borderBottom: "1px solid",
+                    borderColor: "primary.light",
+                    "& .MuiListItemIcon-root": {
+                      color: "primary.light",
+                    },
+                  },
+                }}
+              >
+                <ListItemIcon>{item.icon}</ListItemIcon>
 
-              <ListItemText primary={item.text} />
-            </ListItem>
+                <ListItemText primary={item.text} />
+              </ListItem>
+            </li>
           ))}
         </List>
       )}

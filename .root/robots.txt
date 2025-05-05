@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://kared-dev.fr/sitemap.xml
