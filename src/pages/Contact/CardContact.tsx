@@ -11,6 +11,7 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import EmailIcon from "@mui/icons-material/Email";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import PhoneIcon from "@mui/icons-material/Phone";
+import MaltIcon from "@/components/icons/MaltIcon";
 import contactConfig from "@/config/contact.config";
 
 /**
@@ -37,6 +38,33 @@ function CardContact() {
       title: "Localisation",
       value: contactConfig.location,
       color: "#4285F4",
+    },
+  ];
+
+  const contactLinks = [
+    {
+      icon: <LinkedInIcon fontSize="large" />,
+      title: "LinkedIn",
+      link: contactConfig.linkedIn,
+      color: "#078ad1",
+    },
+    {
+      icon: <MaltIcon fontSize="large" />,
+      title: "Malt",
+      link: contactConfig.malt,
+      color: "#FC5656",
+    },
+    {
+      icon: <GitHubIcon fontSize="large" />,
+      title: "GitHub",
+      link: contactConfig.github,
+      color: "#a2a2a2",
+    },
+    {
+      icon: <FacebookIcon fontSize="large" />,
+      title: "Facebook",
+      link: contactConfig.facebook,
+      color: "#0077B5",
     },
   ];
 
@@ -82,40 +110,40 @@ function CardContact() {
         </Typography>
 
         <Box sx={{ display: "flex", flexDirection: "column", gap: 3 }}>
-          {contactMethods.map((method, index) => (
-            <motion.div key={index} variants={itemVariants}>
+          {contactMethods.map((item, idx) => (
+            <motion.div key={idx} variants={itemVariants}>
               <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
                 <IconButton
-                  aria-label={`Ouvrir le lien ${method.title}`}
-                  onClick={() => handleClickContactMethod(method.link)}
+                  aria-label={`Ouvrir le lien ${item.title}`}
+                  onClick={() => handleClickContactMethod(item.link)}
                   sx={{
-                    cursor: method.link ? "pointer" : "default",
+                    cursor: item.link ? "pointer" : "default",
                     p: { xs: 1, md: 0.5 },
-                    bgcolor: `${method.color}20`,
-                    color: method.color,
-                    "&:hover": { bgcolor: `${method.color}30` },
+                    bgcolor: `${item.color}20`,
+                    color: item.color,
+                    "&:hover": { bgcolor: `${item.color}30` },
                   }}
                 >
-                  {method.icon}
+                  {item.icon}
                 </IconButton>
 
                 <Box>
                   <Typography variant="subtitle1" component="h4" fontWeight="bold">
-                    {method.title}
+                    {item.title}
                   </Typography>
 
-                  {method.link ? (
+                  {item.link ? (
                     <Link
-                      href={method.link}
-                      target={method.link.startsWith("mailto:") || method.link.startsWith("tel:") ? "_self" : "_blank"}
+                      href={item.link}
+                      target={item.link.startsWith("mailto:") || item.link.startsWith("tel:") ? "_self" : "_blank"}
                       underline="hover"
                       color="primary"
                     >
-                      {method.value}
+                      {item.value}
                     </Link>
                   ) : (
                     <Typography variant="body2" color="textSecondary">
-                      {method.value}
+                      {item.value}
                     </Typography>
                   )}
                 </Box>
@@ -131,51 +159,22 @@ function CardContact() {
         </Typography>
 
         <Box sx={{ display: "flex", gap: 2, mt: 2 }}>
-          <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-            <IconButton
-              href={contactConfig.linkedIn}
-              aria-label="Ouvrir le lien LinkedIn"
-              target="_blank"
-              sx={{
-                bgcolor: "#078ad120",
-                color: "#078ad1",
-                "&:hover": { bgcolor: "#078ad130" },
-              }}
-            >
-              <LinkedInIcon fontSize="large" />
-            </IconButton>
-          </motion.div>
-
-          {/* Facebook */}
-          <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-            <IconButton
-              href={contactConfig.facebook}
-              aria-label="Ouvrir le lien Facebook"
-              target="_blank"
-              sx={{
-                bgcolor: "#0077B520",
-                color: "#0077B5",
-                "&:hover": { bgcolor: "#0077B530" },
-              }}
-            >
-              <FacebookIcon fontSize="large" />
-            </IconButton>
-          </motion.div>
-
-          <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-            <IconButton
-              href={contactConfig.github}
-              aria-label="Ouvrir le lien GitHub"
-              target="_blank"
-              sx={{
-                bgcolor: "#a2a2a220",
-                color: "#a2a2a2",
-                "&:hover": { bgcolor: "#a2a2a230" },
-              }}
-            >
-              <GitHubIcon fontSize="large" />
-            </IconButton>
-          </motion.div>
+          {contactLinks.map((item, idx) => (
+            <motion.div key={idx} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
+              <IconButton
+                href={item.link}
+                aria-label={`Ouvrir le lien ${item.title}`}
+                target="_blank"
+                sx={{
+                  bgcolor: `${item.color}20`,
+                  color: item.color,
+                  "&:hover": { bgcolor: `${item.color}30` },
+                }}
+              >
+                {item.icon}
+              </IconButton>
+            </motion.div>
+          ))}
         </Box>
       </Paper>
     </motion.div>
