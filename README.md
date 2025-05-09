@@ -1,6 +1,10 @@
 # Bonjour, je suis Alexandre 👋
 
-Passionné par l’informatique, je suis toujours à la recherche de nouveaux défis.
+⚡ Curieux, passionné de dev, toujours partant pour un nouveau projet.
+Ouvert aux opportunités en freelance (auto-entrepreneur).
+
+[![Portfolio](https://img.shields.io/badge/-🌟_Portfolio-1b7a3e?style=for-the-badge)](https://kared-dev.fr/alexandre)
+[![Malt](https://img.shields.io/badge/-Disponible_sur_Malt-D32F2F?style=for-the-badge&logo=malt&logoColor=white)](https://www.malt.fr/profile/alexandredacosta1)
 
 <br>
 
