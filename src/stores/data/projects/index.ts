@@ -1,5 +1,6 @@
 import { Project } from "@/stores/types/projects.types";
 import cityWheels from "./city-wheels";
+import cometeCloud from "./comete-cloud";
 import cometeLink from "./comete-link";
 import cometeOntime from "./comete-ontime";
 import comete from "./comete";
@@ -47,6 +48,12 @@ const data: Project[] = [
    * @description Application de pointage géolocalisé interfacé avec Comète
    */
   cometeOntime,
+
+  /**
+   * Comète Cloud
+   * @description Application desktop pour le service technique de l'entreprise
+   */
+  cometeCloud,
 
   /**
    * Orca

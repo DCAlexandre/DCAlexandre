@@ -1,6 +1,6 @@
 import { Project } from "@/stores/types/projects.types";
 import technology from "@/stores/data/technology";
-import assetLogoCometeLink from "/assets/projects/logo_comete_link.png";
+import image from "/assets/projects/comete_link.png";
 
 // ----------------------------------------------------------------------
 
@@ -11,7 +11,7 @@ const project: Project = {
     "Extension modulaire pour Comète. Plateforme composée de plusieurs espaces dédiés et de modules complémentaires à composer selon les besoins des clients.",
   description:
     "Comète Link est une extension modulaire pour la solution Comète, offrant une plateforme composée de plusieurs espaces dédiés.\n\nLes clients peuvent composer leur solution selon leurs besoins spécifiques, bénéficiant ainsi d'une flexibilité maximale.",
-  image: assetLogoCometeLink,
+  image,
   links: {
     website: "https://logiciel-comete.fr/comete-link",
     ios: "https://apps.apple.com/fr/app/com%C3%A8te-link/id1608699303",

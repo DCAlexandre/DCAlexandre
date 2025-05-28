@@ -1,6 +1,6 @@
 import { Project } from "@/stores/types/projects.types";
 import technology from "@/stores/data/technology";
-import assetLogoSolutionsTerrains from "/assets/projects/logo_solutions_terrains.png";
+import image from "/assets/projects/solutions_terrains.png";
 
 // ----------------------------------------------------------------------
 
@@ -10,7 +10,7 @@ const project: Project = {
   subtitle: "Plateforme dédiée à la valorisation des terrains auprès de particuliers, aménageurs et promoteurs.",
   description:
     "Solutions Terrains est une application mobile dédiée à la valorisation des assiettes foncières.\nElle met en relation les propriétaires de terrains avec des particuliers, aménageurs et promoteurs intéressés par l'acquisition de terrains.\n\nLa plateforme offre une interface intuitive et des outils puissants pour faciliter la recherche et la valorisation des terrains.\nDisponible sur iOS, Android et Web.",
-  image: assetLogoSolutionsTerrains,
+  image,
   links: {
     website: "https://www.solutions-terrains.com",
     ios: "https://apps.apple.com/fr/app/solutions-terrains/id6742559497?platform=iphone",
