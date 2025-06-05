@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import Grid from "@mui/material/Grid";
 import Sidebar, { SidebarItem } from "./Sidebar";
-import assetMe from "/assets/me.jpg";
+import assetMe from "/assets/me.webp";
 
 // ----------------------------------------------------------------------
 
