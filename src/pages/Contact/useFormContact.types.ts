@@ -10,7 +10,7 @@ const schema = yup
     name: yup
       .string()
       .min(3, "Le nom doit contenir au moins 3 caractères")
-      .max(1000, "Le nom ne doit pas dépasser 50 caractères")
+      .max(50, "Le nom ne doit pas dépasser 50 caractères")
       .required("Le nom est requis"),
     email: yup.string().email("Email invalide").required("L'email est requis"),
     subject: yup

@@ -9,14 +9,14 @@ const config: ThemeOptions = {
   palette: {
     mode: "dark",
     primary: {
-      main: "#66BB6A",
       light: "#98EE99",
+      main: "#66BB6A",
       dark: "#338A3E",
       contrastText: "#000000",
     },
     secondary: {
-      main: "#90CAF9",
       light: "#C3FDFF",
+      main: "#90CAF9",
       dark: "#5D99C6",
       contrastText: "#000000",
     },

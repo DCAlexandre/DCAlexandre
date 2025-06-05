@@ -2,8 +2,9 @@ import { NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
 import Button from "@mui/material/Button";
 import PageContainer from "@/components/PageContainer";
-import BoxDescription from "@/pages/Home/BoxDescription";
 import BoxAbout from "@/pages/Home/BoxAbout";
+import BoxDescription from "@/pages/Home/BoxDescription";
+import BoxRecommendations from "@/pages/Home/BoxRecommendations";
 import { PATH_PAGE } from "@/routes/paths";
 
 /**
@@ -51,6 +52,8 @@ function PageHome() {
           Voir mes projets
         </Button>
       </motion.div>
+
+      <BoxRecommendations />
     </PageContainer>
   );
 }

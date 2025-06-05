@@ -86,6 +86,8 @@ function Sidebar({ title, subtitle, imageUrl, items }: SidebarProps) {
               key={idx}
               component={NavLink}
               to={item.path}
+              aria-label={item.text}
+              title={item.text}
               sx={{
                 color: "text.secondary",
                 p: 1,
@@ -118,6 +120,8 @@ function Sidebar({ title, subtitle, imageUrl, items }: SidebarProps) {
               <ListItem
                 component={NavLink}
                 to={item.path}
+                aria-label={item.text}
+                title={item.text}
                 sx={{
                   color: "text.secondary",
                   "&.active": {
