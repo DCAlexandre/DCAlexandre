@@ -6,6 +6,7 @@ const {
   VITE_MY_GITHUB,
   VITE_MY_FACEBOOK,
   VITE_MY_MALT,
+  VITE_MY_PAYPAL,
 } = import.meta.env;
 
 // ----------------------------------------------------------------------
@@ -18,6 +19,7 @@ const config = {
   facebook: VITE_MY_FACEBOOK,
   github: VITE_MY_GITHUB,
   malt: VITE_MY_MALT,
+  paypal: VITE_MY_PAYPAL,
 };
 
 // ----------------------------------------------------------------------

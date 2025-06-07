@@ -6,6 +6,7 @@ import TimelineIcon from "@mui/icons-material/Timeline";
 import EmailIcon from "@mui/icons-material/Email";
 import ThemeProvider from "@kared/kui/ThemeProvider";
 import Layout from "@/components/Layout";
+import ChatWidget from "@/components/ChatWidget";
 import themeConfig from "@/config/theme.config";
 import Routes from "@/routes";
 import { PATH_PAGE } from "@/routes/paths";
@@ -30,6 +31,8 @@ function App() {
       <Router>
         <Layout sidebarItems={sidebarItems}>
           <Routes />
+
+          <ChatWidget />
         </Layout>
       </Router>
     </ThemeProvider>

@@ -12,6 +12,7 @@ import EmailIcon from "@mui/icons-material/Email";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import PhoneIcon from "@mui/icons-material/Phone";
 import MaltIcon from "@/components/icons/MaltIcon";
+import PayPalIcon from "@/components/icons/PayPalIcon";
 import contactConfig from "@/config/contact.config";
 
 /**
@@ -64,6 +65,12 @@ function CardContact() {
       icon: <FacebookIcon fontSize="large" />,
       title: "Facebook",
       link: contactConfig.facebook,
+      color: "#0077B5",
+    },
+    {
+      icon: <PayPalIcon fontSize="large" />,
+      title: "PayPal",
+      link: contactConfig.paypal,
       color: "#0077B5",
     },
   ];
@@ -158,7 +165,7 @@ function CardContact() {
           Retrouvez-moi sur
         </Typography>
 
-        <Box sx={{ display: "flex", gap: 2, mt: 2 }}>
+        <Box sx={{ display: "flex", gap: 2, mt: 2, flexWrap: "wrap" }}>
           {contactLinks.map((item, idx) => (
             <motion.div key={idx} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
               <IconButton
