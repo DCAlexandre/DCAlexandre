@@ -13,8 +13,9 @@ import { styled, useTheme } from "@mui/material/styles";
 
 // ----------------------------------------------------------------------
 
-const { VITE_API_ASKALEX, VITE_PAYPAL_DONATION } = import.meta.env;
-const MAX_QUESTIONS = 3;
+const { DEV, VITE_API_ASKALEX, VITE_PAYPAL_DONATION } = import.meta.env;
+const SELF_HOSTED = DEV;
+const MAX_QUESTIONS = SELF_HOSTED ? Infinity : 3;
 const STORAGE_KEY = "askalex_questions";
 
 const ChatBubble = styled(IconButton)(({ theme }) => ({
@@ -121,6 +122,8 @@ export default function ChatWidget() {
   const [questionsCount, setQuestionsCount] = useState(0);
   const refBoxMessages = useRef<HTMLDivElement>(null);
 
+  // ----------------------------------------------------------------------
+
   // Initialisation du compteur depuis le localStorage
   useEffect(() => {
     const currentMonth = new Date().getMonth();
@@ -150,7 +153,7 @@ export default function ChatWidget() {
       localStorage.setItem(STORAGE_KEY, JSON.stringify({ month: currentMonth, count: questionsCount }));
     }
 
-    if (questionsCount >= MAX_QUESTIONS) {
+    if (!loading && questionsCount >= MAX_QUESTIONS) {
       setMessages((m) => [
         ...m,
         {
@@ -159,9 +162,7 @@ export default function ChatWidget() {
         },
       ]);
     }
-  }, [questionsCount]);
-
-  // ----------------------------------------------------------------------
+  }, [questionsCount, loading]);
 
   useEffect(() => {
     if (refBoxMessages.current) {
@@ -186,7 +187,7 @@ export default function ChatWidget() {
       const res = await fetch(VITE_API_ASKALEX, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ question }),
+        body: JSON.stringify({ question, selfhosted: SELF_HOSTED }),
       });
 
       if (!res.ok) {
@@ -234,9 +235,11 @@ export default function ChatWidget() {
                 AskAlex AI
               </Typography>
 
-              <Typography variant="caption" sx={{ opacity: 0.8 }}>
-                {questionsCount}/{MAX_QUESTIONS} questions restantes
-              </Typography>
+              {!SELF_HOSTED && (
+                <Typography variant="caption" sx={{ opacity: 0.8 }}>
+                  {questionsCount}/{MAX_QUESTIONS} questions restantes
+                </Typography>
+              )}
             </Box>
 
             <IconButton
@@ -275,7 +278,7 @@ export default function ChatWidget() {
               </Typography>
             )}
 
-            {questionsCount >= MAX_QUESTIONS && (
+            {!loading && questionsCount >= MAX_QUESTIONS && (
               <DonationMessage onClick={handleDonationClick}>
                 <LocalCafeIcon color="primary" />
 
