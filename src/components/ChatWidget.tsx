@@ -62,7 +62,7 @@ const ChatContainer = styled(Paper)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   boxShadow: theme.shadows[4],
-  borderRadius: theme.shape.borderRadius,
+  borderRadius: 8,
   [theme.breakpoints.down("md")]: {
     right: 80,
   },
@@ -223,6 +223,7 @@ export default function ChatWidget() {
           <Box
             sx={{
               p: 2,
+              borderRadius: { sm: "8px 8px 0 0" },
               bgcolor: "primary.main",
               color: "primary.contrastText",
               display: "flex",
