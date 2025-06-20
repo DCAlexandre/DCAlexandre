@@ -181,7 +181,6 @@ export default function ChatWidget() {
     setMessages((m) => [...m, userMsg]);
     setLoading(true);
     setInput("");
-    setQuestionsCount((prev) => prev + 1);
 
     try {
       const res = await fetch(VITE_API_ASKALEX, {
@@ -196,6 +195,7 @@ export default function ChatWidget() {
 
       const data = await res.json();
       setMessages((m) => [...m, { from: "bot", text: data.answer }]);
+      setQuestionsCount((prev) => prev + 1);
     } catch (e) {
       console.error("Erreur lors de la communication avec le serveur:", e);
       setMessages((m) => [...m, { from: "bot", text: "Erreur côté serveur 😕" }]);
