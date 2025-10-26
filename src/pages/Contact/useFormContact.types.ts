@@ -5,26 +5,24 @@ import * as yup from "yup";
 /**
  * Schéma de validation du formulaire
  */
-const schema = yup
-  .object({
-    name: yup
-      .string()
-      .min(3, "Le nom doit contenir au moins 3 caractères")
-      .max(50, "Le nom ne doit pas dépasser 50 caractères")
-      .required("Le nom est requis"),
-    email: yup.string().email("Email invalide").required("L'email est requis"),
-    subject: yup
-      .string()
-      .min(3, "Le sujet doit contenir au moins 3 caractères")
-      .max(50, "Le sujet ne doit pas dépasser 50 caractères")
-      .required("Le sujet est requis"),
-    message: yup
-      .string()
-      .min(10, "Le message doit contenir au moins 10 caractères")
-      .max(1000, "Le message ne doit pas dépasser 1000 caractères")
-      .required("Le message est requis"),
-  })
-  .required();
+const schema = yup.object({
+  name: yup
+    .string()
+    .min(3, "Le nom doit contenir au moins 3 caractères")
+    .max(50, "Le nom ne doit pas dépasser 50 caractères")
+    .required("Le nom est requis"),
+  email: yup.string().email("Email invalide").required("L'email est requis"),
+  subject: yup
+    .string()
+    .min(3, "Le sujet doit contenir au moins 3 caractères")
+    .max(50, "Le sujet ne doit pas dépasser 50 caractères")
+    .required("Le sujet est requis"),
+  message: yup
+    .string()
+    .min(10, "Le message doit contenir au moins 10 caractères")
+    .max(1000, "Le message ne doit pas dépasser 1000 caractères")
+    .required("Le message est requis"),
+});
 
 export default schema;
 
