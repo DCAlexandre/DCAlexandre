@@ -1,5 +1,6 @@
-import { AlertColor } from "@mui/material/Alert";
+import { FormEvent } from "react";
 import { FieldErrors, UseFormRegister } from "react-hook-form";
+import { AlertColor } from "@mui/material/Alert";
 import * as yup from "yup";
 
 /**
@@ -48,7 +49,7 @@ export type UseFormContact = {
   errors: FieldErrors<FormData>;
   snackbar: Snackbar;
   register: UseFormRegister<FormData>;
-  submit: (ev: React.FormEvent<HTMLFormElement>) => void;
+  submit: (ev: FormEvent<HTMLFormElement>) => void;
   closeSnackbar: () => void;
 };
 
