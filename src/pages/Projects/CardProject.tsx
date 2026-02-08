@@ -40,7 +40,7 @@ function CardProject({ project, index, onOpenDetails }: CardProjectProps) {
       transition: {
         delay: i * 0.1,
         duration: 0.5,
-        type: "spring",
+        type: "spring" as const,
         stiffness: 100,
       },
     }),

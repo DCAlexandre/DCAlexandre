@@ -45,7 +45,7 @@ const BoxSkillCategory = ({ title, skills, inTraining = false, delay = 0 }: BoxS
       y: 0,
       opacity: 1,
       transition: {
-        type: "spring",
+        type: "spring" as const,
         stiffness: 100,
       },
     },

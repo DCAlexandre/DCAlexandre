@@ -60,24 +60,24 @@ export default defineConfig({
     rollupOptions: {
       plugins: [visualizer({ open: false })],
       output: {
-        manualChunks: (id) => {
-          if (id.includes("node_modules")) {
-            if (id.includes("@mui/icons-material")) {
-              return "@mui/icons-material";
-            } else if (id.includes("@mui/lab")) {
-              return "@mui/lab";
-            } else if (id.includes("@mui/material")) {
-              return "@mui/material";
-            } else if (id.includes("@mui/x-data-grid")) {
-              return "@mui/x-data-grid";
-            } else if (id.includes("@mui/x-date-pickers")) {
-              return "@mui/x-date-pickers";
-            }
-
-            return id.toString().split("node_modules/")[1].split("/")[0].toString();
-          } else {
-            return "index";
+        manualChunks(id) {
+          // Code applicatif
+          if (!id.includes("node_modules")) {
+            return undefined;
           }
+
+          // Dépendances
+          const match = id.match(/node_modules\/(?:\.pnpm\/)?((?:@[^/]+\/)?[^/]+)/);
+          const pkgName = match ? match[1] : null;
+
+          if (pkgName) {
+            // Sanitize : @mui/material → mui-material
+            return pkgName
+              .replace(/^@/, "") // Supprime le @ initial
+              .replace(/\//g, "-"); // Remplace / par -
+          }
+
+          return "vendor";
         },
       },
     },

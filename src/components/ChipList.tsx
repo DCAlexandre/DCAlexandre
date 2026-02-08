@@ -1,4 +1,4 @@
-import deepmerge from "@mui/utils/deepmerge";
+import { deepmerge } from "@mui/utils";
 import Box, { BoxProps } from "@mui/material/Box";
 import Chip, { ChipProps } from "@mui/material/Chip";
 
