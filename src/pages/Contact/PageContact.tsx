@@ -2,6 +2,8 @@ import { motion } from "framer-motion";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import PageContainer from "@/components/PageContainer";
+import Seo from "@/components/Seo";
+import { SEO_PAGES } from "@/config/seo.config";
 import CardContact from "@/pages/Contact/CardContact";
 import FormContact from "@/pages/Contact/FormContact";
 
@@ -11,6 +13,8 @@ import FormContact from "@/pages/Contact/FormContact";
 function PageContact() {
   return (
     <PageContainer motionVariant="bottom-in">
+      <Seo {...SEO_PAGES.contact} />
+
       <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
         <Typography variant="h3" component="h1" gutterBottom align="center">
           Me contacter

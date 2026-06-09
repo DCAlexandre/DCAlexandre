@@ -1,4 +1,5 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
+import { motion } from "framer-motion";
 import { useTheme } from "@kared/kui/ThemeProvider";
 import Box from "@mui/material/Box";
 import List from "@mui/material/List";
@@ -31,7 +32,12 @@ type SidebarProps = {
  */
 function Sidebar({ title, subtitle, imageUrl, items }: SidebarProps) {
   const { theme } = useTheme();
+  const location = useLocation();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  const isAvailable = import.meta.env.VITE_MY_AVAILABLE === "true";
+
+  // Détermine si un item correspond à la route courante
+  const isItemActive = (path: string) => location.pathname === path;
 
   // ----------------------------------------------------------------------
 
@@ -46,6 +52,7 @@ function Sidebar({ title, subtitle, imageUrl, items }: SidebarProps) {
       }}
     >
       <Box
+        component="header"
         sx={{
           display: "flex",
           flexDirection: isMobile ? "row" : "column",
@@ -74,82 +81,148 @@ function Sidebar({ title, subtitle, imageUrl, items }: SidebarProps) {
           <Typography variant="body2" component="h2">
             {subtitle}
           </Typography>
+
+          {isAvailable && (
+            <Box sx={{ display: "flex", alignItems: "center", gap: 0.75, mt: 0.75 }}>
+              <Box
+                sx={{
+                  width: 8,
+                  height: 8,
+                  borderRadius: "50%",
+                  bgcolor: "primary.main",
+                  boxShadow: "0 0 0 0 rgba(62,207,142,0.6)",
+                  animation: "availablePulse 2s infinite",
+                  "@keyframes availablePulse": {
+                    "0%": { boxShadow: "0 0 0 0 rgba(62,207,142,0.5)" },
+                    "70%": { boxShadow: "0 0 0 6px rgba(62,207,142,0)" },
+                    "100%": { boxShadow: "0 0 0 0 rgba(62,207,142,0)" },
+                  },
+                }}
+              />
+
+              <Typography variant="caption" sx={{ color: "primary.light", fontWeight: 600 }}>
+                Disponible en freelance
+              </Typography>
+            </Box>
+          )}
         </Box>
       </Box>
 
       <Divider />
 
-      {isMobile ? (
-        <Stack direction="row" spacing={1} justifyContent="center" sx={{ p: 1 }}>
-          {items.map((item, idx) => (
-            <Box
-              key={idx}
-              component={NavLink}
-              to={item.path}
-              aria-label={item.text}
-              title={item.text}
-              sx={{
-                color: "text.secondary",
-                p: 1,
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                "&.active": {
-                  color: "primary.light",
-                  bgcolor: "action.selected",
-                  "& .MuiSvgIcon-root": {
-                    color: "primary.main",
-                  },
-                },
-                "&:hover": {
-                  color: "primary.light",
-                  "& .MuiSvgIcon-root": {
-                    color: "primary.light",
-                  },
-                },
-              }}
-            >
-              {item.icon}
-            </Box>
-          ))}
-        </Stack>
-      ) : (
-        <List sx={{ flexGrow: 1 }}>
-          {items.map((item, idx) => (
-            <li key={idx}>
-              <ListItem
+      <Box
+        component="nav"
+        aria-label="Navigation principale"
+        sx={{ display: "flex", flexDirection: "column", flexGrow: isMobile ? 0 : 1 }}
+      >
+        {isMobile ? (
+          <Stack direction="row" spacing={1} justifyContent="center" sx={{ p: 1 }}>
+            {items.map((item, idx) => (
+              <Box
+                key={idx}
                 component={NavLink}
                 to={item.path}
                 aria-label={item.text}
                 title={item.text}
                 sx={{
+                  position: "relative",
                   color: "text.secondary",
+                  borderRadius: 2,
+                  p: 1,
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  transition: "color 0.2s ease",
                   "&.active": {
                     color: "primary.light",
-                    bgcolor: "action.selected",
-                    "& .MuiListItemIcon-root": {
+                    "& .MuiSvgIcon-root": {
                       color: "primary.main",
                     },
                   },
                   "&:hover": {
                     color: "primary.light",
-                    borderTop: "1px solid",
-                    borderBottom: "1px solid",
-                    borderColor: "primary.light",
-                    "& .MuiListItemIcon-root": {
+                    "& .MuiSvgIcon-root": {
                       color: "primary.light",
                     },
                   },
                 }}
               >
-                <ListItemIcon>{item.icon}</ListItemIcon>
+                {isItemActive(item.path) && (
+                  <Box
+                    component={motion.span}
+                    layoutId="sidebar-active-mobile"
+                    sx={{
+                      position: "absolute",
+                      left: 8,
+                      right: 8,
+                      bottom: 0,
+                      height: 3,
+                      borderRadius: 2,
+                      bgcolor: "primary.main",
+                    }}
+                  />
+                )}
+                {item.icon}
+              </Box>
+            ))}
+          </Stack>
+        ) : (
+          <List sx={{ flexGrow: 1 }}>
+            {items.map((item, idx) => (
+              <li key={idx}>
+                <ListItem
+                  component={NavLink}
+                  to={item.path}
+                  aria-label={item.text}
+                  title={item.text}
+                  sx={{
+                    position: "relative",
+                    color: "text.secondary",
+                    borderRadius: 2,
+                    my: 0.5,
+                    transition: "color 0.2s ease, background-color 0.2s ease, padding-left 0.2s ease",
+                    "&.active": {
+                      color: "primary.light",
+                      bgcolor: "action.selected",
+                      "& .MuiListItemIcon-root": {
+                        color: "primary.main",
+                      },
+                    },
+                    "&:hover": {
+                      color: "primary.light",
+                      bgcolor: "rgba(255,255,255,0.04)",
+                      pl: 3,
+                      "& .MuiListItemIcon-root": {
+                        color: "primary.light",
+                      },
+                    },
+                  }}
+                >
+                  {isItemActive(item.path) && (
+                    <Box
+                      component={motion.span}
+                      layoutId="sidebar-active"
+                      sx={{
+                        position: "absolute",
+                        left: 0,
+                        top: 8,
+                        bottom: 8,
+                        width: 4,
+                        borderRadius: 4,
+                        bgcolor: "primary.main",
+                      }}
+                    />
+                  )}
 
-                <ListItemText primary={item.text} />
-              </ListItem>
-            </li>
-          ))}
-        </List>
-      )}
+                  <ListItemIcon>{item.icon}</ListItemIcon>
+
+                  <ListItemText primary={item.text} />
+                </ListItem>
+              </li>
+            ))}
+          </List>
+        )}
+      </Box>
     </Box>
   );
 }

@@ -100,6 +100,32 @@ function DialogProject({ project, open, onClose }: DialogProjectProps) {
             </Typography>
 
             <Typography variant="body1">{project.description}</Typography>
+
+            {project.role && (
+              <>
+                <Divider sx={{ my: 2 }} />
+
+                <Typography variant="h6" gutterBottom>
+                  Mon rôle
+                </Typography>
+
+                <Typography variant="body1">{project.role}</Typography>
+              </>
+            )}
+
+            {project.impact && (
+              <>
+                <Divider sx={{ my: 2 }} />
+
+                <Typography variant="h6" gutterBottom>
+                  Impact
+                </Typography>
+
+                <Typography variant="body1" sx={{ color: "primary.light" }}>
+                  {project.impact}
+                </Typography>
+              </>
+            )}
           </Grid>
 
           <Grid size={{ xs: 12, md: 6 }}>

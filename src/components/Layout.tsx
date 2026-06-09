@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { useLocation } from "react-router-dom";
+import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Sidebar, { SidebarItem } from "./Sidebar";
 import assetMe from "/assets/me.webp";
@@ -68,8 +69,33 @@ function Layout({ sidebarItems, children }: LayoutProps) {
 
   return (
     <Grid container sx={{ height: "100%", width: "100%", overflow: "hidden" }}>
+      {/* Lien d'évitement (accessibilité clavier) */}
+      <Box
+        component="a"
+        href="#main-content"
+        sx={{
+          position: "absolute",
+          left: 8,
+          top: -48,
+          zIndex: 2000,
+          px: 2,
+          py: 1,
+          borderRadius: 2,
+          bgcolor: "primary.main",
+          color: "primary.contrastText",
+          fontWeight: 700,
+          textDecoration: "none",
+          transition: "top 0.2s ease",
+          "&:focus": { top: 8 },
+        }}
+      >
+        Aller au contenu
+      </Box>
+
       <Grid
         ref={sidebarRef}
+        component="aside"
+        aria-label="Profil et navigation"
         size={{ xs: 12, md: 3, lg: 2 }}
         sx={{
           py: 2,
@@ -90,8 +116,12 @@ function Layout({ sidebarItems, children }: LayoutProps) {
 
       <Grid
         ref={contentRef}
+        component="main"
+        id="main-content"
+        tabIndex={-1}
         size={{ xs: 12, md: 9, lg: 10 }}
         sx={{
+          outline: "none",
           overflowY: "auto",
           overflowX: "hidden",
           boxSizing: "border-box",

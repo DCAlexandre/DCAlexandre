@@ -5,6 +5,7 @@ import Contact from "@/pages/Contact/PageContact";
 import Home from "@/pages/Home/PageHome";
 import Projects from "@/pages/Projects/PageProjects";
 import Skills from "@/pages/Skills/PageSkills";
+import NotFound from "@/pages/NotFound/PageNotFound";
 import { PATH_PAGE } from "./paths";
 
 /**
@@ -24,6 +25,7 @@ function Routes() {
         <Route path={PATH_PAGE.career} element={<Career />} />
         <Route path={PATH_PAGE.skills} element={<Skills />} />
         <Route path={PATH_PAGE.contact} element={<Contact />} />
+        <Route path="*" element={<NotFound />} />
       </RouterRoutes>
     </AnimatePresence>
   );

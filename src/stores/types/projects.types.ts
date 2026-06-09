@@ -70,4 +70,16 @@ export type Project = {
    * Technologies utilisées dans le projet.
    */
   technologies: ProjectTechnology[];
+  /**
+   * Mon rôle sur le projet (optionnel).
+   */
+  role?: string;
+  /**
+   * Impact / résultat concret du projet (optionnel).
+   */
+  impact?: string;
+  /**
+   * Projet mis en avant (« À la une »).
+   */
+  featured?: boolean;
 };

@@ -1,18 +1,53 @@
 import { Project } from "@/stores/types/projects.types";
+import arcturia from "./arcturia";
+import askalexAi from "./askalex-ai";
 import cityWheels from "./city-wheels";
 import cometeCloud from "./comete-cloud";
 import cometeLink from "./comete-link";
 import cometeOntime from "./comete-ontime";
 import comete from "./comete";
 import devTools from "./dev-tools";
+import dokart from "./dokart";
 import karedFit from "./kared-fit";
+import karedFlip from "./kared-flip";
 import karedUi from "./kared-ui";
+import miapilot from "./miapilot";
 import orca from "./orca";
 import solutionsTerrains from "./solutions-terrains";
 
 // ----------------------------------------------------------------------
 
 const data: Project[] = [
+  /**
+   * Dokart
+   * @description SaaS de gestion pour studios de tatouage
+   */
+  dokart,
+
+  /**
+   * Kared Flip
+   * @description Jeu de cartes multijoueur en temps réel
+   */
+  karedFlip,
+
+  /**
+   * AskAlex AI
+   * @description Backend RAG du chatbot du portfolio
+   */
+  askalexAi,
+
+  /**
+   * MiaPilot
+   * @description POC d'identification d'objets par IA visuelle
+   */
+  miapilot,
+
+  /**
+   * Arcturia
+   * @description Site vitrine d'une entreprise de services informatiques
+   */
+  arcturia,
+
   /**
    * Kared Fit
    * @description Application de planification de routines sportives

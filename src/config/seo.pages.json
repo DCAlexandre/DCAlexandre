@@ -1,0 +1,33 @@
+{
+  "home": {
+    "path": "",
+    "title": "Tech Lead & Développeur Fullstack Freelance",
+    "description": "Alexandre Da Costa, Tech Lead freelance. Je conçois des applications utiles et durables — React, Node.js, NestJS, PostgreSQL, Docker. Découvrez mes projets et mon parcours."
+  },
+  "projects": {
+    "path": "/projects",
+    "title": "Mes projets",
+    "description": "Découvrez les projets web et mobile sur lesquels Alexandre Da Costa a travaillé en tant que Tech Lead et développeur fullstack freelance : React, Node.js, Capacitor, Firebase, AWS."
+  },
+  "career": {
+    "path": "/career",
+    "title": "Mon parcours",
+    "description": "Le parcours professionnel d'Alexandre Da Costa : expériences, entreprises et évolution en tant que Tech Lead et développeur fullstack."
+  },
+  "skills": {
+    "path": "/skills",
+    "title": "Mes compétences",
+    "description": "Plus de 10 ans d'expérience en développement web et mobile : frontend, backend, gestion des données, DevOps, tests et qualité. Les compétences techniques d'Alexandre Da Costa."
+  },
+  "contact": {
+    "path": "/contact",
+    "title": "Me contacter",
+    "description": "Contactez Alexandre Da Costa, Tech Lead & développeur fullstack freelance, pour discuter de vos projets ou opportunités de collaboration."
+  },
+  "notFound": {
+    "path": "/404",
+    "title": "Page introuvable",
+    "description": "Cette page n'existe pas ou a été déplacée.",
+    "noIndex": true
+  }
+}

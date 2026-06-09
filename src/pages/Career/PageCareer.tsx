@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import Typography from "@mui/material/Typography";
 import PageContainer from "@/components/PageContainer";
+import Seo from "@/components/Seo";
+import { SEO_PAGES } from "@/config/seo.config";
 import CardLinkedIn from "@/pages/Career/CardLinkedIn";
 import TimelineCareer from "@/pages/Career/TimelineCareer";
 
@@ -11,6 +13,8 @@ import TimelineCareer from "@/pages/Career/TimelineCareer";
 function PageCareer() {
   return (
     <PageContainer motionVariant="bottom-in">
+      <Seo {...SEO_PAGES.career} />
+
       <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}>
         <Typography variant="h3" component="h1" gutterBottom align="center">
           Mon parcours

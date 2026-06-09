@@ -36,6 +36,19 @@ const BoxRecommendations = () => {
       <Divider sx={{ mb: 4 }} />
 
       <HorizontalScrollArrows>
+        {/* Recommendations */}
+        <CardRecommendation author="Yann LECOCQ" role="Directeur chez Docteur Jekyll Office">
+          Je recommande vivement ce développeur avec qui j'ai eu la chance de collaborer sur plusieurs projets. Son
+          travail est toujours d'une grande précision, avec un réel souci du détail et de la qualité. Au-delà de ses
+          compétences techniques, il se distingue par sa capacité à expliquer clairement chaque tâche et chaque
+          fonction, ce qui rend la collaboration à la fois efficace et très enrichissante. Il est également force de
+          proposition, apportant régulièrement des idées d'optimisation pertinentes et un véritable accompagnement tout
+          au long des projets. La qualité de son travail et son expertise m'ont d'ailleurs conduit à m'associer avec lui
+          sur plusieurs réalisations. En parallèle, il propose des cours de codage très pédagogiques, adaptés et
+          accessibles. C'est une personne honnête, disponible et pleinement investie. Je le recommande sans hésitation à
+          toute personne souhaitant développer ses projets ou monter en compétences en programmation.
+        </CardRecommendation>
+
         <CardRecommendation author="Steeve KORN" role="Directeur chez SOLUTIONS TERRAINS">
           Nous avons le plaisir de travailler avec Alexandre depuis la création de notre application jusqu'à aujourd'hui
           pour la maintenance. Alexandre est très réactif, à l'écoute de nos besoins et proactif face aux problématiques

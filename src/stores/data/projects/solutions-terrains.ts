@@ -29,6 +29,9 @@ const project: Project = {
     technology.android,
     technology.web,
   ],
+  role: "Développement de l'application mobile (React + Capacitor) : cartographie, filtres avancés et mise en relation.",
+  impact: "Une application publiée sur iOS, Android et web qui facilite la prospection et la valorisation foncière.",
+  featured: true,
 };
 
 // ----------------------------------------------------------------------

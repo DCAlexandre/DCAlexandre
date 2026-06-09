@@ -18,6 +18,9 @@ const project: Project = {
     "Lancement de commandes personnalisées",
   ],
   technologies: [technology.electron, technology.nodeJs, technology.react],
+  role: "Conception et développement de l'outil interne destiné aux développeurs de l'écosystème Comète.",
+  impact:
+    "Productivité et onboarding des nouveaux développeurs nettement améliorés (builds et publication stores en un clic).",
 };
 
 // ----------------------------------------------------------------------

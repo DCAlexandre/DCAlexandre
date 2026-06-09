@@ -3,8 +3,10 @@ import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
+import Button from "@mui/material/Button";
 import Link from "@mui/material/Link";
 import Divider from "@mui/material/Divider";
+import DownloadIcon from "@mui/icons-material/Download";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import GitHubIcon from "@mui/icons-material/GitHub";
@@ -12,8 +14,13 @@ import EmailIcon from "@mui/icons-material/Email";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import PhoneIcon from "@mui/icons-material/Phone";
 import MaltIcon from "@/components/icons/MaltIcon";
-import PayPalIcon from "@/components/icons/PayPalIcon";
+// import PayPalIcon from "@/components/icons/PayPalIcon";
 import contactConfig from "@/config/contact.config";
+import { trackEvent } from "@/utils/analytics";
+
+// ----------------------------------------------------------------------
+
+const CV_URL = `${import.meta.env.BASE_URL}assets/cv.pdf`;
 
 /**
  * Carte contenant les informations de contact
@@ -67,12 +74,12 @@ function CardContact() {
       link: contactConfig.facebook,
       color: "#0077B5",
     },
-    {
-      icon: <PayPalIcon fontSize="large" />,
-      title: "PayPal",
-      link: contactConfig.paypal,
-      color: "#0077B5",
-    },
+    // {
+    //   icon: <PayPalIcon fontSize="large" />,
+    //   title: "PayPal",
+    //   link: contactConfig.paypal,
+    //   color: "#0077B5",
+    // },
   ];
 
   // ----------------------------------------------------------------------
@@ -160,6 +167,21 @@ function CardContact() {
         </Box>
 
         <Divider sx={{ my: 3 }} />
+
+        <Button
+          fullWidth
+          variant="outlined"
+          color="primary"
+          size="large"
+          href={CV_URL}
+          target="_blank"
+          rel="noopener"
+          startIcon={<DownloadIcon />}
+          onClick={() => trackEvent("cv_download", { location: "contact" })}
+          sx={{ mb: 3 }}
+        >
+          Télécharger mon CV
+        </Button>
 
         <Typography variant="h6" component="h5" gutterBottom>
           Retrouvez-moi sur

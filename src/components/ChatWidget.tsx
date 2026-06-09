@@ -10,6 +10,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import LocalCafeIcon from "@mui/icons-material/LocalCafe";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { styled, useTheme } from "@mui/material/styles";
+import { trackEvent } from "@/utils/analytics";
 
 // ----------------------------------------------------------------------
 
@@ -22,28 +23,28 @@ const ChatBubble = styled(IconButton)(({ theme }) => ({
   position: "fixed",
   top: 24,
   right: 24,
-  backgroundColor: "#7B2CBF",
-  color: "#FFFFFF",
+  backgroundColor: theme.palette.primary.main,
+  color: theme.palette.primary.contrastText,
+  transition: "background-color 0.2s ease, transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out",
   "&:hover": {
-    backgroundColor: "#9D4EDD",
+    backgroundColor: theme.palette.primary.dark,
     transform: "scale(1.1)",
-    transition: "all 0.3s ease-in-out",
   },
   width: 60,
   height: 60,
   borderRadius: "50%",
   boxShadow: theme.shadows[8],
-  border: `2px solid #C77DFF`,
+  border: `1px solid ${theme.palette.primary.main}55`,
   animation: "pulse 2s infinite",
   "@keyframes pulse": {
     "0%": {
-      boxShadow: `0 0 0 0 #7B2CBF40`,
+      boxShadow: `0 0 0 0 ${theme.palette.primary.main}26`,
     },
     "70%": {
-      boxShadow: `0 0 0 10px #7B2CBF00`,
+      boxShadow: `0 0 0 10px ${theme.palette.primary.main}00`,
     },
     "100%": {
-      boxShadow: `0 0 0 0 #7B2CBF00`,
+      boxShadow: `0 0 0 0 ${theme.palette.primary.main}00`,
     },
   },
   [theme.breakpoints.down("md")]: {
@@ -61,8 +62,9 @@ const ChatContainer = styled(Paper)(({ theme }) => ({
   height: "600px",
   display: "flex",
   flexDirection: "column",
-  boxShadow: theme.shadows[4],
-  borderRadius: 8,
+  boxShadow: theme.shadows[8],
+  borderRadius: 16,
+  border: "1px solid rgba(255,255,255,0.08)",
   [theme.breakpoints.down("md")]: {
     right: 80,
   },
@@ -214,7 +216,13 @@ export default function ChatWidget() {
 
   return (
     <>
-      <ChatBubble sx={{ zIndex: 1000 }} onClick={() => setIsOpen(!isOpen)}>
+      <ChatBubble
+        sx={{ zIndex: 1000 }}
+        onClick={() => {
+          if (!isOpen) trackEvent("chatbot_open");
+          setIsOpen(!isOpen);
+        }}
+      >
         <ChatIcon fontSize={isDesktop ? "large" : "medium"} />
       </ChatBubble>
 
@@ -223,7 +231,7 @@ export default function ChatWidget() {
           <Box
             sx={{
               p: 2,
-              borderRadius: { sm: "8px 8px 0 0" },
+              borderRadius: { sm: "16px 16px 0 0" },
               bgcolor: "primary.main",
               color: "primary.contrastText",
               display: "flex",
@@ -281,10 +289,10 @@ export default function ChatWidget() {
 
             {!loading && questionsCount >= MAX_QUESTIONS && (
               <DonationMessage onClick={handleDonationClick}>
-                <LocalCafeIcon color="primary" />
+                <LocalCafeIcon sx={{ color: "primary.light" }} />
 
                 <Box>
-                  <Typography variant="subtitle2" color="primary" fontWeight="bold">
+                  <Typography variant="subtitle2" sx={{ color: "primary.light" }} fontWeight="bold">
                     Buy me a coffee ☕
                   </Typography>
 

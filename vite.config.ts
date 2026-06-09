@@ -1,8 +1,52 @@
-import { defineConfig } from "vite";
+import { defineConfig, Plugin } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import istanbul from "vite-plugin-istanbul";
 import { visualizer } from "rollup-plugin-visualizer";
 import path from "path";
+import { PATH_PAGE } from "./src/routes/paths";
+
+// ----------------------------------------------------------------------
+
+/**
+ * Génère automatiquement `sitemap.xml` à partir de PATH_PAGE au build.
+ * @description Source unique de vérité : ajouter une route dans src/routes/paths.ts
+ *   met à jour le sitemap. La route `root` est ignorée et `home` est mappée
+ *   sur la racine (`/alexandre/`) pour coller au canonical de l'accueil.
+ */
+function sitemapPlugin(): Plugin {
+  // Valeur de secours ; surchargée par VITE_SITE_URL (.env) via configResolved
+  let siteUrl = "https://kared-dev.fr/alexandre";
+  const PRIORITIES: Record<string, string> = {
+    home: "1.0",
+    projects: "0.9",
+    career: "0.7",
+    skills: "0.7",
+    contact: "0.6",
+  };
+
+  return {
+    name: "generate-sitemap",
+    configResolved(config) {
+      if (config.env.VITE_SITE_URL) {
+        siteUrl = config.env.VITE_SITE_URL;
+      }
+    },
+    generateBundle() {
+      const urls = Object.entries(PATH_PAGE)
+        .filter(([key]) => key !== "root")
+        .map(([key, pagePath]) => {
+          const loc = key === "home" ? `${siteUrl}/` : `${siteUrl}${pagePath}`;
+          const priority = PRIORITIES[key] ?? "0.7";
+          return `  <url>\n    <loc>${loc}</loc>\n    <changefreq>monthly</changefreq>\n    <priority>${priority}</priority>\n  </url>`;
+        })
+        .join("\n");
+
+      const source = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`;
+
+      this.emitFile({ type: "asset", fileName: "sitemap.xml", source });
+    },
+  };
+}
 
 /**
  * Configuration de Vite
@@ -38,6 +82,7 @@ export default defineConfig({
       extension: [".js", ".ts", ".jsx", ".tsx"], // Extensions concernées
       requireEnv: false, // Instrumente le code en local et en CI
     }),
+    sitemapPlugin(),
   ],
 
   // Configuration des alias

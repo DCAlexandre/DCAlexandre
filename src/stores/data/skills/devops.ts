@@ -8,7 +8,7 @@ const data: Skill[] = [
   { ...technology.linux, level: 90 },
   { ...technology.sentry, level: 85 },
   { ...technology.grafana, level: 75 },
-  { ...technology.docker, level: 60 },
+  { ...technology.docker, level: 80 },
   { ...technology.aws, level: 50 },
   { ...technology.kubernetes, level: 30 },
   { ...technology.ansible, level: 25, inTraining: true },

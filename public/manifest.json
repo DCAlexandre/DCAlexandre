@@ -2,10 +2,11 @@
   "short_name": "Alexandre Da Costa",
   "name": "Alexandre Da Costa - Portfolio",
   "description": "Alexandre Da Costa - Tech Lead & Développeur fullstack en freelance, passionné par le développement et la technologie.",
-  "start_url": ".",
+  "start_url": "/alexandre/",
+  "scope": "/alexandre/",
   "display": "browser",
-  "theme_color": "#66BB6A",
-  "background_color": "#121212",
+  "theme_color": "#3ECF8E",
+  "background_color": "#0B0F0E",
   "icons": [
     {
       "src": "./icons/favicon.ico",

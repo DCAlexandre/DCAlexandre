@@ -7,6 +7,10 @@ export type Career = {
   title: string;
   subtitle: string;
   date: string;
+  /**
+   * Description courte du rôle / des réalisations (optionnel).
+   */
+  description?: string;
   img?: string;
   icon?: ReactNode;
   color?: TimelineDotProps["color"];

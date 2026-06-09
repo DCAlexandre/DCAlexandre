@@ -34,6 +34,9 @@ const project: Project = {
     technology.ios,
     technology.android,
   ],
+  role: "Fondateur et développeur : conception produit, application mobile, backend temps réel et publication sur les stores.",
+  impact: "Une application communautaire publiée sur iOS et Android, qui rend le sport motivant et social.",
+  featured: true,
 };
 
 // ----------------------------------------------------------------------

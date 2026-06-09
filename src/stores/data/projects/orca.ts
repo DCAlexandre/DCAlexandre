@@ -18,6 +18,9 @@ const project: Project = {
     "Déclenchement d'alertes",
   ],
   technologies: [technology.electron, technology.nodeJs, technology.react, technology.laravel, technology.phpUnit],
+  role: "Conception et développement du moteur de synchronisation desktop (Electron) et de sa communication bidirectionnelle.",
+  impact:
+    "Une cohérence des données en temps réel entre Comète et Comète Link, optimisée pour des centaines d'utilisateurs.",
 };
 
 // ----------------------------------------------------------------------

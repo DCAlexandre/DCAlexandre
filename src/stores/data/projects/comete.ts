@@ -21,6 +21,8 @@ const project: Project = {
     "Disponible en mode SaaS et On-Premise",
   ],
   technologies: [technology.omnis, technology.saas, technology.mysql],
+  role: "Développement évolutif et maintenance de l'ERP métier (Omnis) : RH, plannings, facturation, exports paie.",
+  impact: "Un ERP complet utilisé au quotidien par les sociétés de sécurité privée.",
 };
 
 // ----------------------------------------------------------------------

@@ -1,0 +1,38 @@
+# ----------------------------------------------------------------------
+# Fallback SPA pour le routing BrowserRouter (Apache / OVH mutualisé)
+# Toute requête qui ne correspond pas à un fichier ou un dossier réel
+# est renvoyée vers index.html pour que React Router prenne le relais.
+# ----------------------------------------------------------------------
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /alexandre/
+
+  # Laisser passer index.html directement
+  RewriteRule ^index\.html$ - [L]
+
+  # Ne pas réécrire les fichiers/dossiers existants (assets, fonts, etc.)
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+
+  # Tout le reste → index.html
+  RewriteRule . /alexandre/index.html [L]
+</IfModule>
+
+# ----------------------------------------------------------------------
+# Compression & cache des assets statiques
+# ----------------------------------------------------------------------
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript application/json image/svg+xml
+</IfModule>
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType image/webp "access plus 6 months"
+  ExpiresByType image/png "access plus 6 months"
+  ExpiresByType image/jpeg "access plus 6 months"
+  # Le HTML ne doit pas être mis en cache agressivement (déploiements)
+  ExpiresByType text/html "access plus 0 seconds"
+</IfModule>

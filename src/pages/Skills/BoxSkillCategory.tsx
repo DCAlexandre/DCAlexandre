@@ -1,130 +1,112 @@
-import { motion } from "framer-motion";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import Chip from "@mui/material/Chip";
 import Typography from "@mui/material/Typography";
 import LinearProgress from "@mui/material/LinearProgress";
-import { useTheme } from "@kared/kui/ThemeProvider";
-import BoxNew from "@/components/BoxNew";
+import Accordion from "@mui/material/Accordion";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { Skill } from "@/stores/types/skills.types";
 
 // ----------------------------------------------------------------------
 
 type BoxSkillCategoryProps = {
   title: string;
+  summary: string;
   skills: Skill[];
   inTraining?: boolean;
-  delay?: number;
+  defaultExpanded?: boolean;
 };
 
 /**
- * Affiche une catégorie de compétences avec une animation fluide
- * @param title - Le titre de la catégorie
- * @param skills - Les compétences à afficher
- * @param inTraining - Si la compétence est en cours de formation
- * @param delay - Le délai d'animation
+ * Traduit un niveau (0-100) en libellé qualitatif.
  */
-const BoxSkillCategory = ({ title, skills, inTraining = false, delay = 0 }: BoxSkillCategoryProps) => {
-  const { theme } = useTheme();
+const levelLabel = (skill: Skill): string => {
+  if (skill.inTraining) return "En apprentissage";
+  if (skill.level >= 90) return "Expert";
+  if (skill.level >= 75) return "Avancé";
+  if (skill.level >= 50) return "Confirmé";
+  return "Intermédiaire";
+};
 
-  // Animation pour les éléments qui apparaissent en séquence
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        type: "spring" as const,
-        stiffness: 100,
-      },
-    },
-  };
-
-  // ----------------------------------------------------------------------
-
+/**
+ * Catégorie de compétences sous forme d'accordéon : titre + synthèse toujours
+ * visibles, détail (barres) dépliable à la demande.
+ * @param title - Le titre de la catégorie
+ * @param summary - Phrase de synthèse affichée sous le titre
+ * @param skills - Les compétences à afficher
+ * @param inTraining - Si la catégorie contient une compétence en cours de formation
+ * @param defaultExpanded - Ouvre l'accordéon par défaut
+ */
+const BoxSkillCategory = ({
+  title,
+  summary,
+  skills,
+  inTraining = false,
+  defaultExpanded = false,
+}: BoxSkillCategoryProps) => {
   return (
-    <motion.div initial="hidden" animate="visible" variants={containerVariants} transition={{ delayChildren: delay }}>
-      <Box display="flex" alignItems="center" sx={{ mt: 4, mb: 2 }}>
-        <Typography variant="h5" sx={{ fontWeight: "bold" }}>
-          {title}
-        </Typography>
+    <Accordion
+      defaultExpanded={defaultExpanded}
+      disableGutters
+      sx={{ mb: 2, borderRadius: 2, "&:before": { display: "none" } }}
+    >
+      <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-label={`Voir le détail — ${title}`}>
+        <Box>
+          <Box sx={{ display: "flex", alignItems: "center", flexWrap: "wrap", gap: 1 }}>
+            <Typography variant="h5" sx={{ fontWeight: "bold" }}>
+              {title}
+            </Typography>
 
-        {inTraining && <Chip label="En cours de formation" color="info" size="small" sx={{ ml: 2 }} />}
-      </Box>
+            {inTraining && <Chip label="En cours de formation" color="secondary" variant="outlined" size="small" />}
+          </Box>
 
-      <Grid container spacing={2}>
-        {skills
-          .sort((a, b) => b.level - a.level)
-          .map((item, idx) => (
-            <Grid size={{ xs: 12, sm: 6, md: 4 }} key={idx}>
-              <motion.div variants={itemVariants}>
-                <Paper
-                  elevation={3}
-                  sx={{
-                    p: 2,
-                    height: "100%",
-                    position: "relative",
-                    transition: "transform 0.3s, box-shadow 0.3s",
-                    "&:hover": {
-                      transform: "translateY(-5px)",
-                      boxShadow: theme.shadows[6],
-                    },
-                  }}
-                >
-                  <Box
-                    sx={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                      alignItems: "center",
-                      mb: 1,
-                    }}
-                  >
-                    {item.inTraining && <BoxNew size="small" />}
+          <Typography variant="body2" color="text.secondary" sx={{ mt: 0.5 }}>
+            {summary}
+          </Typography>
+        </Box>
+      </AccordionSummary>
 
-                    <Typography variant="subtitle1" fontWeight="bold">
-                      {item.name}
+      <AccordionDetails>
+        <Grid container spacing={2}>
+          {[...skills]
+            .sort((a, b) => b.level - a.level)
+            .map((item, idx) => (
+              <Grid size={{ xs: 12, sm: 6, md: 4 }} key={idx}>
+                <Paper elevation={0} sx={{ p: 2, height: "100%" }}>
+                  <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 1, mb: 1 }}>
+                    <Box sx={{ display: "flex", alignItems: "center", gap: 1, minWidth: 0 }}>
+                      {/* Pastille = couleur de la techno (seul rappel de couleur) */}
+                      <Box sx={{ width: 9, height: 9, borderRadius: "50%", bgcolor: item.color, flexShrink: 0 }} />
+
+                      <Typography variant="subtitle1" fontWeight="bold" noWrap>
+                        {item.name}
+                      </Typography>
+                    </Box>
+
+                    <Typography variant="caption" color="text.secondary" sx={{ flexShrink: 0, fontWeight: 600 }}>
+                      {levelLabel(item)}
                     </Typography>
-
-                    <Chip
-                      label={`${item.level}%`}
-                      size="small"
-                      sx={{
-                        bgcolor: item.color,
-                        color: theme.palette.getContrastText(item.color),
-                        fontWeight: "bold",
-                      }}
-                    />
                   </Box>
 
                   <LinearProgress
                     variant="determinate"
                     value={item.level}
                     sx={{
-                      height: 8,
-                      borderRadius: 4,
-                      bgcolor: "rgba(0,0,0,0.1)",
-                      "& .MuiLinearProgress-bar": {
-                        bgcolor: item.color,
-                      },
+                      height: 6,
+                      borderRadius: 3,
+                      bgcolor: "rgba(255,255,255,0.08)",
+                      "& .MuiLinearProgress-bar": { bgcolor: "primary.main", borderRadius: 3 },
                     }}
                   />
                 </Paper>
-              </motion.div>
-            </Grid>
-          ))}
-      </Grid>
-    </motion.div>
+              </Grid>
+            ))}
+        </Grid>
+      </AccordionDetails>
+    </Accordion>
   );
 };
 

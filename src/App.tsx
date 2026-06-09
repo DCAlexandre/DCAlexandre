@@ -1,4 +1,4 @@
-import { HashRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import HomeIcon from "@mui/icons-material/Home";
 import CodeIcon from "@mui/icons-material/Code";
 import WorkIcon from "@mui/icons-material/Work";
@@ -15,6 +15,9 @@ import "@/App.css";
 /**
  * Composant principal de l'application
  */
+// Basename dérivé de la base Vite (`/alexandre/`), sans le slash final
+const BASENAME = import.meta.env.BASE_URL.replace(/\/$/, "");
+
 function App() {
   const sidebarItems = [
     { text: "Accueil", icon: <HomeIcon />, path: PATH_PAGE.home },
@@ -28,7 +31,7 @@ function App() {
 
   return (
     <ThemeProvider themeOptions={themeConfig}>
-      <Router>
+      <Router basename={BASENAME}>
         <Layout sidebarItems={sidebarItems}>
           <Routes />
 

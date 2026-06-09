@@ -36,6 +36,9 @@ const project: Project = {
     technology.ios,
     technology.android,
   ],
+  role: "Pilotage et développement de A à Z : architecture modulaire, gestion des accès par rôle, web + mobile.",
+  impact: "Une webapp centralisant le pilotage des entreprises de sécurité privée, accessible sur tous les supports.",
+  featured: true,
 };
 
 // ----------------------------------------------------------------------

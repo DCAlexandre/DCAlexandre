@@ -16,14 +16,18 @@ type TechnologyKeys =
   | "php"
   | "laravel"
   | "express"
+  | "nestjs"
   | "python"
   | "ai"
+  | "tensorflow"
+  | "stripe"
 
   /**
    * Database
    */
   | "mysql"
   | "postgresql"
+  | "prisma"
   | "firebase"
 
   /**
@@ -47,6 +51,8 @@ type TechnologyKeys =
   | "typescript"
   | "react"
   | "capacitor"
+  | "ionic"
+  | "tailwind"
   | "electron"
   | "wordpress"
 
@@ -85,14 +91,18 @@ const data: Technologies = {
   php: { name: "PHP", color: "#777BB4" },
   laravel: { name: "Laravel", color: "#FF2D20" },
   express: { name: "Express", color: "#000000" },
+  nestjs: { name: "NestJS", color: "#E0234E" },
   python: { name: "Python", color: "#3776AB" },
   ai: { name: "IA", color: "#8b3bd5" },
+  tensorflow: { name: "TensorFlow", color: "#FF6F00" },
+  stripe: { name: "Stripe", color: "#635BFF" },
 
   /**
    * Database
    */
   mysql: { name: "MySQL", color: "#6494b8" },
   postgresql: { name: "PostgreSQL", color: "#5b77cb" },
+  prisma: { name: "Prisma", color: "#5A67D8" },
   firebase: { name: "Firebase", color: "#FFCA28" },
 
   /**
@@ -116,6 +126,8 @@ const data: Technologies = {
   typescript: { name: "TypeScript", color: "#417fc2" },
   react: { name: "React", color: "#61DAFB" },
   capacitor: { name: "Capacitor", color: "#119EFF" },
+  ionic: { name: "Ionic", color: "#3880FF" },
+  tailwind: { name: "Tailwind CSS", color: "#38BDF8" },
   electron: { name: "Electron", color: "#7eb5be" },
   wordpress: { name: "WordPress", color: "#00749C" },
 
