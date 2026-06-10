@@ -28,7 +28,7 @@ const BoxSkillLeadership = ({ title, summary, items, defaultExpanded = false }: 
     >
       <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-label={`Voir le détail — ${title}`}>
         <Box>
-          <Typography variant="h5" sx={{ fontWeight: "bold" }}>
+          <Typography variant="h5" component="h3" sx={{ fontWeight: "bold" }}>
             {title}
           </Typography>
 

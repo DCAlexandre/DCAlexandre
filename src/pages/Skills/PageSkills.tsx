@@ -29,7 +29,7 @@ function PageSkills() {
           Mes Compétences
         </Typography>
 
-        <Typography variant="h6" color="textSecondary" align="center" sx={{ mb: 6 }}>
+        <Typography variant="h6" component="h2" color="textSecondary" align="center" sx={{ mb: 6 }}>
           Un profil full-stack, du frontend au DevOps — et le leadership pour livrer en équipe.
         </Typography>
       </motion.div>

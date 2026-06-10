@@ -56,7 +56,7 @@ const BoxSkillCategory = ({
       <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-label={`Voir le détail — ${title}`}>
         <Box>
           <Box sx={{ display: "flex", alignItems: "center", flexWrap: "wrap", gap: 1 }}>
-            <Typography variant="h5" sx={{ fontWeight: "bold" }}>
+            <Typography variant="h5" component="h3" sx={{ fontWeight: "bold" }}>
               {title}
             </Typography>
 

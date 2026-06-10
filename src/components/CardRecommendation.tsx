@@ -38,6 +38,7 @@ const CardRecommendation = ({ children, author, role, maxLength = 250 }: CardRec
     >
       <Typography
         variant="h2"
+        component="p"
         aria-hidden
         sx={{
           color: "primary.light",

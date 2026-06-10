@@ -6,6 +6,11 @@ const SITE_URL = import.meta.env.VITE_SITE_URL || "https://kared-dev.fr/alexandr
 // Image de partage social par défaut (générée par scripts/generate-og-image.mjs)
 const DEFAULT_IMAGE = `${SITE_URL}/assets/og-image.png`;
 
+// Dimensions et texte alternatif de l'image de partage par défaut (miroir de prerender.mjs)
+const DEFAULT_IMAGE_WIDTH = "2400";
+const DEFAULT_IMAGE_HEIGHT = "1260";
+const IMAGE_ALT = "Alexandre Da Costa — Tech Lead & Développeur Fullstack Freelance";
+
 type SeoProps = {
   /** Titre de l'onglet et des partages (sans le suffixe nom) */
   title: string;
@@ -42,6 +47,10 @@ function Seo({ title, description, path, image = DEFAULT_IMAGE, noIndex = false 
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={image} />
+      <meta property="og:image:width" content={DEFAULT_IMAGE_WIDTH} />
+      <meta property="og:image:height" content={DEFAULT_IMAGE_HEIGHT} />
+      <meta property="og:image:alt" content={IMAGE_ALT} />
+      <meta property="og:image:type" content="image/png" />
       <meta property="og:site_name" content="Alexandre Da Costa | Tech Lead & Développeur Fullstack Freelance" />
       <meta property="og:locale" content="fr_FR" />
 
@@ -52,6 +61,7 @@ function Seo({ title, description, path, image = DEFAULT_IMAGE, noIndex = false 
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={image} />
+      <meta name="twitter:image:alt" content={IMAGE_ALT} />
     </>
   );
 }

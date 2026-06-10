@@ -25,7 +25,7 @@ const ChatBubble = styled(IconButton)(({ theme }) => ({
   right: 24,
   backgroundColor: theme.palette.primary.main,
   color: theme.palette.primary.contrastText,
-  transition: "background-color 0.2s ease, transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out",
+  transition: "background-color 0.2s ease, transform 0.3s ease-in-out",
   "&:hover": {
     backgroundColor: theme.palette.primary.dark,
     transform: "scale(1.1)",
@@ -35,17 +35,21 @@ const ChatBubble = styled(IconButton)(({ theme }) => ({
   borderRadius: "50%",
   boxShadow: theme.shadows[8],
   border: `1px solid ${theme.palette.primary.main}55`,
-  animation: "pulse 2s infinite",
+  // Halo "sonar" animé via transform/opacity (propriétés composées GPU) plutôt
+  // que box-shadow, pour éviter les animations non composées signalées par Lighthouse.
+  "&::after": {
+    content: '""',
+    position: "absolute",
+    inset: 0,
+    borderRadius: "50%",
+    backgroundColor: theme.palette.primary.main,
+    zIndex: -1,
+    animation: "pulse 2s infinite",
+  },
   "@keyframes pulse": {
-    "0%": {
-      boxShadow: `0 0 0 0 ${theme.palette.primary.main}26`,
-    },
-    "70%": {
-      boxShadow: `0 0 0 10px ${theme.palette.primary.main}00`,
-    },
-    "100%": {
-      boxShadow: `0 0 0 0 ${theme.palette.primary.main}00`,
-    },
+    "0%": { transform: "scale(1)", opacity: 0.4 },
+    "70%": { transform: "scale(1.5)", opacity: 0 },
+    "100%": { transform: "scale(1.5)", opacity: 0 },
   },
   [theme.breakpoints.down("md")]: {
     width: 45,
@@ -218,6 +222,8 @@ export default function ChatWidget() {
     <>
       <ChatBubble
         sx={{ zIndex: 1000 }}
+        aria-label={isOpen ? "Fermer le chat AskAlex AI" : "Ouvrir le chat AskAlex AI"}
+        aria-expanded={isOpen}
         onClick={() => {
           if (!isOpen) trackEvent("chatbot_open");
           setIsOpen(!isOpen);
@@ -253,6 +259,7 @@ export default function ChatWidget() {
 
             <IconButton
               onClick={() => setIsOpen(false)}
+              aria-label="Fermer le chat"
               sx={{
                 color: "primary.contrastText",
                 "&:hover": {
@@ -318,6 +325,7 @@ export default function ChatWidget() {
             <IconButton
               color="primary"
               onClick={handleSend}
+              aria-label="Envoyer la question"
               disabled={!input.trim() || questionsCount >= MAX_QUESTIONS}
               size="small"
             >

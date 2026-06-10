@@ -19,20 +19,73 @@
 </IfModule>
 
 # ----------------------------------------------------------------------
-# Compression & cache des assets statiques
+# Types MIME explicites (certains hébergeurs ne servent pas font/woff2,
+# ce qui empêchait la mise en cache par type ci-dessous)
+# ----------------------------------------------------------------------
+<IfModule mod_mime.c>
+  AddType font/woff2 .woff2
+  AddType text/javascript .js .mjs
+  AddType image/webp .webp
+  AddType application/manifest+json .webmanifest
+</IfModule>
+
+# ----------------------------------------------------------------------
+# Compression des assets textuels
 # ----------------------------------------------------------------------
 <IfModule mod_deflate.c>
-  AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript application/json image/svg+xml
+  AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript application/json image/svg+xml application/manifest+json
+</IfModule>
+
+# ----------------------------------------------------------------------
+# Cache des assets statiques
+# Cache-Control (mod_headers) fait foi et s'applique par EXTENSION : il est
+# fiable même si l'hébergeur ne renvoie pas le bon type MIME (cas des .woff2
+# signalés "Cache TTL: None" par Lighthouse). mod_expires sert de secours.
+# Les fichiers de /assets sont fingerprintés (hash) → immuables sans risque ;
+# polices et images ont un nom stable → cache long également sûr.
+# ----------------------------------------------------------------------
+<IfModule mod_headers.c>
+  <FilesMatch "\.(?:woff2?|ttf|otf|eot|js|mjs|css|webp|png|jpe?g|gif|svg|ico)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  # HTML jamais mis en cache agressivement (pour que les déploiements soient pris en compte)
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
 </IfModule>
 
 <IfModule mod_expires.c>
   ExpiresActive On
   ExpiresByType text/css "access plus 1 year"
+  ExpiresByType text/javascript "access plus 1 year"
   ExpiresByType application/javascript "access plus 1 year"
   ExpiresByType font/woff2 "access plus 1 year"
-  ExpiresByType image/webp "access plus 6 months"
-  ExpiresByType image/png "access plus 6 months"
-  ExpiresByType image/jpeg "access plus 6 months"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/x-icon "access plus 1 year"
   # Le HTML ne doit pas être mis en cache agressivement (déploiements)
   ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+
+# ----------------------------------------------------------------------
+# En-têtes de sécurité (Lighthouse « Best Practices » — Trust & Safety)
+# ----------------------------------------------------------------------
+<IfModule mod_headers.c>
+  # Force HTTPS pendant 2 ans (sans `preload` : engagement réversible)
+  Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains"
+  # Empêche le navigateur de "deviner" le type MIME (anti-sniffing)
+  Header always set X-Content-Type-Options "nosniff"
+  # Anti-clickjacking (équivalent legacy de frame-ancestors 'none')
+  Header always set X-Frame-Options "DENY"
+  # Fuite minimale de l'URL de provenance
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  # Isolation de la fenêtre top-level (COOP)
+  Header always set Cross-Origin-Opener-Policy "same-origin"
+  # Désactive les API puissantes non utilisées
+  Header always set Permissions-Policy "geolocation=(), microphone=(), camera=(), payment=(), usb=(), interest-cohort=()"
+  # Content-Security-Policy : 'unsafe-inline' requis par le snippet gtag inline
+  # et par les styles injectés à l'exécution par Emotion/MUI.
+  Header always set Content-Security-Policy "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; manifest-src 'self'; img-src 'self' data: https://www.googletagmanager.com https://www.google-analytics.com https://region1.google-analytics.com; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://region1.google-analytics.com https://aws.kared-dev.fr https://ask-alex-ai.kared-dev.fr"
 </IfModule>

@@ -74,11 +74,14 @@ function Sidebar({ title, subtitle, imageUrl, items }: SidebarProps) {
         )}
 
         <Box>
-          <Typography variant="h6" component="h1">
+          {/* Identité du site (présente sur toutes les pages) : volontairement
+              hors de la hiérarchie des titres pour laisser chaque page définir
+              son unique <h1> et garantir un ordre de titres séquentiel. */}
+          <Typography variant="h6" component="p">
             {title}
           </Typography>
 
-          <Typography variant="body2" component="h2">
+          <Typography variant="body2" component="p">
             {subtitle}
           </Typography>
 
@@ -86,16 +89,24 @@ function Sidebar({ title, subtitle, imageUrl, items }: SidebarProps) {
             <Box sx={{ display: "flex", alignItems: "center", gap: 0.75, mt: 0.75 }}>
               <Box
                 sx={{
+                  position: "relative",
                   width: 8,
                   height: 8,
                   borderRadius: "50%",
                   bgcolor: "primary.main",
-                  boxShadow: "0 0 0 0 rgba(62,207,142,0.6)",
-                  animation: "availablePulse 2s infinite",
+                  // Halo animé via transform/opacity (composé GPU) au lieu de box-shadow.
+                  "&::after": {
+                    content: '""',
+                    position: "absolute",
+                    inset: 0,
+                    borderRadius: "50%",
+                    bgcolor: "primary.main",
+                    animation: "availablePulse 2s infinite",
+                  },
                   "@keyframes availablePulse": {
-                    "0%": { boxShadow: "0 0 0 0 rgba(62,207,142,0.5)" },
-                    "70%": { boxShadow: "0 0 0 6px rgba(62,207,142,0)" },
-                    "100%": { boxShadow: "0 0 0 0 rgba(62,207,142,0)" },
+                    "0%": { transform: "scale(1)", opacity: 0.6 },
+                    "70%": { transform: "scale(2.6)", opacity: 0 },
+                    "100%": { transform: "scale(2.6)", opacity: 0 },
                   },
                 }}
               />

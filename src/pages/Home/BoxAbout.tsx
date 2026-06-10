@@ -29,6 +29,7 @@ const BoxAbout = () => {
     <motion.div variants={itemVariants}>
       <Typography
         variant="h4"
+        component="h2"
         gutterBottom
         sx={{ mt: 6, mb: 3, fontWeight: "bold", textAlign: "center", userSelect: "none" }}
       >

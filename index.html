@@ -34,7 +34,19 @@
     <link rel="manifest" href="/manifest.json" />
     <!-- title + meta description injectés par page via <Seo /> (React 19) -->
 
-    <!-- Fonts -->
+    <!--
+      Fonts — on précharge en priorité les graisses présentes au-dessus de la
+      ligne de flottaison de l'accueil : ExtraBold (titre h1 = élément LCP),
+      Regular (corps), SemiBold (nom dans la sidebar) et Bold (boutons).
+      Les autres graisses se chargent via fonts.css (font-display: swap).
+    -->
+    <link
+      rel="preload"
+      href="/fonts/Nunito/Nunito-ExtraBold.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
     <link
       rel="preload"
       href="/fonts/Nunito/Nunito-Regular.woff2"
@@ -44,7 +56,7 @@
     />
     <link
       rel="preload"
-      href="/fonts/Nunito/Nunito-Light.woff2"
+      href="/fonts/Nunito/Nunito-SemiBold.woff2"
       as="font"
       type="font/woff2"
       crossorigin
@@ -59,10 +71,14 @@
     <link rel="stylesheet" href="/fonts.css" />
     <link rel="apple-touch-icon" href="/icons/android-chrome-192x192.png" />
 
-    <!-- Google tag (gtag.js) -->
+    <!--
+      Google tag (gtag.js) — on préconnecte aux deux origines réellement
+      sollicitées tôt : googletagmanager.com (script gtag, ~159 Ko) et
+      google-analytics.com (collecte). region1 n'est qu'un dns-prefetch
+      (Lighthouse signalait un preconnect inutilisé).
+    -->
+    <link rel="preconnect" href="https://www.googletagmanager.com" />
     <link rel="preconnect" href="https://www.google-analytics.com" />
-    <link rel="preconnect" href="https://region1.google-analytics.com" />
-    <link rel="dns-prefetch" href="https://www.google-analytics.com" />
     <link rel="dns-prefetch" href="https://region1.google-analytics.com" />
 
     <script
@@ -78,45 +94,76 @@
       gtag("config", "G-VKXZ4K1QXZ");
     </script>
 
-    <!-- Structured Data -->
+    <!-- Structured Data (schema.org @graph : Person + WebSite + ProfilePage) -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Alexandre Da Costa",
-        "jobTitle": "Tech Lead",
-        "url": "https://kared-dev.fr/alexandre",
-        "image": "https://kared-dev.fr/alexandre/assets/og-image.png",
-        "description": "Tech Lead & Développeur fullstack en freelance, spécialisé en JavaScript, React et Node.js",
-        "sameAs": [
-          "https://www.linkedin.com/in/alexandre-dacosta",
-          "https://www.malt.fr/profile/alexandredacosta1",
-          "https://github.com/DCAlexandre"
-        ],
-        "knowsAbout": [
-          "JavaScript",
-          "React",
-          "Node.js",
-          "DevOps",
-          "Leadership",
-          "Architecture Logicielle",
-          "Développement Web"
-        ],
-        "worksFor": [
+        "@graph": [
           {
-            "@type": "Organization",
-            "name": "Comète",
-            "description": "Lead Web Developer"
+            "@type": "Person",
+            "@id": "https://kared-dev.fr/alexandre/#person",
+            "name": "Alexandre Da Costa",
+            "givenName": "Alexandre",
+            "familyName": "Da Costa",
+            "jobTitle": "Tech Lead",
+            "url": "https://kared-dev.fr/alexandre",
+            "image": "https://kared-dev.fr/alexandre/assets/me.webp",
+            "description": "Tech Lead & Développeur fullstack en freelance, spécialisé en JavaScript, TypeScript, React et Node.js",
+            "address": {
+              "@type": "PostalAddress",
+              "addressCountry": "FR"
+            },
+            "knowsLanguage": ["fr", "en"],
+            "sameAs": [
+              "https://www.linkedin.com/in/alexandre-dacosta",
+              "https://www.malt.fr/profile/alexandredacosta1",
+              "https://github.com/DCAlexandre",
+              "https://www.facebook.com/alexandre.dacosta95"
+            ],
+            "knowsAbout": [
+              "JavaScript",
+              "TypeScript",
+              "React",
+              "Node.js",
+              "NestJS",
+              "PostgreSQL",
+              "Docker",
+              "CI/CD",
+              "DevOps",
+              "Architecture Logicielle",
+              "Développement Web",
+              "Développement Mobile"
+            ],
+            "worksFor": [
+              {
+                "@type": "Organization",
+                "name": "Logiciel Comète",
+                "description": "Lead Web Developer"
+              },
+              {
+                "@type": "Organization",
+                "name": "Kared Dev",
+                "description": "Fondateur & Tech Lead — Développeur fullstack freelance"
+              }
+            ]
           },
           {
-            "@type": "Organization",
-            "name": "Freelance",
-            "description": "Développeur Fullstack Freelance"
+            "@type": "WebSite",
+            "@id": "https://kared-dev.fr/alexandre/#website",
+            "url": "https://kared-dev.fr/alexandre",
+            "name": "Alexandre Da Costa — Portfolio",
+            "description": "Portfolio d'Alexandre Da Costa, Tech Lead & développeur fullstack freelance.",
+            "inLanguage": "fr-FR",
+            "publisher": { "@id": "https://kared-dev.fr/alexandre/#person" }
           },
           {
-            "@type": "Organization",
-            "name": "Kared Dev",
-            "description": "Fondateur & Tech Lead"
+            "@type": "ProfilePage",
+            "@id": "https://kared-dev.fr/alexandre/#profilepage",
+            "url": "https://kared-dev.fr/alexandre",
+            "name": "Alexandre Da Costa — Tech Lead & Développeur Fullstack Freelance",
+            "inLanguage": "fr-FR",
+            "isPartOf": { "@id": "https://kared-dev.fr/alexandre/#website" },
+            "about": { "@id": "https://kared-dev.fr/alexandre/#person" }
           }
         ]
       }

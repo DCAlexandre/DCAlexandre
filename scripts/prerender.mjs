@@ -39,6 +39,9 @@ function escapeAttr(value) {
   return String(value).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 }
 
+// Dimensions et texte alternatif de l'image de partage par défaut (miroir de src/components/Seo.tsx).
+const IMAGE_ALT = "Alexandre Da Costa — Tech Lead & Développeur Fullstack Freelance";
+
 /** Construit le bloc de balises SEO d'une page (miroir de src/components/Seo.tsx). */
 function buildSeoBlock({ path: pagePath, title, description, image, noIndex }) {
   const url = `${SITE_URL}${pagePath}`;
@@ -57,6 +60,10 @@ function buildSeoBlock({ path: pagePath, title, description, image, noIndex }) {
     `<meta property="og:title" content="${escapeAttr(fullTitle)}" />`,
     `<meta property="og:description" content="${escapeAttr(description)}" />`,
     `<meta property="og:image" content="${escapeAttr(ogImage)}" />`,
+    `<meta property="og:image:width" content="2400" />`,
+    `<meta property="og:image:height" content="1260" />`,
+    `<meta property="og:image:alt" content="${escapeAttr(IMAGE_ALT)}" />`,
+    `<meta property="og:image:type" content="image/png" />`,
     `<meta property="og:site_name" content="Alexandre Da Costa | Tech Lead & Développeur Fullstack Freelance" />`,
     `<meta property="og:locale" content="fr_FR" />`,
     // X (anciennement Twitter)
@@ -66,6 +73,7 @@ function buildSeoBlock({ path: pagePath, title, description, image, noIndex }) {
     `<meta name="twitter:title" content="${escapeAttr(fullTitle)}" />`,
     `<meta name="twitter:description" content="${escapeAttr(description)}" />`,
     `<meta name="twitter:image" content="${escapeAttr(ogImage)}" />`,
+    `<meta name="twitter:image:alt" content="${escapeAttr(IMAGE_ALT)}" />`,
   ];
 
   return `    <!-- SEO pré-rendu (scripts/prerender.mjs) -->\n    ${tags.join("\n    ")}\n  `;
