@@ -51,7 +51,7 @@ const BoxDescription = () => {
         }}
       >
         <Typography variant="h1" component="h1" sx={{ mb: 2 }}>
-          Bonjour, je suis{" "}
+          Bonjour, moi c'est{" "}
           <Box component="span" sx={gradientText}>
             Alexandre
           </Box>{" "}

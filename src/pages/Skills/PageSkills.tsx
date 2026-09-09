@@ -1,4 +1,6 @@
 import { motion } from "framer-motion";
+import Box from "@mui/material/Box";
+import Chip from "@mui/material/Chip";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import PageContainer from "@/components/PageContainer";
@@ -9,6 +11,9 @@ import BoxSkillLeadership from "@/pages/Skills/BoxSkillLeadership";
 import SkillsSkeleton from "@/pages/Skills/SkillsSkeleton";
 import useSkills from "@/stores/hooks/useSkills";
 import leadership from "@/stores/data/skills/leadership";
+import ia from "@/stores/data/skills/ia";
+import certifications from "@/stores/data/certifications";
+import { TIER_ORDER, TIER_STYLE } from "@/pages/Skills/skillLevel";
 
 /**
  * Page des compétences
@@ -36,6 +41,24 @@ function PageSkills() {
 
       <Divider sx={{ mb: 4 }} />
 
+      {/* Légende des paliers de maîtrise */}
+      <Box sx={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "center", gap: 1, mb: 4 }}>
+        <Typography variant="caption" color="text.secondary" sx={{ mr: 0.5 }}>
+          Niveau de maîtrise :
+        </Typography>
+
+        {TIER_ORDER.map((tier) => (
+          <Chip
+            key={tier}
+            label={tier}
+            size="small"
+            variant={TIER_STYLE[tier].variant}
+            color={TIER_STYLE[tier].color}
+            sx={{ fontWeight: 600 }}
+          />
+        ))}
+      </Box>
+
       {loading && isEmpty ? (
         <SkillsSkeleton />
       ) : (
@@ -44,6 +67,13 @@ function PageSkills() {
             title="Leadership & collaboration"
             summary="Au-delà du code : encadrer, prioriser et livrer en équipe."
             items={leadership}
+            defaultExpanded
+          />
+
+          <BoxSkillLeadership
+            title="IA appliquée"
+            summary="De l'intégration produit à l'outillage : RAG, agents & MCP, règles d'agents, et formation des équipes."
+            items={ia}
             defaultExpanded
           />
 
@@ -75,6 +105,12 @@ function PageSkills() {
             title="Tests & Qualité"
             summary="Qualité et fiabilité : tests unitaires, e2e et intégration continue."
             skills={skills.testing}
+          />
+
+          <BoxSkillLeadership
+            title="Certifications"
+            summary="Formations certifiantes suivies."
+            items={certifications.map((cert) => `${cert.name} (${cert.issuer} · ${cert.date})`)}
           />
         </>
       )}

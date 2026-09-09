@@ -36,6 +36,8 @@ const project: Project = {
     technology.ios,
     technology.android,
   ],
+  role: "Développement du module de pointage géolocalisé (web + mobile), intégré à l'écosystème Comète.",
+  impact: "Un suivi de présence fiable et géolocalisé pour les agents de sécurité, directement sur le terrain.",
 };
 
 // ----------------------------------------------------------------------

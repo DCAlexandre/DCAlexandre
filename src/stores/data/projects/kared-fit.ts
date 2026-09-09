@@ -13,7 +13,7 @@ const project: Project = {
     "Kared Fit est une application mobile innovante qui révolutionne l'expérience d'entraînement.\n\nElle permet aux utilisateurs de planifier leurs séances, de défier leurs amis et d'évoluer ensemble en temps réel.\nChaque entraînement devient un défi motivant et ludique, avec un système de récompenses et d'expérience qui encourage la progression.\n\nL'application est disponible sur iOS et Android, offrant une expérience utilisateur fluide et engageante.",
   image,
   links: {
-    website: "https://www.linkedin.com/company/kared-dev",
+    website: "https://kared-dev.fr/fit",
     ios: "https://apps.apple.com/fr/app/kared-fit/id6739947899?platform=iphone",
     android: "https://play.google.com/store/apps/details?id=com.kared.karedfit",
   },

@@ -24,11 +24,10 @@ function CardLinkedIn() {
       <Card
         elevation={2}
         sx={{
-          mt: 4,
+          mt: 6,
           p: 2,
-          elevation: 3,
           maxWidth: { md: "100%", lg: "60%" },
-          margin: "auto",
+          mx: "auto",
           bgcolor: "background.paper",
           borderColor: "primary.main",
         }}

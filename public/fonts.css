@@ -125,3 +125,33 @@
   font-weight: 500;
   src: url('fonts/Nunito/Nunito-MediumItalic.woff2') format('woff2');
 }
+
+/* Quicksand (police principale, arrondie) */
+@font-face {
+  font-family: 'Quicksand';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url('fonts/Quicksand/Quicksand-400.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Quicksand';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 500;
+  src: url('fonts/Quicksand/Quicksand-500.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Quicksand';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600;
+  src: url('fonts/Quicksand/Quicksand-600.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Quicksand';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url('fonts/Quicksand/Quicksand-700.woff2') format('woff2');
+}

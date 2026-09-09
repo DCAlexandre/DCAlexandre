@@ -35,35 +35,27 @@
     <!-- title + meta description injectés par page via <Seo /> (React 19) -->
 
     <!--
-      Fonts — on précharge en priorité les graisses présentes au-dessus de la
-      ligne de flottaison de l'accueil : ExtraBold (titre h1 = élément LCP),
-      Regular (corps), SemiBold (nom dans la sidebar) et Bold (boutons).
-      Les autres graisses se chargent via fonts.css (font-display: swap).
+      Fonts — Quicksand (arrondie), self-hostée. On précharge les graisses
+      au-dessus de la ligne de flottaison : 700 (titres h1/boutons), 600 (nom
+      sidebar), 500 (corps). Les autres se chargent via fonts.css (display: swap).
     -->
     <link
       rel="preload"
-      href="/fonts/Nunito/Nunito-ExtraBold.woff2"
+      href="/fonts/Quicksand/Quicksand-700.woff2"
       as="font"
       type="font/woff2"
       crossorigin
     />
     <link
       rel="preload"
-      href="/fonts/Nunito/Nunito-Regular.woff2"
+      href="/fonts/Quicksand/Quicksand-600.woff2"
       as="font"
       type="font/woff2"
       crossorigin
     />
     <link
       rel="preload"
-      href="/fonts/Nunito/Nunito-SemiBold.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
-    <link
-      rel="preload"
-      href="/fonts/Nunito/Nunito-Bold.woff2"
+      href="/fonts/Quicksand/Quicksand-500.woff2"
       as="font"
       type="font/woff2"
       crossorigin
@@ -71,28 +63,7 @@
     <link rel="stylesheet" href="/fonts.css" />
     <link rel="apple-touch-icon" href="/icons/android-chrome-192x192.png" />
 
-    <!--
-      Google tag (gtag.js) — on préconnecte aux deux origines réellement
-      sollicitées tôt : googletagmanager.com (script gtag, ~159 Ko) et
-      google-analytics.com (collecte). region1 n'est qu'un dns-prefetch
-      (Lighthouse signalait un preconnect inutilisé).
-    -->
-    <link rel="preconnect" href="https://www.googletagmanager.com" />
-    <link rel="preconnect" href="https://www.google-analytics.com" />
-    <link rel="dns-prefetch" href="https://region1.google-analytics.com" />
-
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-VKXZ4K1QXZ"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-      gtag("config", "G-VKXZ4K1QXZ");
-    </script>
+    <!-- Pas de mesure d'audience tierce ni de cookie de traçage (RGPD-friendly). -->
 
     <!-- Structured Data (schema.org @graph : Person + WebSite + ProfilePage) -->
     <script type="application/ld+json">

@@ -6,6 +6,7 @@ import Home from "@/pages/Home/PageHome";
 import Projects from "@/pages/Projects/PageProjects";
 import Skills from "@/pages/Skills/PageSkills";
 import CV from "@/pages/CV/PageCV";
+import Legal from "@/pages/Legal/PageLegal";
 import NotFound from "@/pages/NotFound/PageNotFound";
 import { PATH_PAGE } from "./paths";
 
@@ -27,6 +28,7 @@ function Routes() {
         <Route path={PATH_PAGE.skills} element={<Skills />} />
         <Route path={PATH_PAGE.cv} element={<CV />} />
         <Route path={PATH_PAGE.contact} element={<Contact />} />
+        <Route path={PATH_PAGE.legal} element={<Legal />} />
         <Route path="*" element={<NotFound />} />
       </RouterRoutes>
     </AnimatePresence>

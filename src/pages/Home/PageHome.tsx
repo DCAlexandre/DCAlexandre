@@ -4,6 +4,7 @@ import { SEO_PAGES } from "@/config/seo.config";
 import BoxAbout from "@/pages/Home/BoxAbout";
 import BoxDescription from "@/pages/Home/BoxDescription";
 import BoxStats from "@/pages/Home/BoxStats";
+import BoxHowIWork from "@/pages/Home/BoxHowIWork";
 import BoxRecommendations from "@/pages/Home/BoxRecommendations";
 
 /**
@@ -20,6 +21,8 @@ function PageHome() {
       <BoxStats />
 
       <BoxAbout />
+
+      <BoxHowIWork />
 
       <BoxRecommendations />
     </PageContainer>

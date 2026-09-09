@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Sidebar, { SidebarItem } from "./Sidebar";
+import Footer from "@/components/Footer";
 import assetMe from "/assets/me.webp";
 
 // ----------------------------------------------------------------------
@@ -135,6 +136,8 @@ function Layout({ sidebarItems, children }: LayoutProps) {
         }}
       >
         {children}
+
+        <Footer />
       </Grid>
     </Grid>
   );

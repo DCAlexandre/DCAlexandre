@@ -10,7 +10,6 @@ const data: Skill[] = [
   { ...technology.php, level: 90 },
   { ...technology.laravel, level: 85 },
   { ...technology.python, level: 50 },
-  { ...technology.ai, name: "IA appliquée", level: 60 },
 ];
 
 // ----------------------------------------------------------------------

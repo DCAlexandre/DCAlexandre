@@ -37,7 +37,8 @@ const project: Project = {
     technology.android,
   ],
   role: "Pilotage et développement de A à Z : architecture modulaire, gestion des accès par rôle, web + mobile.",
-  impact: "Une webapp centralisant le pilotage des entreprises de sécurité privée, accessible sur tous les supports.",
+  impact:
+    "Une webapp de pilotage pour les entreprises de sécurité privée, +100 000 utilisateurs (desktop / tablette / mobile). Chaîne de livraison industrialisée : déploiement en 15 min au lieu de 2 h.",
   featured: true,
 };
 

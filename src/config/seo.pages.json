@@ -29,6 +29,12 @@
     "title": "Me contacter",
     "description": "Contactez Alexandre Da Costa, Tech Lead & développeur fullstack freelance, pour discuter de vos projets ou opportunités de collaboration."
   },
+  "legal": {
+    "path": "/legal",
+    "title": "Mentions légales & confidentialité",
+    "description": "Mentions légales et politique de confidentialité du site d'Alexandre Da Costa (Kared Dev).",
+    "noIndex": true
+  },
   "notFound": {
     "path": "/404",
     "title": "Page introuvable",

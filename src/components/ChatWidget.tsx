@@ -7,14 +7,16 @@ import Typography from "@mui/material/Typography";
 import SendIcon from "@mui/icons-material/Send";
 import ChatIcon from "@mui/icons-material/Chat";
 import CloseIcon from "@mui/icons-material/Close";
-import LocalCafeIcon from "@mui/icons-material/LocalCafe";
+import EmailIcon from "@mui/icons-material/Email";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { styled, useTheme } from "@mui/material/styles";
+import { useNavigate } from "react-router-dom";
+import { PATH_PAGE } from "@/routes/paths";
 import { trackEvent } from "@/utils/analytics";
 
 // ----------------------------------------------------------------------
 
-const { DEV, VITE_API_ASKALEX, VITE_PAYPAL_DONATION } = import.meta.env;
+const { DEV, VITE_API_ASKALEX } = import.meta.env;
 const SELF_HOSTED = DEV;
 const MAX_QUESTIONS = SELF_HOSTED ? Infinity : 3;
 const STORAGE_KEY = "askalex_questions";
@@ -97,7 +99,7 @@ const MessageBubble = styled(Box, {
   alignSelf: isUser ? "flex-end" : "flex-start",
 }));
 
-const DonationMessage = styled(Box)(({ theme }) => ({
+const ContactPrompt = styled(Box)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   gap: theme.spacing(1),
@@ -120,6 +122,7 @@ const DonationMessage = styled(Box)(({ theme }) => ({
  */
 export default function ChatWidget() {
   const theme = useTheme();
+  const navigate = useNavigate();
   const isDesktop = useMediaQuery(theme.breakpoints.up("md"));
   const [messages, setMessages] = useState([{ from: "bot", text: "Bonjour ! Pose-moi une question sur Alexandre." }]);
   const [input, setInput] = useState("");
@@ -212,8 +215,10 @@ export default function ChatWidget() {
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => e.key === "Enter" && handleSend();
 
-  const handleDonationClick = () => {
-    window.open(VITE_PAYPAL_DONATION, "_blank");
+  const handleContactClick = () => {
+    trackEvent("chatbot_contact_cta");
+    setIsOpen(false);
+    navigate(PATH_PAGE.contact);
   };
 
   // ----------------------------------------------------------------------
@@ -295,19 +300,19 @@ export default function ChatWidget() {
             )}
 
             {!loading && questionsCount >= MAX_QUESTIONS && (
-              <DonationMessage onClick={handleDonationClick}>
-                <LocalCafeIcon sx={{ color: "primary.light" }} />
+              <ContactPrompt onClick={handleContactClick}>
+                <EmailIcon sx={{ color: "primary.light" }} />
 
                 <Box>
                   <Typography variant="subtitle2" sx={{ color: "primary.light" }} fontWeight="bold">
-                    Buy me a coffee ☕
+                    Envie d'aller plus loin ?
                   </Typography>
 
                   <Typography variant="caption" color="text.secondary" fontWeight="bold">
-                    Soutenez mon travail et mon évolution
+                    Écrivez-moi directement, je réponds moi-même.
                   </Typography>
                 </Box>
-              </DonationMessage>
+              </ContactPrompt>
             )}
           </Box>
 

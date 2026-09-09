@@ -34,7 +34,7 @@ function sitemapPlugin(): Plugin {
     },
     generateBundle() {
       const urls = Object.entries(PATH_PAGE)
-        .filter(([key]) => key !== "root")
+        .filter(([key]) => key !== "root" && key !== "legal")
         .map(([key, pagePath]) => {
           const loc = key === "home" ? `${siteUrl}/` : `${siteUrl}${pagePath}`;
           const priority = PRIORITIES[key] ?? "0.7";

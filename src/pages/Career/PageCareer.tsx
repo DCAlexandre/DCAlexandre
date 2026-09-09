@@ -5,6 +5,7 @@ import Seo from "@/components/Seo";
 import { SEO_PAGES } from "@/config/seo.config";
 import CardLinkedIn from "@/pages/Career/CardLinkedIn";
 import TimelineCareer from "@/pages/Career/TimelineCareer";
+import BoxCertifications from "@/pages/Career/BoxCertifications";
 
 /**
  * Page des carrières
@@ -26,6 +27,8 @@ function PageCareer() {
       </motion.div>
 
       <TimelineCareer />
+
+      <BoxCertifications />
 
       {/* Carte de LinkedIn */}
       <CardLinkedIn />

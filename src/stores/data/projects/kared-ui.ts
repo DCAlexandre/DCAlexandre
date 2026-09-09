@@ -20,6 +20,8 @@ const project: Project = {
     technology.css,
     technology.javascript,
   ],
+  role: "Conception et développement du design system (librairie de composants React) de Kared Dev.",
+  impact: "Des applications Kared Dev livrées plus vite et visuellement cohérentes.",
 };
 
 // ----------------------------------------------------------------------

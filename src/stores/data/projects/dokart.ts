@@ -35,7 +35,7 @@ const project: Project = {
   ],
   role: "Conception et développement full-stack : architecture monorepo, API NestJS/Prisma, intégration Stripe et interface React.",
   impact:
-    "Un produit SaaS complet qui digitalise toute la gestion d'un studio, du premier rendez-vous jusqu'à la facturation.",
+    "Reconstruit from scratch, bêta publique 2 mois après le démarrage. Côté studio : 8 h d'administratif économisées par semaine et 98 % de no-shows en moins.",
   featured: true,
 };
 

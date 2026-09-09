@@ -20,6 +20,8 @@ const project: Project = {
     "Le site peut être administré via la page WordPress",
   ],
   technologies: [technology.wordpress, technology.web],
+  role: "Conception et réalisation du site e-commerce (WordPress) de A à Z, en lien direct avec le client.",
+  impact: "Une vitrine de réservation en ligne pour des visites de Paris en voiture de collection.",
 };
 
 // ----------------------------------------------------------------------

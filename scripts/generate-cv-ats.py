@@ -30,7 +30,7 @@ NAME = "Alexandre Da Costa"
 TITLE = "Tech Lead — Architecture & industrialisation (web, mobile, desktop)"
 CONTACT = [
     "Paris et périphérie · remote ou hybride",
-    "07 69 62 43 79 · contact@kared-dev.fr",
+    "07 69 62 43 79 · alexandre@kared-dev.fr",
     "Portfolio : kared-dev.fr/alexandre · LinkedIn : linkedin.com/in/alexandre-dacosta · GitHub : github.com/DCAlexandre",
 ]
 PROFILE = ("Tech Lead, 10 ans d'expérience. Je conçois, reprends et industrialise des applications métier, "

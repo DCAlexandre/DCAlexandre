@@ -18,6 +18,9 @@ const project: Project = {
     "Gestion des mises à jour automatiques, assurant que toutes les applications restent à jour sans intervention supplémentaire",
   ],
   technologies: [technology.electron, technology.nodeJs, technology.react],
+  role: "Conception et développement de l'outil desktop d'installation et de mise à jour, destiné à l'équipe technique.",
+  impact:
+    "Installation et mise à jour des composants Comète sans ligne de commande — moins d'erreurs, déploiements plus rapides.",
 };
 
 // ----------------------------------------------------------------------

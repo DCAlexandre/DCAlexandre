@@ -1,5 +1,5 @@
 import Box from "@mui/material/Box";
-import Chip from "@mui/material/Chip";
+import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
@@ -39,11 +39,35 @@ const BoxSkillLeadership = ({ title, summary, items, defaultExpanded = false }: 
       </AccordionSummary>
 
       <AccordionDetails>
-        <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
-          {items.map((item) => (
-            <Chip key={item} label={item} color="primary" variant="outlined" />
-          ))}
-        </Box>
+        <Grid container spacing={1.5} component="ul" sx={{ listStyle: "none", m: 0, p: 0 }}>
+          {items.map((item) => {
+            // Sépare le libellé principal de sa précision entre parenthèses.
+            const match = item.match(/^(.*?)\s*\((.*)\)\s*$/);
+            const main = match ? match[1] : item;
+            const detail = match ? match[2] : null;
+
+            return (
+              <Grid size={{ xs: 12, sm: 6 }} component="li" key={item}>
+                <Box sx={{ display: "flex", gap: 1.25, alignItems: "flex-start" }}>
+                  {/* Puce accent discrète */}
+                  <Box
+                    sx={{ mt: "8px", width: 6, height: 6, borderRadius: "50%", bgcolor: "primary.main", flexShrink: 0 }}
+                  />
+
+                  <Typography variant="body2">
+                    {main}
+                    {detail && (
+                      <Box component="span" sx={{ color: "text.secondary" }}>
+                        {" "}
+                        ({detail})
+                      </Box>
+                    )}
+                  </Typography>
+                </Box>
+              </Grid>
+            );
+          })}
+        </Grid>
       </AccordionDetails>
     </Accordion>
   );
