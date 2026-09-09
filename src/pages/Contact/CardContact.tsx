@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
@@ -6,7 +7,7 @@ import IconButton from "@mui/material/IconButton";
 import Button from "@mui/material/Button";
 import Link from "@mui/material/Link";
 import Divider from "@mui/material/Divider";
-import DownloadIcon from "@mui/icons-material/Download";
+import DescriptionIcon from "@mui/icons-material/Description";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import GitHubIcon from "@mui/icons-material/GitHub";
@@ -16,11 +17,10 @@ import PhoneIcon from "@mui/icons-material/Phone";
 import MaltIcon from "@/components/icons/MaltIcon";
 // import PayPalIcon from "@/components/icons/PayPalIcon";
 import contactConfig from "@/config/contact.config";
+import { PATH_PAGE } from "@/routes/paths";
 import { trackEvent } from "@/utils/analytics";
 
 // ----------------------------------------------------------------------
-
-const CV_URL = `${import.meta.env.BASE_URL}assets/cv.pdf`;
 
 /**
  * Carte contenant les informations de contact
@@ -173,14 +173,13 @@ function CardContact() {
           variant="outlined"
           color="primary"
           size="large"
-          href={CV_URL}
-          target="_blank"
-          rel="noopener"
-          startIcon={<DownloadIcon />}
-          onClick={() => trackEvent("cv_download", { location: "contact" })}
+          component={NavLink}
+          to={PATH_PAGE.cv}
+          startIcon={<DescriptionIcon />}
+          onClick={() => trackEvent("cv_view", { location: "contact" })}
           sx={{ mb: 3 }}
         >
-          Télécharger mon CV
+          Consulter mon CV
         </Button>
 
         <Typography variant="h6" component="h5" gutterBottom>

@@ -5,6 +5,7 @@ import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import DescriptionIcon from "@mui/icons-material/Description";
 import EmailIcon from "@mui/icons-material/Email";
 import { useTheme } from "@kared/kui/ThemeProvider";
 import { PATH_PAGE } from "@/routes/paths";
@@ -77,6 +78,19 @@ const BoxDescription = () => {
             onClick={() => trackEvent("cta_click", { cta: "voir_projets", location: "hero" })}
           >
             Voir mes projets
+          </Button>
+
+          <Button
+            variant="outlined"
+            color="primary"
+            size="large"
+            component={NavLink}
+            to={PATH_PAGE.cv}
+            startIcon={<DescriptionIcon />}
+            sx={{ px: 4, py: 1.25 }}
+            onClick={() => trackEvent("cta_click", { cta: "mon_cv", location: "hero" })}
+          >
+            Mon CV
           </Button>
 
           <Button

@@ -19,5 +19,6 @@ export const PATH_PAGE: Record<string, string> = {
   projects: path(ROOT, "projects"),
   career: path(ROOT, "career"),
   skills: path(ROOT, "skills"),
+  cv: path(ROOT, "cv"),
   contact: path(ROOT, "contact"),
 };

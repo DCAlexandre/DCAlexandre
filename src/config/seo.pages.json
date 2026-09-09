@@ -19,6 +19,11 @@
     "title": "Mes compétences",
     "description": "Plus de 10 ans d'expérience en développement web et mobile : frontend, backend, gestion des données, DevOps, tests et qualité. Les compétences techniques d'Alexandre Da Costa."
   },
+  "cv": {
+    "path": "/cv",
+    "title": "Mon CV",
+    "description": "Le CV d'Alexandre Da Costa, Tech Lead : expériences, réalisations chiffrées, compétences et parcours. Consultable en ligne, imprimable et exportable en PDF."
+  },
   "contact": {
     "path": "/contact",
     "title": "Me contacter",

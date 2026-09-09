@@ -21,6 +21,7 @@ function sitemapPlugin(): Plugin {
     projects: "0.9",
     career: "0.7",
     skills: "0.7",
+    cv: "0.8",
     contact: "0.6",
   };
 
