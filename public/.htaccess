@@ -77,8 +77,10 @@
   Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains"
   # Empêche le navigateur de "deviner" le type MIME (anti-sniffing)
   Header always set X-Content-Type-Options "nosniff"
-  # Anti-clickjacking (équivalent legacy de frame-ancestors 'none')
-  Header always set X-Frame-Options "DENY"
+  # Anti-clickjacking (équivalent legacy de frame-ancestors 'self')
+  # SAMEORIGIN (et non DENY) car la page CV encadre son propre HTML
+  # (public/files/cvalexandredacosta.html) via une <iframe> même origine.
+  Header always set X-Frame-Options "SAMEORIGIN"
   # Fuite minimale de l'URL de provenance
   Header always set Referrer-Policy "strict-origin-when-cross-origin"
   # Isolation de la fenêtre top-level (COOP)
@@ -87,5 +89,5 @@
   Header always set Permissions-Policy "geolocation=(), microphone=(), camera=(), payment=(), usb=(), interest-cohort=()"
   # Content-Security-Policy : 'unsafe-inline' requis par le snippet gtag inline
   # et par les styles injectés à l'exécution par Emotion/MUI.
-  Header always set Content-Security-Policy "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; manifest-src 'self'; img-src 'self' data: https://www.googletagmanager.com https://www.google-analytics.com https://region1.google-analytics.com; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://region1.google-analytics.com https://aws.kared-dev.fr https://ask-alex-ai.kared-dev.fr"
+  Header always set Content-Security-Policy "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self'; manifest-src 'self'; img-src 'self' data: https://www.googletagmanager.com https://www.google-analytics.com https://region1.google-analytics.com; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://region1.google-analytics.com https://aws.kared-dev.fr https://ask-alex-ai.kared-dev.fr"
 </IfModule>
