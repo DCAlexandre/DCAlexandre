@@ -47,10 +47,12 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # ----------------------------------------------------------------------
-      # Metrics — carte modulaire (activité, langages, calendrier 3D, achievements).
+      # Metrics — carte modulaire (activité, langages, calendrier 3D).
       # Action Docker : elle NE dépose PAS de fichier dans le workspace, donc on la
       # laisse committer elle-même son SVG sur la branche `output` (commit par API :
       # ajoute github-metrics.svg sans écraser les fichiers Snake déjà publiés).
+      # NB : plugin_achievements retiré — il interroge « Projects (classic) » que
+      # GitHub a supprimé, ce qui affichait un encart d'erreur rouge dans l'image.
       # Doc & config : https://github.com/lowlighter/metrics
       - name: Generate & commit metrics
         uses: lowlighter/metrics@latest
@@ -67,5 +69,3 @@ jobs:
           plugin_languages: yes
           plugin_languages_details: bytes-size, percentage
           plugin_languages_limit: 8
-          plugin_achievements: yes
-          plugin_achievements_threshold: C
