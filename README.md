@@ -257,7 +257,7 @@ Site vitrine (React + TypeScript) réalisé sur demande client pour une sociét�
 
 ## Mes contributions
 
-<img src="https://raw.githubusercontent.com/DCAlexandre/DCAlexandre/output/github-metrics.svg" alt="Statistiques GitHub" width="100%" />
+<img src="https://raw.githubusercontent.com/DCAlexandre/DCAlexandre/output/github-stats.svg" alt="Statistiques GitHub d'Alexandre Da Costa (contributions privées incluses)" width="100%" />
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/DCAlexandre/DCAlexandre/output/github-snake-dark.svg" />
@@ -265,4 +265,4 @@ Site vitrine (React + TypeScript) réalisé sur demande client pour une sociét�
   <img src="https://raw.githubusercontent.com/DCAlexandre/DCAlexandre/output/github-snake.svg" alt="Grille de contributions animée" width="100%" />
 </picture>
 
-_Cartes générées automatiquement chaque jour par GitHub Actions ([`github-cards.yml`](.github/workflows/github-cards.yml)) et publiées sur la branche `output` — aucun service tiers au runtime. Elles ne prennent pas toutes en compte mes dépôts privés._
+_Cartes générées automatiquement chaque jour par GitHub Actions ([`github-cards.yml`](.github/workflows/github-cards.yml)) et publiées sur la branche `output` — aucun service tiers au runtime. La carte de stats est faite maison ([`github-stats-card.mjs`](scripts/github-stats-card.mjs)) et **inclut mes contributions privées** (repos privés + organisations)._

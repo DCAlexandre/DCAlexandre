@@ -1,9 +1,15 @@
 name: GitHub cards
 
-# Génère les cartes du profil (Metrics + Snake) et les publie sur la branche
-# `output`. Le README les référence via raw.githubusercontent.com → aucun
-# service tiers au runtime, donc pas de 402/503 comme avec les instances Vercel
-# publiques.
+# Génère les cartes du profil et les publie sur la branche `output`, référencée
+# par le README via raw.githubusercontent.com → aucun service tiers au runtime.
+#
+# Deux cartes :
+#  - Snake  : animation de la grille de contributions (Platane/snk).
+#  - Stats  : carte maison (scripts/github-stats-card.mjs) avec les chiffres
+#             RÉELS, contributions privées incluses. On n'utilise plus
+#             lowlighter/metrics car il n'expose que l'activité publique
+#             (contributionsCollection) et sous-estime massivement un profil
+#             majoritairement privé (PR, reviews, repos, langages…).
 
 on:
   schedule:
@@ -20,12 +26,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
       - name: Prepare output dir
         run: mkdir -p dist
 
       # ----------------------------------------------------------------------
       # Snake — le serpent qui « mange » la grille de contributions (clair + sombre).
-      # Action JS : écrit bien dans le workspace (dist/). Doc : https://github.com/Platane/snk
+      # Doc : https://github.com/Platane/snk
       - name: Generate snake
         uses: Platane/snk@v3
         with:
@@ -35,9 +46,17 @@ jobs:
             dist/github-snake-dark.svg?palette=github-dark
 
       # ----------------------------------------------------------------------
-      # Publication du Snake sur la branche `output` (force-push : (re)crée la branche).
-      # Doit précéder l'étape Metrics pour que la branche existe.
-      - name: Publish snake to output branch
+      # Carte de stats maison — chiffres réels (privé + org inclus).
+      # Le token doit voir les repos privés/org : scopes repo + read:org.
+      - name: Generate stats card
+        run: node scripts/github-stats-card.mjs dist/github-stats.svg
+        env:
+          GH_TOKEN: ${{ secrets.METRICS_TOKEN }}
+          GH_LOGIN: ${{ github.repository_owner }}
+
+      # ----------------------------------------------------------------------
+      # Publication de tout le dossier `dist` sur la branche `output`.
+      - name: Publish to output branch
         uses: crazy-max/ghaction-github-pages@v4
         with:
           target_branch: output
@@ -45,34 +64,3 @@ jobs:
           keep_history: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      # ----------------------------------------------------------------------
-      # Metrics — carte modulaire (activité, langages, calendrier 3D).
-      # Action Docker : elle NE dépose PAS de fichier dans le workspace, donc on la
-      # laisse committer elle-même son SVG sur la branche `output` (commit par API :
-      # ajoute github-metrics.svg sans écraser les fichiers Snake déjà publiés).
-      # NB : plugin_achievements retiré — il interroge « Projects (classic) » que
-      # GitHub a supprimé, ce qui affichait un encart d'erreur rouge dans l'image.
-      # Doc & config : https://github.com/lowlighter/metrics
-      - name: Generate & commit metrics
-        uses: lowlighter/metrics@latest
-        with:
-          token: ${{ secrets.METRICS_TOKEN }}
-          filename: github-metrics.svg
-          output_action: commit
-          committer_branch: output
-          committer_message: "chore(metrics): mise à jour des statistiques"
-          config_timezone: Europe/Paris
-          # Compter aussi les repos d'org (aexae, Kared-Games) et les collaborations,
-          # pas seulement les repos possédés → sinon le nombre de repos et le panel de
-          # langages sont fortement sous-estimés (le privé est déjà pris en compte via
-          # le token). Inclut les repos privés que le token peut voir.
-          repositories_affiliations: owner, collaborator, organization_member
-          base: header, activity, community, repositories, metadata
-          plugin_isocalendar: yes
-          plugin_isocalendar_duration: full_year
-          # Langages : lit les stats des repos en scope (donc privé/org via les
-          # affiliations ci-dessus) — mode rapide, sans clonage git.
-          plugin_languages: yes
-          plugin_languages_details: bytes-size, percentage
-          plugin_languages_limit: 8
