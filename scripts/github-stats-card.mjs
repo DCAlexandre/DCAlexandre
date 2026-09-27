@@ -13,9 +13,9 @@
 //   - repos & langages        : énumération REST (/user/repos + /orgs/*/repos
 //                               puis /repos/*/languages) — plus fiable que le
 //                               champ GraphQL viewer.repositories avec un PAT
-//   - calendrier              : contributionCalendar (nécessite le réglage de
-//                               profil « Include private contributions » pour
-//                               inclure le privé)
+//
+// La visualisation du calendrier de contributions est laissée au « snake »
+// (Platane/snk) affiché à côté dans le README — pas de doublon ici.
 //
 // Usage : GH_TOKEN=xxx node scripts/github-stats-card.mjs [chemin_sortie.svg]
 // ----------------------------------------------------------------------
@@ -30,9 +30,8 @@ const ORGS = [
   { login: "Kared-Games", label: "Kared Dev" },
 ];
 
-// Badges « faits marquants » — mélange rôle (portfolio) + jalons dérivés des
-// données (voir buildAchievements).
-const ROLE_BADGES = ["Tech Lead", "Full-stack", "10 ans d'expérience"];
+// Badges d'identité (positionnement portfolio, non dérivables des chiffres).
+const BADGES = ["Tech Lead", "Full-stack", "10 ans d'expérience"];
 
 if (!TOKEN) {
   console.error("GH_TOKEN manquant.");
@@ -48,11 +47,9 @@ const T = {
   text: "#e6edf3",
   muted: "#8b949e",
   accent: "#3ECF8E",
-  accent2: "#56d4dd",
   chipBg: "#132a20",
   chipBorder: "#2ea36a",
   orgColors: ["#3ECF8E", "#56d4dd", "#7d8590"],
-  heat: ["#161b22", "#0f3d2e", "#1c6b4a", "#2ea36a", "#3ECF8E"],
 };
 
 // ----------------------------------------------------------------------
@@ -146,9 +143,7 @@ async function fetchReposAndLanguages() {
     repos.map(async (full) => {
       const langs = await rest(`repos/${full}/languages`);
       if (langs && !langs.message) {
-        for (const [name, size] of Object.entries(langs)) {
-          totals.set(name, (totals.get(name) || 0) + size);
-        }
+        for (const [name, size] of Object.entries(langs)) totals.set(name, (totals.get(name) || 0) + size);
       }
     })
   );
@@ -162,14 +157,7 @@ async function fetchReposAndLanguages() {
   return { repoCount: repos.length, languages };
 }
 
-async function fetchCalendar() {
-  const data = await gql(`{
-    viewer { contributionsCollection { contributionCalendar { totalContributions weeks { contributionDays { contributionCount } } } } }
-  }`);
-  return data.viewer.contributionsCollection.contributionCalendar;
-}
-
-// Couleurs des langages courants (fallback pour REST qui ne renvoie pas la couleur).
+// Couleurs des langages courants (REST /languages ne renvoie pas la couleur).
 const LANG_COLORS = {
   TypeScript: "#3178c6",
   JavaScript: "#f1e05a",
@@ -190,32 +178,13 @@ const LANG_COLORS = {
 };
 const langColor = (name) => LANG_COLORS[name] || "#8b949e";
 
-function buildAchievements(totals, repoCount) {
-  const round = (n, step) => Math.floor(n / step) * step;
-  const milestones = [
-    `${round(totals.commits, 500).toLocaleString("fr-FR")}+ commits`,
-    `${round(totals.pullRequests, 25)}+ PR`,
-    `${round(totals.reviews, 100).toLocaleString("fr-FR")}+ reviews`,
-  ];
-  return [...ROLE_BADGES, ...milestones];
-}
-
 // ----------------------------------------------------------------------
 // Rendu SVG
 
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 const nf = (n) => n.toLocaleString("fr-FR").replace(/ | /g, " ");
 
-function heatLevel(count, max) {
-  if (count <= 0) return 0;
-  const r = count / max;
-  if (r > 0.6) return 4;
-  if (r > 0.35) return 3;
-  if (r > 0.15) return 2;
-  return 1;
-}
-
-function render({ totals, byOrg, repoCount, languages, calendar, achievements }) {
+function render({ totals, byOrg, repoCount, languages }) {
   const W = 880;
   const pad = 28;
   const barX = pad;
@@ -229,26 +198,24 @@ function render({ totals, byOrg, repoCount, languages, calendar, achievements })
     <circle cx="${W - pad - 6}" cy="34" r="5" fill="${T.accent}" />
     <text x="${W - pad - 18}" y="39" text-anchor="end" fill="${T.muted}" font-size="12">depuis ${totals.startYear}</text>`);
 
-  // Badges « faits marquants »
+  // Badges d'identité
   let bx = pad;
   const chipY = 82;
-  achievements.forEach((label) => {
+  BADGES.forEach((label) => {
     const w = 20 + label.length * 7.1;
-    if (bx + w > W - pad) return; // on ne dépasse pas la largeur
+    if (bx + w > W - pad) return;
     parts.push(`
       <rect x="${bx}" y="${chipY}" width="${w.toFixed(0)}" height="26" rx="13" fill="${T.chipBg}" stroke="${T.chipBorder}" />
       <text x="${bx + w / 2}" y="${chipY + 17}" text-anchor="middle" fill="${T.accent}" font-size="12.5" font-weight="600">${esc(label)}</text>`);
     bx += w + 8;
   });
 
-  // Tuiles (toutes fiables : commits/PR/reviews via search, repos via REST, années via createdAt)
-  const yearsActive = new Date().getUTCFullYear() - totals.startYear;
+  // Tuiles (toutes fiables : commits/PR/reviews via search, repos via REST)
   const tiles = [
     { value: nf(totals.commits), label: "Commits" },
     { value: nf(totals.pullRequests), label: "Pull requests" },
     { value: nf(totals.reviews), label: "Code reviews" },
     { value: nf(repoCount), label: "Repos" },
-    { value: `${yearsActive} ans`, label: "sur GitHub" },
   ];
   const tileY = 140;
   const tileW = (W - pad * 2) / tiles.length;
@@ -257,18 +224,18 @@ function render({ totals, byOrg, repoCount, languages, calendar, achievements })
       .map((t, i) => {
         const cx = pad + tileW * i + tileW / 2;
         return `
-        <text x="${cx}" y="${tileY + 8}" text-anchor="middle" fill="${T.accent}" font-size="29" font-weight="700">${esc(t.value)}</text>
-        <text x="${cx}" y="${tileY + 30}" text-anchor="middle" fill="${T.muted}" font-size="13">${esc(t.label)}</text>`;
+        <text x="${cx}" y="${tileY + 8}" text-anchor="middle" fill="${T.accent}" font-size="30" font-weight="700">${esc(t.value)}</text>
+        <text x="${cx}" y="${tileY + 31}" text-anchor="middle" fill="${T.muted}" font-size="13">${esc(t.label)}</text>`;
       })
       .join("")
   );
 
   // Répartition par organisation
-  let y = tileY + 66;
+  let y = tileY + 68;
   parts.push(`<text x="${pad}" y="${y}" fill="${T.text}" font-size="15" font-weight="600">Répartition par organisation</text>`);
   const maxCommits = Math.max(1, ...byOrg.map((o) => o.commits));
   byOrg.forEach((o, i) => {
-    const rowY = y + 22 + i * 34;
+    const rowY = y + 24 + i * 34;
     const w = (o.commits / maxCommits) * barW;
     parts.push(`
       <text x="${pad}" y="${rowY}" fill="${T.text}" font-size="13" font-weight="600">${esc(o.label)}</text>
@@ -278,9 +245,9 @@ function render({ totals, byOrg, repoCount, languages, calendar, achievements })
   });
 
   // Langages
-  y = y + 22 + byOrg.length * 34 + 14;
+  y = y + 24 + byOrg.length * 34 + 16;
   parts.push(`<text x="${pad}" y="${y}" fill="${T.text}" font-size="15" font-weight="600">Langages les plus utilisés</text>`);
-  const lbY = y + 10;
+  const lbY = y + 12;
   let acc = 0;
   const langBar = languages
     .map((l) => {
@@ -298,7 +265,7 @@ function render({ totals, byOrg, repoCount, languages, calendar, achievements })
         const col = i % 4;
         const row = Math.floor(i / 4);
         const x = barX + col * (barW / 4);
-        const ly = lbY + 34 + row * 22;
+        const ly = lbY + 36 + row * 22;
         return `
         <circle cx="${x + 6}" cy="${ly - 4}" r="6" fill="${langColor(l.name)}" />
         <text x="${x + 18}" y="${ly}" fill="${T.text}" font-size="13">${esc(l.name)}</text>
@@ -307,31 +274,8 @@ function render({ totals, byOrg, repoCount, languages, calendar, achievements })
       .join("")
   );
 
-  // Heatmap
-  y = lbY + 34 + Math.ceil(languages.length / 4) * 22 + 18;
-  parts.push(`<text x="${pad}" y="${y}" fill="${T.text}" font-size="15" font-weight="600">Contributions des 12 derniers mois</text>
-    <text x="${W - pad}" y="${y}" text-anchor="end" fill="${T.accent}" font-size="15" font-weight="700">${nf(calendar.totalContributions)}</text>`);
-  const weeks = calendar.weeks;
-  const maxDay = Math.max(1, ...weeks.flatMap((w) => w.contributionDays.map((d) => d.contributionCount)));
-  const cell = 11;
-  const gap = 3;
-  const heatTop = y + 14;
-  parts.push(
-    weeks
-      .map((w, wi) =>
-        w.contributionDays
-          .map((d, di) => {
-            const lvl = heatLevel(d.contributionCount, maxDay);
-            const x = pad + wi * (cell + gap);
-            const yy = heatTop + di * (cell + gap);
-            return `<rect x="${x}" y="${yy}" width="${cell}" height="${cell}" rx="2" fill="${T.heat[lvl]}" />`;
-          })
-          .join("")
-      )
-      .join("")
-  );
-
-  const H = heatTop + 7 * (cell + gap) + 30;
+  y = lbY + 36 + Math.ceil(languages.length / 4) * 22;
+  const H = y + 28;
   parts.push(`<text x="${pad}" y="${H - 12}" fill="${T.muted}" font-size="11">Généré automatiquement · les chiffres incluent le travail dans les repos privés &amp; organisations</text>`);
 
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" font-family="'Segoe UI', Ubuntu, 'Helvetica Neue', Arial, sans-serif" role="img" aria-label="Statistiques GitHub d'Alexandre Da Costa">
@@ -344,9 +288,8 @@ function render({ totals, byOrg, repoCount, languages, calendar, achievements })
 
 async function main() {
   const totals = await fetchTotals();
-  const [byOrg, rl, calendar] = await Promise.all([fetchByOrg(totals), fetchReposAndLanguages(), fetchCalendar()]);
-  const achievements = buildAchievements(totals, rl.repoCount);
-  const svg = render({ totals, byOrg, repoCount: rl.repoCount, languages: rl.languages, calendar, achievements });
+  const [byOrg, rl] = await Promise.all([fetchByOrg(totals), fetchReposAndLanguages()]);
+  const svg = render({ totals, byOrg, repoCount: rl.repoCount, languages: rl.languages });
 
   const fs = await import("node:fs");
   const path = await import("node:path");
@@ -354,9 +297,7 @@ async function main() {
   fs.writeFileSync(OUT, svg, "utf8");
 
   console.log(`OK → ${OUT}`);
-  console.log(
-    `commits=${totals.commits} PR=${totals.pullRequests} reviews=${totals.reviews} repos=${rl.repoCount} calendar=${calendar.totalContributions} langs=${rl.languages.length}`
-  );
+  console.log(`commits=${totals.commits} PR=${totals.pullRequests} reviews=${totals.reviews} repos=${rl.repoCount} langs=${rl.languages.length}`);
   byOrg.forEach((o) => console.log(`  ${o.label}: ${o.commits} commits, ${o.prs} PR`));
 }
 
