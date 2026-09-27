@@ -24,27 +24,8 @@ jobs:
         run: mkdir -p dist
 
       # ----------------------------------------------------------------------
-      # Metrics — carte modulaire (activité, langages, calendrier 3D, achievements)
-      # Doc & config : https://github.com/lowlighter/metrics
-      - name: Generate metrics
-        uses: lowlighter/metrics@latest
-        with:
-          token: ${{ secrets.METRICS_TOKEN }}
-          filename: dist/github-metrics.svg
-          output_action: none # on écrit juste le fichier, la publication se fait plus bas
-          config_timezone: Europe/Paris
-          base: header, activity, community, repositories, metadata
-          plugin_isocalendar: yes
-          plugin_isocalendar_duration: full_year
-          plugin_languages: yes
-          plugin_languages_details: bytes-size, percentage
-          plugin_languages_limit: 8
-          plugin_achievements: yes
-          plugin_achievements_threshold: C
-
-      # ----------------------------------------------------------------------
-      # Snake — le serpent qui « mange » la grille de contributions (clair + sombre)
-      # Doc : https://github.com/Platane/snk
+      # Snake — le serpent qui « mange » la grille de contributions (clair + sombre).
+      # Action JS : écrit bien dans le workspace (dist/). Doc : https://github.com/Platane/snk
       - name: Generate snake
         uses: Platane/snk@v3
         with:
@@ -54,8 +35,9 @@ jobs:
             dist/github-snake-dark.svg?palette=github-dark
 
       # ----------------------------------------------------------------------
-      # Publication de tout le dossier `dist` sur la branche `output`
-      - name: Publish to output branch
+      # Publication du Snake sur la branche `output` (force-push : (re)crée la branche).
+      # Doit précéder l'étape Metrics pour que la branche existe.
+      - name: Publish snake to output branch
         uses: crazy-max/ghaction-github-pages@v4
         with:
           target_branch: output
@@ -63,3 +45,27 @@ jobs:
           keep_history: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # ----------------------------------------------------------------------
+      # Metrics — carte modulaire (activité, langages, calendrier 3D, achievements).
+      # Action Docker : elle NE dépose PAS de fichier dans le workspace, donc on la
+      # laisse committer elle-même son SVG sur la branche `output` (commit par API :
+      # ajoute github-metrics.svg sans écraser les fichiers Snake déjà publiés).
+      # Doc & config : https://github.com/lowlighter/metrics
+      - name: Generate & commit metrics
+        uses: lowlighter/metrics@latest
+        with:
+          token: ${{ secrets.METRICS_TOKEN }}
+          filename: github-metrics.svg
+          output_action: commit
+          committer_branch: output
+          committer_message: "chore(metrics): mise à jour des statistiques"
+          config_timezone: Europe/Paris
+          base: header, activity, community, repositories, metadata
+          plugin_isocalendar: yes
+          plugin_isocalendar_duration: full_year
+          plugin_languages: yes
+          plugin_languages_details: bytes-size, percentage
+          plugin_languages_limit: 8
+          plugin_achievements: yes
+          plugin_achievements_threshold: C
