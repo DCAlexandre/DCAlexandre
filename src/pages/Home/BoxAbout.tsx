@@ -49,8 +49,8 @@ const BoxAbout = () => {
 
         <CardAbout color="secondary.main" Icon={CodeIcon}>
           <Typography variant="body1">
-            En <strong>freelance via Kared Dev</strong>, je construis des produits sur mesure de bout en bout — de
-            l'idéation jusqu'à la mise en production — pour start-ups, PME et indépendants.
+            En <strong>freelance via Kared Dev</strong>, je construis des produits sur mesure de bout en bout (de
+            l'idéation jusqu'à la mise en production) pour start-ups, PME et indépendants.
           </Typography>
         </CardAbout>
 

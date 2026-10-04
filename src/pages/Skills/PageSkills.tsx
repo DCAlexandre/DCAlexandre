@@ -1,6 +1,4 @@
 import { motion } from "framer-motion";
-import Box from "@mui/material/Box";
-import Chip from "@mui/material/Chip";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import PageContainer from "@/components/PageContainer";
@@ -13,7 +11,6 @@ import useSkills from "@/stores/hooks/useSkills";
 import leadership from "@/stores/data/skills/leadership";
 import ia from "@/stores/data/skills/ia";
 import certifications from "@/stores/data/certifications";
-import { TIER_ORDER, TIER_STYLE } from "@/pages/Skills/skillLevel";
 
 /**
  * Page des compétences
@@ -35,29 +32,11 @@ function PageSkills() {
         </Typography>
 
         <Typography variant="h6" component="h2" color="textSecondary" align="center" sx={{ mb: 6 }}>
-          Un profil full-stack, du frontend au DevOps — et le leadership pour livrer en équipe.
+          Un profil full-stack, du frontend au DevOps, et le leadership pour livrer en équipe.
         </Typography>
       </motion.div>
 
       <Divider sx={{ mb: 4 }} />
-
-      {/* Légende des paliers de maîtrise */}
-      <Box sx={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "center", gap: 1, mb: 4 }}>
-        <Typography variant="caption" color="text.secondary" sx={{ mr: 0.5 }}>
-          Niveau de maîtrise :
-        </Typography>
-
-        {TIER_ORDER.map((tier) => (
-          <Chip
-            key={tier}
-            label={tier}
-            size="small"
-            variant={TIER_STYLE[tier].variant}
-            color={TIER_STYLE[tier].color}
-            sx={{ fontWeight: 600 }}
-          />
-        ))}
-      </Box>
 
       {loading && isEmpty ? (
         <SkillsSkeleton />

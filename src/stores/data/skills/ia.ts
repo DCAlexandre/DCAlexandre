@@ -2,10 +2,10 @@
 
 /**
  * Compétences IA appliquée (présentation, sans niveau).
- * @description Liste statique de réalisations/savoir-faire — affichée en chips.
+ * @description Liste statique de réalisations/savoir-faire, affichée en chips.
  */
 const data: string[] = [
-  "Chatbots & assistants (RAG en production — ex. AskAlex)",
+  "Chatbots & assistants (RAG en production, ex. AskAlex)",
   "RAG documentaire (5 bases réalisées)",
   "Création d'agents & de serveurs MCP",
   "Cadrage d'agents & règles (CLAUDE.md, règles Cursor)",

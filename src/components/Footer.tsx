@@ -24,7 +24,7 @@ const Footer = () => {
       }}
     >
       <Typography variant="caption" color="text.secondary">
-        © {year} Kared Dev — Alexandre Da Costa ·{" "}
+        © {year} Kared Dev, Alexandre Da Costa ·{" "}
         <Link component={NavLink} to={PATH_PAGE.legal} underline="hover" color="inherit">
           Mentions légales & confidentialité
         </Link>

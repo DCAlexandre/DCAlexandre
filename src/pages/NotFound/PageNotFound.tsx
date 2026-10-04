@@ -9,7 +9,7 @@ import { SEO_PAGES } from "@/config/seo.config";
 import { PATH_PAGE } from "@/routes/paths";
 
 /**
- * Page 404 — route inconnue
+ * Page 404 : route inconnue
  */
 function PageNotFound() {
   return (

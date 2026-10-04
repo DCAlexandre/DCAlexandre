@@ -10,9 +10,8 @@ Personal portfolio SPA for Alexandre Da Costa, deployed under the `/alexandre/` 
 
 ```bash
 pnpm start          # dev server on http://localhost:3095/alexandre/ (Vite, HMR, polling watch)
-pnpm build          # tsc -b (typecheck) then vite build → dist/
-pnpm prerender      # inject static SEO meta into dist/ per route (run after build)
-pnpm build:prod     # build + prerender — use this for deployments
+pnpm build          # tsc -b (typecheck) + vite build → dist/, then prerender — use for deployments
+pnpm prerender      # inject static SEO meta into dist/ per route (standalone; already run by `build`)
 pnpm preview        # serve the production build locally
 pnpm lint           # eslint .
 pnpm lint:fix       # eslint . --fix
@@ -55,7 +54,7 @@ Contact form uses `react-hook-form` + `yup` (`@hookform/resolvers`). Validation 
 Per-page SEO metadata (`<title>`, description, canonical, Open Graph, Twitter) has **a single source of truth**: `src/config/seo.pages.json`, keyed by page (`home`, `projects`, …, `notFound`). It is consumed two ways:
 
 - **Runtime** — `src/config/seo.config.ts` wraps the JSON as a typed `SEO_PAGES` record; pages render `<Seo {...SEO_PAGES.x} />`. `src/components/Seo.tsx` relies on React 19's native `<head>` hoisting (no react-helmet) to inject the tags client-side, so SPA navigation updates them.
-- **Build** — `scripts/prerender.mjs` (run by `build:prod`) reads the same JSON and clones the built `dist/index.html` into `dist/<route>/index.html` with the SEO block injected before `</head>`. This gives JS-less social scrapers correct metadata. It is **pure file I/O — no headless browser**; the rendered `<body>` stays the empty SPA shell (only `<head>` is prerendered, which is all social previews need). `noIndex` pages (404) are skipped. `SITE_URL` comes from `VITE_SITE_URL` via Vite's `loadEnv`, mirroring the sitemap plugin.
+- **Build** — `scripts/prerender.mjs` (run by `build`) reads the same JSON and clones the built `dist/index.html` into `dist/<route>/index.html` with the SEO block injected before `</head>`. This gives JS-less social scrapers correct metadata. It is **pure file I/O — no headless browser**; the rendered `<body>` stays the empty SPA shell (only `<head>` is prerendered, which is all social previews need). `noIndex` pages (404) are skipped. `SITE_URL` comes from `VITE_SITE_URL` via Vite's `loadEnv`, mirroring the sitemap plugin.
 
 When editing SEO copy, change **only `seo.pages.json`** — both the runtime and the prerender pick it up. Keep `Seo.tsx` and `prerender.mjs` in sync if you add/remove a tag (the script mirrors the component's markup).
 

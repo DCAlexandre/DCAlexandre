@@ -6,7 +6,7 @@ import projects from "@/stores/data/projects";
 
 // ----------------------------------------------------------------------
 
-// Chiffres clés — `projects.length` est dérivé des données pour rester exact
+// Chiffres clés : `projects.length` est dérivé des données pour rester exact
 const STATS: { value: string; label: string }[] = [
   { value: "10+", label: "Années d'expérience" },
   { value: `${projects.length}`, label: "Projets réalisés" },

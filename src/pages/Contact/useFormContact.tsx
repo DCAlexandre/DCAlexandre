@@ -1,7 +1,14 @@
 import { useState, useCallback } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import schema, { UseFormContact, Snackbar, ApiResponse, ApiValidationError, FormData } from "./useFormContact.types";
+import schema, {
+  UseFormContact,
+  Snackbar,
+  ApiResponse,
+  ApiValidationError,
+  FormData,
+  requestTypeLabel,
+} from "./useFormContact.types";
 
 // URL de l'API de contact
 const { VITE_API_EMAIL } = import.meta.env;
@@ -57,7 +64,13 @@ function useFormContact(): UseFormContact {
     async (formData: FormData): Promise<void> => {
       setIsSubmitting(true);
 
-      console.debug({ formData });
+      // On préfixe le type de demande au message pour éviter de modifier le backend d'envoi.
+      const { requestType, message, ...rest } = formData;
+      const payload = {
+        ...rest,
+        message: `Type de demande : ${requestTypeLabel(requestType)}\n\n${message}`,
+        source: "portfolio-adc",
+      };
 
       try {
         // Envoi de la requête
@@ -66,7 +79,7 @@ function useFormContact(): UseFormContact {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ ...formData, source: "portfolio-adc" }),
+          body: JSON.stringify(payload),
         });
 
         const data: ApiResponse = await response.json();

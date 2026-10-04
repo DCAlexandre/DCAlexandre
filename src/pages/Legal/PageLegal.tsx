@@ -33,13 +33,13 @@ function PageLegal() {
       </Typography>
       <Typography variant="body2" color="text.secondary" paragraph>
         Le site <strong>kared-dev.fr/alexandre</strong> est édité par <strong>Alexandre Da Costa</strong>, entrepreneur
-        individuel (micro-entreprise), nom commercial <strong>AlexDev</strong> — marque <strong>Kared Dev</strong>.
+        individuel (micro-entreprise), nom commercial <strong>AlexDev</strong>, marque <strong>Kared Dev</strong>.
         <br />
-        SIRET : 935 320 770 00016 — TVA non applicable, article 293 B du CGI.
+        SIRET : 935 320 770 00016. TVA non applicable, article 293 B du CGI.
         <br />
-        Brunoy (91), France — adresse complète communiquée sur demande.
+        Brunoy (91), France. Adresse complète communiquée sur demande.
         <br />
-        Contact : <Link href="mailto:alexandre@kared-dev.fr">alexandre@kared-dev.fr</Link> — 07 69 62 43 79.
+        Contact : <Link href="mailto:alexandre@kared-dev.fr">alexandre@kared-dev.fr</Link>, 07 69 62 43 79.
       </Typography>
 
       <Typography variant="subtitle1" sx={{ fontWeight: "bold", mt: 2 }}>
@@ -53,7 +53,7 @@ function PageLegal() {
         Hébergement
       </Typography>
       <Typography variant="body2" color="text.secondary" paragraph>
-        OVH SAS — 2 rue Kellermann, 59100 Roubaix, France —{" "}
+        OVH SAS, 2 rue Kellermann, 59100 Roubaix, France,{" "}
         <Link href="https://www.ovhcloud.com" target="_blank" rel="noopener">
           ovhcloud.com
         </Link>
@@ -89,11 +89,11 @@ function PageLegal() {
       <Typography variant="body2" color="text.secondary" component="div" paragraph>
         <ul>
           <li>
-            <strong>Formulaire de contact</strong> — les nom, email et message que vous transmettez, uniquement pour
+            <strong>Formulaire de contact</strong> : les nom, email et message que vous transmettez, uniquement pour
             répondre à votre demande.
           </li>
           <li>
-            <strong>Chatbot AskAlex</strong> — les questions saisies sont envoyées à mon service d'intelligence
+            <strong>Chatbot AskAlex</strong> : les questions saisies sont envoyées à mon service d'intelligence
             artificielle pour générer une réponse. Un simple compteur d'usage est stocké dans votre navigateur
             (localStorage), sans donnée personnelle associée.
           </li>

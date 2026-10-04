@@ -21,7 +21,7 @@ const project: Project = {
   ],
   technologies: [technology.nodeJs, technology.typescript, technology.express, technology.ai, technology.docker],
   role: "Conception de l'architecture RAG de bout en bout : ingestion de la base de connaissances, embeddings, inférence et exposition d'une API.",
-  impact: "Un chatbot qui répond précisément sur mon parcours — et qui tourne en production sur ce site même.",
+  impact: "Un chatbot qui répond précisément sur mon parcours, et qui tourne en production sur ce site même.",
   featured: false,
 };
 

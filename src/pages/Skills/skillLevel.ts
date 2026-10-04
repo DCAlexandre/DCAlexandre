@@ -1,4 +1,3 @@
-import type { ChipProps } from "@mui/material/Chip";
 import type { Skill } from "@/stores/types/skills.types";
 
 // ----------------------------------------------------------------------
@@ -20,17 +19,13 @@ export const levelLabel = (skill: Skill): SkillTier => {
 };
 
 /**
- * Style de chip par palier — une couleur distincte par niveau pour la lisibilité.
+ * Couleur (clé de palette MUI, utilisable en `sx`) associée à chaque palier.
+ * Sert au libellé texte, en complément de la jauge qui porte le niveau.
  */
-export const TIER_STYLE: Record<SkillTier, { color: ChipProps["color"]; variant: "filled" | "outlined" }> = {
-  Expert: { color: "success", variant: "filled" },
-  Avancé: { color: "info", variant: "filled" },
-  Confirmé: { color: "warning", variant: "outlined" },
-  Intermédiaire: { color: "default", variant: "outlined" },
-  "En apprentissage": { color: "secondary", variant: "outlined" },
+export const TIER_COLOR: Record<SkillTier, string> = {
+  Expert: "success.main",
+  Avancé: "info.main",
+  Confirmé: "warning.main",
+  Intermédiaire: "text.secondary",
+  "En apprentissage": "secondary.main",
 };
-
-/**
- * Ordre d'affichage de la légende (du plus élevé au plus bas).
- */
-export const TIER_ORDER: SkillTier[] = ["Expert", "Avancé", "Confirmé", "Intermédiaire", "En apprentissage"];
