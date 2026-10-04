@@ -10,6 +10,7 @@ import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
 import SendIcon from "@mui/icons-material/Send";
 import useFormContact from "./useFormContact";
+import { REQUEST_TYPES } from "./useFormContact.types";
 
 /**
  * Formulaire de contact
@@ -33,8 +34,9 @@ function FormContact() {
         initial={{ opacity: 0, x: 50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5, delay: 0.2 }}
+        style={{ height: "100%" }}
       >
-        <Paper elevation={3} sx={{ p: 2.5, minHeight: 500 }}>
+        <Paper elevation={3} sx={{ p: 2.5, height: "100%", minHeight: 500 }}>
           <Typography variant="h5" component="h3" gutterBottom sx={{ mb: 3, fontWeight: "bold" }}>
             Envoyez-moi un message
           </Typography>
@@ -62,6 +64,31 @@ function FormContact() {
                   error={!!errors.email}
                   helperText={errors.email?.message || ""}
                 />
+              </Grid>
+
+              <Grid size={{ xs: 12 }}>
+                <TextField
+                  select
+                  required
+                  fullWidth
+                  label="Type de demande"
+                  defaultValue=""
+                  slotProps={{ select: { native: true }, inputLabel: { shrink: true } }}
+                  {...register("requestType")}
+                  error={!!errors.requestType}
+                  helperText={
+                    errors.requestType?.message || "Freelance, projet complet pour une TPE, ou recrutement en CDI."
+                  }
+                >
+                  <option value="" disabled>
+                    Sélectionnez votre besoin
+                  </option>
+                  {REQUEST_TYPES.map((type) => (
+                    <option key={type.value} value={type.value}>
+                      {type.label}
+                    </option>
+                  ))}
+                </TextField>
               </Grid>
 
               <Grid size={{ xs: 12 }}>

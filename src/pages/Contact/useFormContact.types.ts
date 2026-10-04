@@ -4,6 +4,21 @@ import { AlertColor } from "@mui/material/Alert";
 import * as yup from "yup";
 
 /**
+ * Types de demande proposés dans le formulaire (valeur envoyée + libellé lisible).
+ */
+export const REQUEST_TYPES = [
+  { value: "freelance", label: "Mission freelance" },
+  { value: "projet-tpe", label: "Projet complet à créer (TPE)" },
+  { value: "cdi", label: "Offre d'emploi (CDI)" },
+] as const;
+
+/**
+ * Libellé lisible d'un type de demande (pour l'email et l'affichage).
+ */
+export const requestTypeLabel = (value: string): string =>
+  REQUEST_TYPES.find((type) => type.value === value)?.label ?? value;
+
+/**
  * Schéma de validation du formulaire
  */
 const schema = yup.object({
@@ -13,6 +28,13 @@ const schema = yup.object({
     .max(50, "Le nom ne doit pas dépasser 50 caractères")
     .required("Le nom est requis"),
   email: yup.string().email("Email invalide").required("L'email est requis"),
+  requestType: yup
+    .string()
+    .oneOf(
+      REQUEST_TYPES.map((type) => type.value),
+      "Choisissez le type de demande"
+    )
+    .required("Indiquez le type de demande"),
   subject: yup
     .string()
     .min(3, "Le sujet doit contenir au moins 3 caractères")

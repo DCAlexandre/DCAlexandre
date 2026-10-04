@@ -117,7 +117,7 @@ function CardContact() {
   // ----------------------------------------------------------------------
 
   return (
-    <motion.div initial="hidden" animate="visible" variants={containerVariants}>
+    <motion.div initial="hidden" animate="visible" variants={containerVariants} style={{ height: "100%" }}>
       <Paper elevation={3} sx={{ p: 2.5, height: "100%", minHeight: 500 }}>
         <Typography variant="h5" component="h3" gutterBottom sx={{ mb: 3, fontWeight: "bold" }}>
           Mes coordonnées
