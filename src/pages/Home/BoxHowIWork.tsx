@@ -15,7 +15,7 @@ const MODES = [
   {
     Icon: RocketLaunchIcon,
     title: "Mission au forfait",
-    text: "Cadrage, devis et délai, puis développement complet — ou renfort ponctuel.",
+    text: "Cadrage, devis et délai, puis développement complet, ou renfort ponctuel.",
   },
   {
     Icon: BuildIcon,
@@ -57,12 +57,12 @@ const BoxHowIWork = () => {
 
       <Typography variant="body1" color="text.secondary" sx={{ mb: 4, textAlign: "center", maxWidth: 760, mx: "auto" }}>
         Je pars du besoin réel : beaucoup de questions au cadrage, c'est là que ça coûte le moins cher. Ensuite, je
-        prends en charge le développement de bout en bout — seul ou en binôme — avec des points d'étape réguliers.
+        prends en charge le développement de bout en bout (seul ou en binôme) avec des points d'étape réguliers.
       </Typography>
 
       <Divider sx={{ mb: 4 }} />
 
-      {/* 3 modes d'engagement — cartes en colonnes (icône centrée) */}
+      {/* 3 modes d'engagement : cartes en colonnes (icône centrée) */}
       <Grid container spacing={3}>
         {MODES.map(({ Icon, title, text }) => (
           <Grid size={{ xs: 12, md: 4 }} key={title}>
@@ -105,7 +105,7 @@ const BoxHowIWork = () => {
         ))}
       </Grid>
 
-      {/* Disponibilité — encart distinct (accentué, pas une carte) */}
+      {/* Disponibilité : encart distinct (accentué, pas une carte) */}
       <Box
         sx={{
           mt: 3,
@@ -124,7 +124,7 @@ const BoxHowIWork = () => {
           <Box component="strong" sx={{ color: "text.primary" }}>
             Disponibilité
           </Box>{" "}
-          — déjà Tech Lead sur une équipe, j'interviens en renfort, audit ou développement complet, principalement à
+          : déjà Tech Lead sur une équipe, j'interviens en renfort, audit ou développement complet, principalement à
           distance. Je n'endosse pas la responsabilité d'une seconde équipe à temps plein. J'évalue chaque mission avant
           de m'engager ; sinon je vous oriente vers des confrères de confiance.
         </Typography>

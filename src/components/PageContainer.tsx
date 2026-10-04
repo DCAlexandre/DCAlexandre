@@ -6,7 +6,7 @@ import Container from "@mui/material/Container";
 // Easing easeOutExpo : démarrage vif, fin douce
 const EASE_OUT_EXPO = cubicBezier(0.22, 1, 0.36, 1);
 
-// Décalage d'entrée léger (px) — fini les slides 100vw qui débordent
+// Décalage d'entrée léger (px) : fini les slides 100vw qui débordent
 const OFFSET = 24;
 
 /**

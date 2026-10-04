@@ -40,7 +40,7 @@ function escapeAttr(value) {
 }
 
 // Dimensions et texte alternatif de l'image de partage par défaut (miroir de src/components/Seo.tsx).
-const IMAGE_ALT = "Alexandre Da Costa — Tech Lead & Développeur Fullstack Freelance";
+const IMAGE_ALT = "Alexandre Da Costa, Tech Lead & Développeur Fullstack Freelance";
 
 /** Construit le bloc de balises SEO d'une page (miroir de src/components/Seo.tsx). */
 function buildSeoBlock({ path: pagePath, title, description, image, noIndex }) {
@@ -84,7 +84,7 @@ function buildSeoBlock({ path: pagePath, title, description, image, noIndex }) {
 async function run() {
   // Shell SPA produit par `vite build` : sert de gabarit pour toutes les routes.
   const template = await fs.readFile(path.join(distDir, "index.html"), "utf-8").catch(() => {
-    throw new Error("dist/index.html introuvable — lance `vite build` avant le pré-rendu.");
+    throw new Error("dist/index.html introuvable, lance `vite build` avant le pré-rendu.");
   });
 
   if (!template.includes("</head>")) {

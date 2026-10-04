@@ -3,7 +3,7 @@ import { ThemeOptions } from "@mui/material/styles";
 
 // ----------------------------------------------------------------------
 
-// Palette de marque — Émeraude raffiné (réf. Supabase / Tailwind) sur fond neutre.
+// Palette de marque. Émeraude raffiné (réf. Supabase / Tailwind) sur fond neutre.
 // L'accent vert est volontairement frais et légèrement désaturé, utilisé avec parcimonie.
 const PRIMARY = { light: "#6EE7B7", main: "#3ECF8E", dark: "#2BB673" };
 const SECONDARY = { light: "#5EEAD4", main: "#2DD4BF", dark: "#14B8A6" };

@@ -1,5 +1,5 @@
 // ----------------------------------------------------------------------
-// Métadonnées SEO par page — source unique de vérité.
+// Métadonnées SEO par page. Source unique de vérité.
 //
 // Le JSON `seo.pages.json` est partagé entre :
 //   - le composant <Seo /> (rendu runtime, hissage natif React 19) ;

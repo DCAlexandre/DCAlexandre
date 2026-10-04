@@ -6,11 +6,11 @@ import image from "/assets/projects/miapilot.webp";
 
 const project: Project = {
   dateStart: "2025-06-01",
-  title: "MiaPilot — POC",
+  title: "MiaPilot (POC)",
   subtitle:
     "Prototype (POC / R&D) d'assistant visuel : identifier, classer et relier des objets physiques à une base de données, par photo et IA.",
   description:
-    "MiaPilot est un proof of concept explorant la reconnaissance d'objets par IA visuelle.\n\nL'idée : photographier un objet, le faire reconnaître et classer automatiquement (modèle de vision type CLIP / TensorFlow), puis le relier à des références en base — avec une interface simple et un système d'annotation intelligent.\n\nApplication hybride (React + Capacitor / Ionic) adossée à un service Python pour la partie machine learning. Projet d'expérimentation, non destiné à la production en l'état.",
+    "MiaPilot est un proof of concept explorant la reconnaissance d'objets par IA visuelle.\n\nL'idée : photographier un objet, le faire reconnaître et classer automatiquement (modèle de vision type CLIP / TensorFlow), puis le relier à des références en base, avec une interface simple et un système d'annotation intelligent.\n\nApplication hybride (React + Capacitor / Ionic) adossée à un service Python pour la partie machine learning. Projet d'expérimentation, non destiné à la production en l'état.",
   image,
   features: [
     "Reconnaissance d'objets par photo (vision IA)",

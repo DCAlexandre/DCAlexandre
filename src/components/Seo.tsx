@@ -9,7 +9,7 @@ const DEFAULT_IMAGE = `${SITE_URL}/assets/og-image.png`;
 // Dimensions et texte alternatif de l'image de partage par défaut (miroir de prerender.mjs)
 const DEFAULT_IMAGE_WIDTH = "2400";
 const DEFAULT_IMAGE_HEIGHT = "1260";
-const IMAGE_ALT = "Alexandre Da Costa — Tech Lead & Développeur Fullstack Freelance";
+const IMAGE_ALT = "Alexandre Da Costa, Tech Lead & Développeur Fullstack Freelance";
 
 type SeoProps = {
   /** Titre de l'onglet et des partages (sans le suffixe nom) */
@@ -27,7 +27,7 @@ type SeoProps = {
 /**
  * Gestion des métadonnées SEO par page.
  * @description S'appuie sur le hissage natif des balises `<title>`/`<meta>`/`<link>`
- *   vers le `<head>` introduit par React 19 — aucune dépendance type react-helmet.
+ *   vers le `<head>` introduit par React 19, aucune dépendance type react-helmet.
  */
 function Seo({ title, description, path, image = DEFAULT_IMAGE, noIndex = false }: SeoProps) {
   const url = `${SITE_URL}${path}`;

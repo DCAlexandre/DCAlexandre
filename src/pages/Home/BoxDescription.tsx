@@ -59,7 +59,7 @@ const BoxDescription = () => {
         </Typography>
 
         <Typography variant="h5" component="p" sx={{ mb: 1.5, fontWeight: 400, color: "text.secondary" }}>
-          Tech Lead. 10 ans à concevoir, structurer et livrer des produits — de l'idée jusqu'à la production.
+          Tech Lead. 10 ans à concevoir, structurer et livrer des produits, de l'idée jusqu'à la production.
         </Typography>
 
         <Typography variant="h6" component="p" sx={{ mb: 4, fontWeight: 300, fontStyle: "italic" }}>

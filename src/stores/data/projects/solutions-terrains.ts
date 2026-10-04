@@ -30,7 +30,7 @@ const project: Project = {
     technology.web,
   ],
   role: "Développement de l'application mobile (React + Capacitor) : cartographie, filtres avancés et mise en relation.",
-  impact: "Publiée sur iOS et Android en 6 semaines, de la maquette à la production — 420 comptes utilisateurs.",
+  impact: "Publiée sur iOS et Android en 6 semaines, de la maquette à la production : 420 comptes utilisateurs.",
   featured: true,
 };
 

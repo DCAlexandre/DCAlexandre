@@ -26,7 +26,7 @@ const BoxSkillLeadership = ({ title, summary, items, defaultExpanded = false }: 
       disableGutters
       sx={{ mb: 2, borderRadius: 2, "&:before": { display: "none" } }}
     >
-      <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-label={`Voir le détail — ${title}`}>
+      <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-label={`Voir le détail de ${title}`}>
         <Box>
           <Typography variant="h5" component="h3" sx={{ fontWeight: "bold" }}>
             {title}

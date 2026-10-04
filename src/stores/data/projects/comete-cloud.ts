@@ -20,7 +20,7 @@ const project: Project = {
   technologies: [technology.electron, technology.nodeJs, technology.react],
   role: "Conception et développement de l'outil desktop d'installation et de mise à jour, destiné à l'équipe technique.",
   impact:
-    "Installation et mise à jour des composants Comète sans ligne de commande — moins d'erreurs, déploiements plus rapides.",
+    "Installation et mise à jour des composants Comète sans ligne de commande : moins d'erreurs, déploiements plus rapides.",
 };
 
 // ----------------------------------------------------------------------
