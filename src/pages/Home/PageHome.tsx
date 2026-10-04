@@ -6,6 +6,7 @@ import BoxDescription from "@/pages/Home/BoxDescription";
 import BoxStats from "@/pages/Home/BoxStats";
 import BoxHowIWork from "@/pages/Home/BoxHowIWork";
 import BoxRecommendations from "@/pages/Home/BoxRecommendations";
+import BoxContactCta from "@/pages/Home/BoxContactCta";
 
 /**
  * Page d'accueil
@@ -25,6 +26,8 @@ function PageHome() {
       <BoxHowIWork />
 
       <BoxRecommendations />
+
+      <BoxContactCta />
     </PageContainer>
   );
 }
